@@ -7,6 +7,9 @@ class Time
     const ONLINE = 1;
 
     /**
+     * Takes date string and returns converted date
+     * into `n time ago`
+     *
      * @param string $date
      * @param int|null $flag
      * @return string
