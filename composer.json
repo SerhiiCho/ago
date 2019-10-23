@@ -1,0 +1,34 @@
+{
+    "name": "serhii/ago",
+    "description": "Converts given date into a nice readable format. Supports russian and english. Example will be '1 hour ago', '2 days ago', '1 second ago', 'Online' and so.",
+    "homepage": "https://github.com/SerhiiCho/ago",
+    "keywords": ["time ago", "library", "html"],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Serhii Cho",
+            "email": "serhiicho@protonmail.com",
+            "homepage": "https://serhii.tk",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Serhii\\Ago\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Serhii\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3",
+        "symfony/var-dumper": "^5.0@dev"
+    }
+}
