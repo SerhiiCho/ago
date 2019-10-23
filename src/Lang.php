@@ -10,11 +10,6 @@ class Lang
     private static $lang = 'en';
 
     /**
-     * @var array
-     */
-    private static $supported_languages = ['en', 'ru'];
-
-    /**
      * @var null|array
      */
     private static $translations;
@@ -32,7 +27,7 @@ class Lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = in_array($lang, self::$supported_languages) ? $lang : 'en';
+        self::$lang = in_array($lang, ['en', 'ru']) ? $lang : 'en';
     }
 
     /**
@@ -45,13 +40,25 @@ class Lang
         return self::$translations[$index] ?? null;
     }
 
-    public static function includeTranslations()
+    /**
+     * Includes array of translations from lang directory
+     * into the $translations variable.
+     */
+    public static function includeTranslations(): void
     {
         self::$translations = self::$lang === 'ru'
             ? require __DIR__ . '/lang/ru.php'
             : require __DIR__ . '/lang/en.php';
     }
 
+    /**
+     * Returns array of translations for different cases.
+     * For example `1 second` must not have `s` at the end
+     * but `2 seconds` requires `s`. So this method keeps
+     * all possible options for the translated word.
+     *
+     * @return array
+     */
     public static function getTimeTranslations(): array
     {
         return [
