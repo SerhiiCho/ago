@@ -1,9 +1,11 @@
 <h2 align="center">Ago</h2>
 
-<p align="center">
-    <a href="https://php.net/" rel="nofollow"><img src="https://camo.githubusercontent.com/2b1ed18c21257b0a1e6b8568010e6e8f3636e6d5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7068702d253345253344253230372e312d3838393242462e7376673f7374796c653d666c61742d737175617265" alt="Minimum PHP Version" data-canonical-src="https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square" style="max-width:100%;"></a>
-    <a href="https://travis-ci.org/serhii/ago"><img src="https://travis-ci.org/SerhiiCho/ago.svg?branch=master" alt=""></a>
-</p>
+<a href=""><img src="https://travis-ci.org/SerhiiCho/ago.svg?branch=master" alt=""></a>
+[![Latest Stable Version](https://poser.pugx.org/serhii/ago/v/stable)](https://packagist.org/packages/serhii/ago)
+[![Latest Stable Version](https://poser.pugx.org/serhii/ago/v/stable)](https://packagist.org/packages/serhii/ago)
+[![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
+[![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
+<a href="https://php.net/" rel="nofollow"><img src="https://camo.githubusercontent.com/2b1ed18c21257b0a1e6b8568010e6e8f3636e6d5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7068702d253345253344253230372e312d3838393242462e7376673f7374796c653d666c61742d737175617265" alt="Minimum PHP Version" data-canonical-src="https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg" style="max-width:100%;"></a>
 
 Date/time converter into "n time ago" format. Supports Russian and English languages.
 
