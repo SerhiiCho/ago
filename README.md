@@ -29,3 +29,9 @@ If you want to show last user login like if user is online or not, you can pass 
 ```php
 Serhii\Ago::take('2019-10-23 10:46:00', Serhii\Ago::ONLINE);
 ```
+
+## Quick Start
+
+```bash
+composer require serhii/ago
+```
