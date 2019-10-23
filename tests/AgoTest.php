@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Carbon\CarbonImmutable;
-use Serhii\Ago\Ago;
+use Serhii\Ago\Time;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
 
@@ -21,7 +21,7 @@ class AgoTest extends TestCase
     {
         Lang::set($lang);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
-        $this->assertSame($output_expected, Ago::take($date));
+        $this->assertSame($output_expected, Time::ago($date));
     }
 
     public function Provider_for_returns_correct_time(): array
@@ -74,7 +74,7 @@ class AgoTest extends TestCase
         Lang::set($lang);
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = Ago::take($date));
+        $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = Time::ago($date));
         $this->assertTrue(in_array($res, $expect), $message);
     }
 
@@ -103,7 +103,7 @@ class AgoTest extends TestCase
     public function returns_online_within_60_seconds_and_if_second_arg_is_passes(int $seconds, string $lang): void
     {
         Lang::set($lang);
-        $time = Ago::take(CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString(), Ago::ONLINE);
+        $time = Time::ago(CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString(), Time::ONLINE);
         $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time); //TODO: refactore
     }
 

@@ -2,7 +2,7 @@
 
 namespace Serhii\Ago;
 
-class Ago
+class Time
 {
     const ONLINE = 1;
 
@@ -11,7 +11,7 @@ class Ago
      * @param int|null $flag
      * @return string
      */
-    public static function take(string $date, ?int $flag = null): string
+    public static function ago(string $date, ?int $flag = null): string
     {
         Lang::includeTranslations();
 
