@@ -1,6 +1,6 @@
 <h2 align="center">Ago</h2>
 
-<a href=""><img src="https://travis-ci.org/SerhiiCho/ago.svg?branch=master" alt=""></a>
+[![Build Status](https://travis-ci.com/SerhiiCho/ago.svg?branch=master)](https://travis-ci.com/SerhiiCho/ago)
 [![Latest Stable Version](https://poser.pugx.org/serhii/ago/v/stable)](https://packagist.org/packages/serhii/ago)
 [![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
 [![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
