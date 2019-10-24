@@ -7,7 +7,7 @@ class Lang
     /**
      * @var string
      */
-    private static $lang = 'en';
+    public static $lang = 'en';
 
     /**
      * @var null|array

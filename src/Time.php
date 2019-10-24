@@ -50,16 +50,18 @@ class Time
     private static function getWords(string $type, int $num): string
     {
         $last_num = (int) substr((string) $num, -1);
+        $index = 2;
 
         switch (true) {
-            case $last_num === 1:
-                $index = $num === 11 ? 2 : 0;
+            case $last_num === 1 && $num == 11:
+                $index = 2;
+                break;
+            case $num === 1 && Lang::$lang === 'en':
+            case $last_num === 1 && Lang::$lang === 'ru':
+                $index = 0;
                 break;
             case $last_num > 1 && $last_num < 5:
                 $index = 1;
-                break;
-            default:
-                $index = 2;
         }
 
         $time = Lang::getTimeTranslations();
