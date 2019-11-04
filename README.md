@@ -10,7 +10,7 @@ Date/time converter into "n time ago" format. Supports Russian and English langu
 
 ## Example
 
-Default language is English. Optionally you can set the language in your application by calling `set()` method and passing flag 'ru' or 'en';
+Default language is English. Optionally you can set the language in your application by calling `set()` method and passing a flag 'ru' or 'en';
 
 ```php
 Serhii\Ago\Lang::set('ru');
