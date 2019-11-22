@@ -7,6 +7,11 @@ class Time
     const ONLINE = 1;
     const NO_SUFFIX = 2;
 
+    /**
+     * @var int $flag This property will be equal to the flag that
+     * will be passed in ago() method as the second argument. It
+     * allows to know what flag was passed in any part of this class
+     */
     private static $flag = 0;
 
     /**
