@@ -5,6 +5,9 @@ namespace Serhii\Ago;
 class Time
 {
     const ONLINE = 1;
+    const NO_SUFFIX = 2;
+
+    private static $flag = 0;
 
     /**
      * Takes date string and returns converted date
@@ -16,6 +19,8 @@ class Time
      */
     public static function ago(string $date, ?int $flag = null): string
     {
+        self::$flag = $flag;
+
         Lang::includeTranslations();
 
         $seconds = strtotime('now') - strtotime($date);
@@ -65,7 +70,8 @@ class Time
         }
 
         $time = Lang::getTimeTranslations();
+        $suffix = self::$flag === self::NO_SUFFIX ? '' : ' ' . Lang::trans('ago');
 
-        return "$num {$time[$type][$index]} " . Lang::trans('ago');
+        return "$num {$time[$type][$index]}" . $suffix;
     }
 }
