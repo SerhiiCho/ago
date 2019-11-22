@@ -5,6 +5,14 @@ namespace Serhii\Ago;
 class Time
 {
     const ONLINE = 1;
+    const NO_SUFFIX = 2;
+
+    /**
+     * @var int $flag This property will be equal to the flag that
+     * will be passed in ago() method as the second argument. It
+     * allows to know what flag was passed in any part of this class
+     */
+    private static $flag = 0;
 
     /**
      * Takes date string and returns converted date
@@ -16,6 +24,8 @@ class Time
      */
     public static function ago(string $date, ?int $flag = null): string
     {
+        self::$flag = $flag;
+
         Lang::includeTranslations();
 
         $seconds = strtotime('now') - strtotime($date);
@@ -65,7 +75,8 @@ class Time
         }
 
         $time = Lang::getTimeTranslations();
+        $suffix = self::$flag === self::NO_SUFFIX ? '' : ' ' . Lang::trans('ago');
 
-        return "$num {$time[$type][$index]} " . Lang::trans('ago');
+        return "$num {$time[$type][$index]}" . $suffix;
     }
 }

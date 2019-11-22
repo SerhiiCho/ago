@@ -21,17 +21,22 @@ Serhii\Ago\Lang::set('ru');
 For outputting post publishing date or something else you can just pass the date to method `ago()`. It will count the interval between now and given date and returns needed format.
 
 ```php
-use Serhii\Ago\Time;
-
-Time::ago('2019-10-23 10:46:00'); // after 10 seconds outputs: 10 seconds ago
+$now = date('Y-m-d H:i:s');
+Serhii\Ago\Time::ago($now); // after 10 seconds outputs: 10 seconds ago
 ```
 
-If you want to show last user login like if user is online or not, you can pass `Ago::ONLINE` constant as the seconds argument. All it does is just displaying **Online** if date interval withing 60 seconds.
+If you want to show last user login like if user is online or not, you can pass `Ago::ONLINE` constant as the seconds argument. All it does is just displaying **Online** if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format.
 
 ```php
-use Serhii\Ago\Time;
+$now = date('Y-m-d H:i:s');
+Time::ago($now, Time::ONLINE); // within 60 seconds output is: Online
+```
 
-Time::ago('2019-10-23 10:46:00', Time::ONLINE);
+If you want to remove suffix from date and have "5 minutes" instead of "5 minutes ago" there is a flag `Time::NO_SUFFIX` available for this operation.
+
+```php
+$now = date('Y-m-d H:i:s');
+Time::ago($now, Time::NO_SUFFIX); // after 5 seconds output is: 5 seconds
 ```
 
 ## Quick Start
