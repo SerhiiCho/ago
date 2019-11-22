@@ -18,7 +18,7 @@ Serhii\Ago\Lang::set('ru');
 
 ## Usage
 
-For outputting post publishing date or something else you can just pass the date to method `ago()`. It will count the interval between now and given date and returns needed format.
+For outputting post publishing date or something else you can just pass the date to method `ago()`. It will count the interval between now and given date and returns needed format. Internally given date will be parsed by `strtotime()` PHP's internal function.
 
 ```php
 $now = date('Y-m-d H:i:s');
