@@ -25,7 +25,7 @@ $now = date('Y-m-d H:i:s');
 Serhii\Ago\Time::ago($now); // after 10 seconds outputs: 10 seconds ago
 ```
 
-If you want to show last user login like if user is online or not, you can pass `Ago::ONLINE` constant as the seconds argument. All it does is just displaying **Online** if date interval within 60 seconds.
+If you want to show last user login like if user is online or not, you can pass `Ago::ONLINE` constant as the seconds argument. All it does is just displaying **Online** if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format.
 
 ```php
 $now = date('Y-m-d H:i:s');
