@@ -4,27 +4,23 @@ namespace Serhii\Ago;
 
 class Time
 {
-    const ONLINE = 1;
-    const NO_SUFFIX = 2;
-
     /**
-     * @var int $flag This property will be equal to the flag that
+     * @var array $options This property will contain all options that
      * will be passed in ago() method as the second argument. It
-     * allows to know what flag was passed in any part of this class
+     * allows to know what option was passed in any part of this class
      */
-    private static $flag = 0;
+    private static $options = [];
 
     /**
      * Takes date string and returns converted date
-     * into `n time ago`
      *
      * @param string $date
-     * @param int|null $flag
+     * @param array|null $options
      * @return string
      */
-    public static function ago(string $date, ?int $flag = null): string
+    public static function ago(string $date, ?array $options = []): string
     {
-        self::$flag = $flag;
+        self::$options = $options;
 
         Lang::includeTranslations();
 
@@ -38,7 +34,7 @@ class Time
         $years = (int) round($seconds / 31553280);
 
         switch (true) {
-            case $flag === self::ONLINE && $seconds < 60:
+            case self::optionIsSet('online') && $seconds < 60:
                 return Lang::trans('online');
             case $seconds < 60:
                 return self::getWords('seconds', $seconds);
@@ -55,6 +51,11 @@ class Time
         }
 
         return self::getWords('years', $years);
+    }
+
+    private static function optionIsSet(string $option): bool
+    {
+        return in_array($option, self::$options);
     }
 
     private static function getWords(string $type, int $num): string
@@ -75,7 +76,7 @@ class Time
         }
 
         $time = Lang::getTimeTranslations();
-        $suffix = self::$flag === self::NO_SUFFIX ? '' : ' ' . Lang::trans('ago');
+        $suffix = self::optionIsSet('no-suffix') ? '' : ' ' . Lang::trans('ago');
 
         return "$num {$time[$type][$index]}" . $suffix;
     }
