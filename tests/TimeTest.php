@@ -7,7 +7,7 @@ use Serhii\Ago\Time;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
 
-class AgoTest extends TestCase
+class TimeTest extends TestCase
 {
     /**
      * @dataProvider Provider_for_returns_correct_time
