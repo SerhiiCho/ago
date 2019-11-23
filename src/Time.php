@@ -24,7 +24,9 @@ class Time
 
         Lang::includeTranslations();
 
-        $seconds = strtotime('now') - strtotime($date);
+        $seconds = self::optionIsSet('upcoming')
+            ? strtotime($date) - strtotime('now')
+            : strtotime('now') - strtotime($date);
 
         $minutes = (int) round($seconds / 60);
         $hours = (int) round($seconds / 3600);
@@ -76,8 +78,11 @@ class Time
         }
 
         $time = Lang::getTimeTranslations();
-        $suffix = self::optionIsSet('no-suffix') ? '' : ' ' . Lang::trans('ago');
 
-        return "$num {$time[$type][$index]}" . $suffix;
+        if (self::optionIsSet('no-suffix') || self::optionIsSet('upcoming')) {
+            return "$num {$time[$type][$index]}";
+        }
+
+        return "$num {$time[$type][$index]} " . Lang::trans('ago');
     }
 }

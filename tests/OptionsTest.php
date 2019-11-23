@@ -121,4 +121,34 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 год'],
         ];
     }
+
+    /**
+     * @dataProvider Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
+     * @test
+     * @param string $date
+     * @param string $lang
+     * @param string $result
+     */
+    public function returns_times_left_for_a_date_in_future_with_UPCOMING_option(string $date, string $lang, string $result): void
+    {
+        Lang::set($lang);
+        $this->assertSame($result, Time::ago($date, ['upcoming']));
+    }
+
+    public function Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array
+    {
+        return [
+            [CarbonImmutable::now()->addMinute()->toDateTimeString(), 'en', '1 minute'],
+            [CarbonImmutable::now()->addMinutes(10)->toDateTimeString(), 'en', '10 minutes'],
+            [CarbonImmutable::now()->addMonth()->toDateTimeString(), 'en', '1 month'],
+            [CarbonImmutable::now()->addYears(10)->toDateTimeString(), 'en', '10 years'],
+            [CarbonImmutable::now()->addYear()->toDateTimeString(), 'en', '1 year'],
+            [CarbonImmutable::now()->addMinute()->toDateTimeString(), 'ru', '1 минута'],
+            [CarbonImmutable::now()->addMinutes(10)->toDateTimeString(), 'ru', '10 минут'],
+            [CarbonImmutable::now()->addMonth()->toDateTimeString(), 'ru', '1 месяц'],
+            [CarbonImmutable::now()->addMonths(10)->toDateTimeString(), 'ru', '10 месяцев'],
+            [CarbonImmutable::now()->addYears(10)->toDateTimeString(), 'ru', '10 лет'],
+            [CarbonImmutable::now()->addYear()->toDateTimeString(), 'ru', '1 год'],
+        ];
+    }
 }
