@@ -40,7 +40,7 @@ Time::ago($now, ['online', 'no-suffix']);
 | Option name   |  Description              |
 | :------------ |:--------------------------|
 | online        | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
-| no-suffix     | Remove suffix from date and have "5 minutes" instead of "5 minutes ago" there is a flag Time::NO_SUFFIX available for this operation.      |
+| no-suffix     | Remove suffix from date and have "5 minutes" instead of "5 minutes ago" |
 | upcoming      | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. Suffix will be also removed.|
 
 ## Quick Start
