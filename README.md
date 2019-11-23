@@ -25,19 +25,23 @@ $now = date('Y-m-d H:i:s');
 Serhii\Ago\Time::ago($now); // after 10 seconds outputs: 10 seconds ago
 ```
 
-If you want to show last user login like if user is online or not, you can pass `Ago::ONLINE` constant as the seconds argument. All it does is just displaying **Online** if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format.
+## Options
+
+As the seconds argument `ago` method excepts array of options. Here is an example of passed options.
 
 ```php
 $now = date('Y-m-d H:i:s');
-Time::ago($now, Time::ONLINE); // within 60 seconds output is: Online
+Time::ago($now, ['online', 'no-suffix']);
 ```
 
-If you want to remove suffix from date and have "5 minutes" instead of "5 minutes ago" there is a flag `Time::NO_SUFFIX` available for this operation.
+### Available options
 
-```php
-$now = date('Y-m-d H:i:s');
-Time::ago($now, Time::NO_SUFFIX); // after 5 seconds output is: 5 seconds
-```
+
+| Option name   |  Description              |
+| :------------ |:--------------------------|
+| online        | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
+| no-suffix     | Remove suffix from date and have "5 minutes" instead of "5 minutes ago" there is a flag Time::NO_SUFFIX available for this operation.      |
+| upcoming      | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. Suffix will be also removed.|
 
 ## Quick Start
 
