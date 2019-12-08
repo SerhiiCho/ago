@@ -140,11 +140,13 @@ class OptionsTest extends TestCase
         return [
             [CarbonImmutable::now()->addMinutes(2)->toDateTimeString(), 'en', '2 minutes'],
             [CarbonImmutable::now()->addMinutes(10)->toDateTimeString(), 'en', '10 minutes'],
+            [CarbonImmutable::now()->addHours(13)->toDateTimeString(), 'en', '13 hours'],
             [CarbonImmutable::now()->addMonth()->toDateTimeString(), 'en', '1 month'],
             [CarbonImmutable::now()->addYears(10)->toDateTimeString(), 'en', '10 years'],
             [CarbonImmutable::now()->addYear()->toDateTimeString(), 'en', '1 year'],
             [CarbonImmutable::now()->addMinutes(2)->toDateTimeString(), 'ru', '2 минуты'],
             [CarbonImmutable::now()->addMinutes(10)->toDateTimeString(), 'ru', '10 минут'],
+            [CarbonImmutable::now()->addHours(13)->toDateTimeString(), 'ru', '13 часов'],
             [CarbonImmutable::now()->addMonth()->toDateTimeString(), 'ru', '1 месяц'],
             [CarbonImmutable::now()->addMonths(10)->toDateTimeString(), 'ru', '10 месяцев'],
             [CarbonImmutable::now()->addYears(10)->toDateTimeString(), 'ru', '10 лет'],
