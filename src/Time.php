@@ -66,7 +66,7 @@ class Time
         $index = 2;
 
         switch (true) {
-            case $last_num === 1 && $num == 11:
+            case $num >= 11 && $num <= 20:
                 $index = 2;
                 break;
             case $num === 1 && Lang::$lang === 'en':
