@@ -46,9 +46,7 @@ class Lang
      */
     public static function includeTranslations(): void
     {
-        self::$translations = self::$lang === 'ru'
-            ? require __DIR__ . '/lang/ru.php'
-            : require __DIR__ . '/lang/en.php';
+        self::$translations = require __DIR__ . '/lang/' . self::$lang . '.php';
     }
 
     /**
