@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Serhii\Tests;
+namespace Tests;
 
 use Carbon\CarbonImmutable;
 use Serhii\Ago\Time;
