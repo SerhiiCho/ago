@@ -21,7 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "Serhii\\Tests\\": "tests"
         }
     },
     "require": {
