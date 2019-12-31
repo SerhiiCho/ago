@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests;
+namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
 use ReflectionMethod;
