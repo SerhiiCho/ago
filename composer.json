@@ -29,6 +29,8 @@
     },
     "require-dev": {
         "nesbot/carbon": "^2.2",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "symfony/var-dumper": "4.2",
+        "sandfoxme/private-access": "dev-master"
     }
 }
