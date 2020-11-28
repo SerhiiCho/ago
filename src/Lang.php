@@ -17,19 +17,19 @@ class Lang
     private static $translations;
 
     /**
-     * Set the language by passing 'ru' or 'en' argument.
+     * Set the language by passing short representation of a language
+     * like 'ru' for russian or 'en' for english.
      * If given language is not supported by this package,
      * the language will be set to English as default.
      *
      * If you don't call this method, the default
      * language will be set to English.
      *
-     * @param string $lang Can be `ru` for Russian language
-     * and `en` for English.
+     * @param string $lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = in_array($lang, ['en', 'ru']) ? $lang : 'en';
+        self::$lang = in_array($lang, self::getLanguagesSlugs()) ? $lang : 'en';
     }
 
     /**
