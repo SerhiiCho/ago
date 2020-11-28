@@ -46,7 +46,7 @@ class OptionsTest extends TestCase
     }
 
     /** @test */
-    public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_ago_method(): void
+    public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_trans_method(): void
     {
         TimeAgo::trans(CarbonImmutable::now()->toDateTimeString());
 
@@ -56,7 +56,7 @@ class OptionsTest extends TestCase
     }
 
     /** @test */
-    public function optionIsSet_returns_true_if_provided_options_was_passed_to_ago_method(): void
+    public function optionIsSet_returns_true_if_provided_options_was_passed_to_trans_method(): void
     {
         TimeAgo::trans(CarbonImmutable::now()->toDateTimeString(), ['online']);
         $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', 'online');
