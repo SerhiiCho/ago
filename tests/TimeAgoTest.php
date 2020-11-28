@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
-use Serhii\Ago\Time;
+use Serhii\Ago\TimeAgo;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
 
-class TimeTest extends TestCase
+class TimeAgoTest extends TestCase
 {
     /**
      * @dataProvider Provider_for_returns_correct_time
@@ -23,7 +23,7 @@ class TimeTest extends TestCase
     {
         Lang::set($lang);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
-        $this->assertSame($output_expected, Time::ago($date));
+        $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
     public function Provider_for_returns_correct_time(): array
@@ -126,7 +126,7 @@ class TimeTest extends TestCase
         Lang::set($lang);
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = Time::ago($date));
+        $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = TimeAgo::trans($date));
         $this->assertTrue(in_array($res, $expect), $message);
     }
 

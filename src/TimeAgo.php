@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Serhii\Ago;
 
-class Time
+class TimeAgo
 {
     /**
      * @var array $options This property will contain all options that
-     * will be passed in ago() method as the second argument. It
+     * will be passed in trans() method as the second argument. It
      * allows to know what option was passed in any part of this class
      */
     private $options = [];
@@ -32,7 +32,7 @@ class Time
      * @param array|null $options
      * @return string
      */
-    public static function ago(string $date, ?array $options = []): string
+    public static function trans(string $date, ?array $options = []): string
     {
         return self::singleton()->handle($date, $options);
     }
