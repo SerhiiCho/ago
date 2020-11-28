@@ -11,7 +11,17 @@ class Time
      * will be passed in ago() method as the second argument. It
      * allows to know what option was passed in any part of this class
      */
-    private static $options = [];
+    private $options = [];
+
+    /**
+     * @var self|null
+     */
+    private static $instance;
+
+    public static function new(): self
+    {
+        return static::$instance ?? (static::$instance = new static());
+    }
 
     /**
      * Takes date string and returns converted date
@@ -22,11 +32,16 @@ class Time
      */
     public static function ago(string $date, ?array $options = []): string
     {
-        self::$options = $options;
+        return Time::new()->handle($date, $options);
+    }
+
+    public function handle(string $date, ?array $options = []): string
+    {
+        $this->options = $options;
 
         Lang::includeTranslations();
 
-        $seconds = self::optionIsSet('upcoming')
+        $seconds = $this->optionIsSet('upcoming')
             ? strtotime($date) - strtotime('now')
             : strtotime('now') - strtotime($date);
 
@@ -38,31 +53,31 @@ class Time
         $years = (int) round($seconds / 31553280);
 
         switch (true) {
-            case self::optionIsSet('online') && $seconds < 60:
+            case $this->optionIsSet('online') && $seconds < 60:
                 return Lang::trans('online');
             case $seconds < 60:
-                return self::getWords('seconds', $seconds);
+                return $this->getWords('seconds', $seconds);
             case $minutes < 60:
-                return self::getWords('minutes', $minutes);
+                return $this->getWords('minutes', $minutes);
             case $hours < 24:
-                return self::getWords('hours', $hours);
+                return $this->getWords('hours', $hours);
             case $days < 7:
-                return self::getWords('days', $days);
+                return $this->getWords('days', $days);
             case $weeks < 4:
-                return self::getWords('weeks', $weeks);
+                return $this->getWords('weeks', $weeks);
             case $months < 12:
-                return self::getWords('months', $months);
+                return $this->getWords('months', $months);
         }
 
-        return self::getWords('years', $years);
+        return $this->getWords('years', $years);
     }
 
-    private static function optionIsSet(string $option): bool
+    private function optionIsSet(string $option): bool
     {
-        return in_array($option, self::$options);
+        return in_array($option, $this->options);
     }
 
-    private static function getWords(string $type, int $num): string
+    private function getWords(string $type, int $num): string
     {
         $last_num = (int) substr((string) $num, -1);
         $index = 2;
@@ -81,7 +96,7 @@ class Time
 
         $time = Lang::getTimeTranslations();
 
-        if (self::optionIsSet('no-suffix') || self::optionIsSet('upcoming')) {
+        if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
             return "$num {$time[$type][$index]}";
         }
 
