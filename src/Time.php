@@ -18,7 +18,9 @@ class Time
      */
     private static $instance;
 
-    public static function new(): self
+    private function __construct() {}
+
+    public static function singleton(): self
     {
         return static::$instance ?? (static::$instance = new static());
     }
@@ -32,10 +34,10 @@ class Time
      */
     public static function ago(string $date, ?array $options = []): string
     {
-        return Time::new()->handle($date, $options);
+        return self::singleton()->handle($date, $options);
     }
 
-    public function handle(string $date, ?array $options = []): string
+    private function handle(string $date, ?array $options = []): string
     {
         $this->options = $options;
 

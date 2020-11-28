@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
-use ReflectionMethod;
 use Serhii\Ago\Time;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
+
+use function SandFox\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
@@ -49,21 +50,18 @@ class OptionsTest extends TestCase
     {
         Time::ago(CarbonImmutable::now()->toDateTimeString());
 
-        $reflect = new ReflectionMethod(Time::class, 'optionIsSet');
-        $reflect->setAccessible(true);
+        $result = call_private_method(Time::singleton(), 'optionIsSet', 'online');
 
-        $this->assertFalse($reflect->invoke(new Time, 'online'));
+        $this->assertFalse($result);
     }
 
     /** @test */
     public function optionIsSet_returns_true_if_provided_options_was_passed_to_ago_method(): void
     {
         Time::ago(CarbonImmutable::now()->toDateTimeString(), ['online']);
+        $result = call_private_method(Time::singleton(), 'optionIsSet', 'online');
 
-        $reflect = new ReflectionMethod(Time::class, 'optionIsSet');
-        $reflect->setAccessible(true);
-
-        $this->assertTrue($reflect->invoke(new Time, 'online'));
+        $this->assertTrue($result);
     }
 
     /**
