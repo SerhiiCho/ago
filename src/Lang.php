@@ -43,6 +43,20 @@ class Lang
     }
 
     /**
+     * @return string[]
+     */
+    private static function getLanguagesSlugs(): array
+    {
+        $paths = glob(__DIR__ . '/lang/*.php');
+
+        return array_map(function ($path) {
+            $chunks = explode('/', $path);
+            $file = end($chunks);
+            return str_replace('.php', '', $file);
+        }, $paths);
+    }
+
+    /**
      * Includes array of translations from lang directory
      * into the $translations variable.
      */
