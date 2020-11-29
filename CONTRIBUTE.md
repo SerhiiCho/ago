@@ -1,6 +1,6 @@
 # Contributing another language
 
-If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Here is my [commit](https://github.com/SerhiiCho/ago/commit/bc6cb8a4de85080f177b7b5730d97758b4c72347) for supporting Ukrainian language that shows changes that I did.
+If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/aa622a33dcd4a348b5a0cbf3807395bc62e413ba) for supporting Ukrainian language that shows changes that I did.
 
 ##### Files in lang directory
 
