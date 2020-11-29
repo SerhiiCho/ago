@@ -79,6 +79,15 @@ class Lang
     }
 
     /**
+     * Includes array of rules from rules directory
+     * into the $rules variable.
+     */
+    public static function includeRules(): void
+    {
+        self::$rules = require __DIR__ . '/rules/' . self::$lang . '.php';
+    }
+
+    /**
      * Returns array of translations for different cases.
      * For example `1 second` must not have `s` at the end
      * but `2 seconds` requires `s`. So this method keeps
