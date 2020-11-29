@@ -17,6 +17,11 @@ class Lang
     private static $translations;
 
     /**
+     * @var null|array[]
+     */
+    private static $rules;
+
+    /**
      * Set the language by passing short representation of a language
      * like 'ru' for russian or 'en' for english.
      * If given language is not supported by this package,
@@ -40,6 +45,14 @@ class Lang
     public static function trans(string $index): ?string
     {
         return self::$translations[$index] ?? null;
+    }
+
+    /**
+     * @return array[]
+     */
+    public static function getRules(): array
+    {
+        return self::$rules;
     }
 
     /**
