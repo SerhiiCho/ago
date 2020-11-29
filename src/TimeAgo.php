@@ -89,10 +89,8 @@ class TimeAgo
             if (is_bool($rules)) {
                 if ($rules) {
                     $form = $form_name;
-                    break;
-                } else {
-                    continue;
                 }
+                continue;
             }
 
             foreach ($rules as $rule_is_passing) {
