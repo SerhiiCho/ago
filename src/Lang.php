@@ -12,7 +12,7 @@ class Lang
     public static $lang = 'en';
 
     /**
-     * @var null|array
+     * @var null|string[]
      */
     private static $translations;
 
@@ -84,7 +84,7 @@ class Lang
      * but `2 seconds` requires `s`. So this method keeps
      * all possible options for the translated word.
      *
-     * @return array
+     * @return array[]
      */
     public static function getTimeTranslations(): array
     {
