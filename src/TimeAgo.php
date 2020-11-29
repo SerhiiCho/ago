@@ -80,22 +80,21 @@ class TimeAgo
         return in_array($option, $this->options);
     }
 
-    private function getWords(string $type, int $num): string
+    private function getWords(string $type, int $number): string
     {
-        $last_num = (int) substr((string) $num, -1);
-        $all_rules = Lang::getRules();
-        $index = 2;
+        $last_digit = (int) substr((string) $number, -1);
+        $index = 0;
 
-        foreach ($all_rules as $form_name => $rules) {
-            foreach ($rules as $rule) {
+        foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
+            foreach ($rules as $rule_is_passing) {
                 switch (true) {
-                    case $form_name === 'single' && $rule($num, $last_num):
+                    case $form_name === 'single' && $rule_is_passing:
                         $index = 0;
                         break 2;
-                    case $form_name === 'plural' && $rule($num, $last_num):
+                    case $form_name === 'plural' && $rule_is_passing:
                         $index = 1;
                         break 2;
-                    case $form_name === 'special' && $rule($num, $last_num):
+                    case $form_name === 'special' && $rule_is_passing:
                         $index = 2;
                         break 2;
                 }
@@ -105,9 +104,9 @@ class TimeAgo
         $time = Lang::getTimeTranslations();
 
         if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
-            return "$num {$time[$type][$index]}";
+            return "$number {$time[$type][$index]}";
         }
 
-        return "$num {$time[$type][$index]} " . Lang::trans('ago');
+        return "$number {$time[$type][$index]} " . Lang::trans('ago');
     }
 }

@@ -12,12 +12,12 @@ class Lang
     public static $lang = 'en';
 
     /**
-     * @var null|string[]
+     * @var string[]|null
      */
     private static $translations;
 
     /**
-     * @var null|array[]
+     * @var callable|null
      */
     private static $rules;
 
@@ -48,11 +48,14 @@ class Lang
     }
 
     /**
-     * @return array[]
+     * @param int $number
+     * @param int $last_digit
+     *
+     * @return bool[]
      */
-    public static function getRules(): array
+    public static function getRules(int $number, int $last_digit): array
     {
-        return self::$rules;
+        return call_user_func(self::$rules, $number, $last_digit);
     }
 
     /**

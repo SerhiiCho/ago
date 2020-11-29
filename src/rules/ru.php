@@ -2,25 +2,24 @@
 
 declare(strict_types=1);
 
-return [
-
-    'single' => [
-        function (int $number, int $last_number): bool {
-            return $last_number === 1;
-        },
-    ],
-    'plural' => [
-        function (int $number, int $last_number): bool {
-            return $last_number > 1 && $last_number < 5;
-        },
-    ],
-    'special' => [
-        function (int $number, int $last_number): bool {
-            return $number >= 5 && $number <= 20;
-        },
-        function (int $num, int $last_number): bool {
-            return $last_number >= 6 && $last_number <= 9;
-        },
-    ],
-
-];
+/**
+ * @param int $number The number of seconds, minutes, hours, days, weeks, months and years.
+ * @param int $last_digit Last digit of the number, if number with 1 digit return it.
+ *
+ * @return bool[]
+ */
+return function (int $number, int $last_digit): array {
+    return [
+        'single' => [
+            $last_digit === 1,
+        ],
+        'plural' => [
+            $last_digit >= 2 && $last_digit < 5,
+        ],
+        'special' => [
+            $number >= 5 && $number <= 20,
+            $last_digit === 0,
+            $last_digit >= 5 && $last_digit <= 9,
+        ],
+    ];
+};
