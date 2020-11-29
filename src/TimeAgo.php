@@ -42,6 +42,7 @@ class TimeAgo
         $this->options = $options;
 
         Lang::includeTranslations();
+        Lang::includeRules();
 
         $seconds = $this->optionIsSet('upcoming')
             ? strtotime($date) - strtotime('now')
@@ -82,18 +83,23 @@ class TimeAgo
     private function getWords(string $type, int $num): string
     {
         $last_num = (int) substr((string) $num, -1);
+        $all_rules = Lang::getRules();
         $index = 2;
 
-        switch (true) {
-            case $num >= 11 && $num <= 20:
-                $index = 2;
-                break;
-            case $num === 1 && Lang::$lang === 'en':
-            case $last_num === 1 && Lang::$lang === 'ru':
-                $index = 0;
-                break;
-            case $last_num > 1 && $last_num < 5:
-                $index = 1;
+        foreach ($all_rules as $form_name => $rules) {
+            foreach ($rules as $rule) {
+                switch (true) {
+                    case $form_name === 'single' && $rule($num, $last_num):
+                        $index = 0;
+                        break 2;
+                    case $form_name === 'plural' && $rule($num, $last_num):
+                        $index = 1;
+                        break 2;
+                    case $form_name === 'special' && $rule($num, $last_num):
+                        $index = 2;
+                        break 2;
+                }
+            }
         }
 
         $time = Lang::getTimeTranslations();
