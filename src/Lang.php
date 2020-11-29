@@ -101,13 +101,41 @@ class Lang
     public static function getTimeTranslations(): array
     {
         return [
-            'seconds' => [self::trans('second'), self::trans('seconds'), self::trans('seconds-special')],
-            'minutes' => [self::trans('minute'), self::trans('minutes'), self::trans('minutes-special')],
-            'hours' => [self::trans('hour'), self::trans('hours'), self::trans('hours-special')],
-            'days' => [self::trans('day'), self::trans('days'), self::trans('days-special')],
-            'weeks' => [self::trans('week'), self::trans('weeks'), self::trans('weeks-special')],
-            'months' => [self::trans('month'), self::trans('months'), self::trans('months-special')],
-            'years' => [self::trans('year'), self::trans('years'), self::trans('years-special')],
+            'seconds' => [
+                'single' => self::trans('second'),
+                'plural' => self::trans('seconds'),
+                'special' => self::trans('seconds-special'),
+            ],
+            'minutes' => [
+                'single' => self::trans('minute'),
+                'plural' => self::trans('minutes'),
+                'special' => self::trans('minutes-special'),
+            ],
+            'hours' => [
+                'single' => self::trans('hour'),
+                'plural' => self::trans('hours'),
+                'special' => self::trans('hours-special'),
+            ],
+            'days' => [
+                'single' => self::trans('day'),
+                'plural' => self::trans('days'),
+                'special' => self::trans('days-special'),
+            ],
+            'weeks' => [
+                'single' => self::trans('week'),
+                'plural' => self::trans('weeks'),
+                'special' => self::trans('weeks-special'),
+            ],
+            'months' => [
+                'single' => self::trans('month'),
+                'plural' => self::trans('months'),
+                'special' => self::trans('months-special'),
+            ],
+            'years' => [
+                'single' => self::trans('year'),
+                'plural' => self::trans('years'),
+                'special' => self::trans('years-special'),
+            ],
         ];
     }
 }

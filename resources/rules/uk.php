@@ -10,12 +10,8 @@ declare(strict_types=1);
  */
 return function (int $number, int $last_digit): array {
     return [
-        'single' => [
-            $last_digit === 1,
-        ],
-        'plural' => [
-            $last_digit >= 2 && $last_digit < 5,
-        ],
+        'single' => $last_digit === 1,
+        'plural' => $last_digit >= 2 && $last_digit < 5,
         'special' => [
             $number >= 5 && $number <= 20,
             $last_digit === 0,

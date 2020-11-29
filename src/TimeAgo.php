@@ -83,20 +83,22 @@ class TimeAgo
     private function getWords(string $type, int $number): string
     {
         $last_digit = (int) substr((string) $number, -1);
-        $index = 0;
+        $form = '';
 
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
+            if (is_bool($rules)) {
+                if ($rules) {
+                    $form = $form_name;
+                    break;
+                } else {
+                    continue;
+                }
+            }
+
             foreach ($rules as $rule_is_passing) {
-                switch (true) {
-                    case $form_name === 'single' && $rule_is_passing:
-                        $index = 0;
-                        break 2;
-                    case $form_name === 'plural' && $rule_is_passing:
-                        $index = 1;
-                        break 2;
-                    case $form_name === 'special' && $rule_is_passing:
-                        $index = 2;
-                        break 2;
+                if ($rule_is_passing) {
+                    $form = $form_name;
+                    break 1;
                 }
             }
         }
@@ -104,9 +106,9 @@ class TimeAgo
         $time = Lang::getTimeTranslations();
 
         if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
-            return "$number {$time[$type][$index]}";
+            return "$number {$time[$type][$form]}";
         }
 
-        return "$number {$time[$type][$index]} " . Lang::trans('ago');
+        return "$number {$time[$type][$form]} " . Lang::trans('ago');
     }
 }
