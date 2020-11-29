@@ -1,12 +1,12 @@
-# Contributing another language
+# Contribute another language
 
 If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/aa622a33dcd4a348b5a0cbf3807395bc62e413ba) for supporting Ukrainian language that shows changes that I did.
 
-##### Files in lang directory
+#### 1 Step. Adding translation
 
-description
+here
 
-##### Files in rules directory
+#### 2 Step. Adding rules
 
 Here is the example of the rule file for Russian language.
 
@@ -32,4 +32,10 @@ Every rule file should return a callback function with 2 parameters. The callbac
 
 Each form has a boolean rule or array of boolean rules. In Russian example we say that we want to use `single` form when last digit of the number is equal to 1. Now when we see date `1 day ago` in Russian the output will be `1 день назад`, which is the correct translation that we got from `resources/lang/ru.php` file where we have line `'day' => 'день'`. We can give either boolean to each rule or array of booleans when we have many cases for the form. In our example we have 3 cases for `special` form. If one of them will be true, special form will be applied.
 
+#### 3 Step. Adding tests
 
+here
+
+#### 4 Step. Add 1 line to README.md file
+
+here
