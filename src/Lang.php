@@ -63,7 +63,7 @@ class Lang
      */
     private static function getLanguagesSlugs(): array
     {
-        $paths = glob(__DIR__ . '/lang/*.php');
+        $paths = glob(__DIR__ . '/../resources/lang/*.php');
 
         return array_map(function ($path) {
             $chunks = explode('/', $path);
@@ -78,7 +78,7 @@ class Lang
      */
     public static function includeTranslations(): void
     {
-        self::$translations = require __DIR__ . '/lang/' . self::$lang . '.php';
+        self::$translations = require __DIR__ . '/../resources/lang/' . self::$lang . '.php';
     }
 
     /**
@@ -87,7 +87,7 @@ class Lang
      */
     public static function includeRules(): void
     {
-        self::$rules = require __DIR__ . '/rules/' . self::$lang . '.php';
+        self::$rules = require __DIR__ . '/../resources/rules/' . self::$lang . '.php';
     }
 
     /**
