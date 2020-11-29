@@ -76,13 +76,13 @@ class Lang
     public static function getTimeTranslations(): array
     {
         return [
-            'seconds' => [self::trans('second'), self::trans('seconds'), self::trans('seconds2')],
-            'minutes' => [self::trans('minute'), self::trans('minutes'), self::trans('minutes2')],
-            'hours' => [self::trans('hour'), self::trans('hours'), self::trans('hours2')],
-            'days' => [self::trans('day'), self::trans('days'), self::trans('days2')],
-            'weeks' => [self::trans('week'), self::trans('weeks'), self::trans('weeks2')],
-            'months' => [self::trans('month'), self::trans('months'), self::trans('months2')],
-            'years' => [self::trans('year'), self::trans('years'), self::trans('years2')],
+            'seconds' => [self::trans('second'), self::trans('seconds'), self::trans('seconds-special')],
+            'minutes' => [self::trans('minute'), self::trans('minutes'), self::trans('minutes-special')],
+            'hours' => [self::trans('hour'), self::trans('hours'), self::trans('hours-special')],
+            'days' => [self::trans('day'), self::trans('days'), self::trans('days-special')],
+            'weeks' => [self::trans('week'), self::trans('weeks'), self::trans('weeks-special')],
+            'months' => [self::trans('month'), self::trans('months'), self::trans('months-special')],
+            'years' => [self::trans('year'), self::trans('years'), self::trans('years-special')],
         ];
     }
 }

@@ -9,30 +9,30 @@ return [
     // Seconds
     'second' => 'second',
     'seconds' => 'seconds',
-    'seconds2' => 'seconds',
+    'seconds-special' => 'seconds',
     // Minutes
     'minute' => 'minute',
     'minutes' => 'minutes',
-    'minutes2' => 'minutes',
+    'minutes-special' => 'minutes',
     // Hours
     'hour' => 'hour',
     'hours' => 'hours',
-    'hours2' => 'hours',
+    'hours-special' => 'hours',
     // Days
     'day' => 'day',
     'days' => 'days',
-    'days2' => 'days',
+    'days-special' => 'days',
     // Weeks
     'week' => 'week',
     'weeks' => 'weeks',
-    'weeks2' => 'weeks',
+    'weeks-special' => 'weeks',
     // Months
     'month' => 'month',
     'months' => 'months',
-    'months2' => 'months',
+    'months-special' => 'months',
     // Years
     'year' => 'year',
     'years' => 'years',
-    'years2' => 'years',
+    'years-special' => 'years',
 
 ];
