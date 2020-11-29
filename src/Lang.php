@@ -51,7 +51,7 @@ class Lang
      * @param int $number
      * @param int $last_digit
      *
-     * @return bool[]
+     * @return bool[]|array[]
      */
     public static function getRules(int $number, int $last_digit): array
     {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Serhii\Ago;
 
+use Exception;
+
 class TimeAgo
 {
     /**
@@ -30,13 +32,22 @@ class TimeAgo
      *
      * @param string $date
      * @param array|null $options
+     *
      * @return string
+     * @throws \Exception
      */
     public static function trans(string $date, ?array $options = []): string
     {
         return self::singleton()->handle($date, $options);
     }
 
+    /**
+     * @param string $date
+     * @param array|null $options
+     *
+     * @return string
+     * @throws \Exception
+     */
     private function handle(string $date, ?array $options = []): string
     {
         $this->options = $options;
@@ -80,10 +91,36 @@ class TimeAgo
         return in_array($option, $this->options);
     }
 
+    /**
+     * @param string $type
+     * @param int $number
+     *
+     * @return string
+     * @throws \Exception
+     */
     private function getWords(string $type, int $number): string
     {
+        $form = $this->getLanguageForm($number);
+
+        $time = Lang::getTimeTranslations();
+
+        if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
+            return "$number {$time[$type][$form]}";
+        }
+
+        return "$number {$time[$type][$form]} " . Lang::trans('ago');
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return string
+     * @throws \Exception
+     */
+    private function getLanguageForm(int $number): string
+    {
         $last_digit = (int) substr((string) $number, -1);
-        $form = '';
+        $form = null;
 
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
             if (is_bool($rules)) {
@@ -101,12 +138,10 @@ class TimeAgo
             }
         }
 
-        $time = Lang::getTimeTranslations();
-
-        if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
-            return "$number {$time[$type][$form]}";
+        if (is_null($form)) {
+            throw new Exception("Provided rules don't much any language form for number $number");
         }
 
-        return "$number {$time[$type][$form]} " . Lang::trans('ago');
+        return $form;
     }
 }
