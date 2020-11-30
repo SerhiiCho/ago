@@ -36,6 +36,15 @@ class TimeAgo
      */
     public static function trans(string $date, $options = []): string
     {
+        if (!is_int($options) && !is_array($options) && !is_null($options)) {
+            $type = gettype($options);
+            throw new Exception("Second argument of trans() method has to be int|array|null. Type $type is given.");
+        }
+
+        if (is_int($options)) {
+            $options = [$options];
+        }
+
         return self::singleton()->handle($date, $options);
     }
 
