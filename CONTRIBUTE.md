@@ -22,7 +22,7 @@ return [
 ];
 ```
 
-Every translation file return array of translations. Note that `'second-special'` key is optional and can be used for languages that have not only sigular and plural form for words like **day**, **minute**, etc... but more.
+Every translation file return array of translations. Note that `'second-special'` key is optional and can be used for languages that have not only singular and plural form for words like **day**, **minute**, etc... but more.
 
 #### 2 Step. Adding rules
 
