@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
-use Serhii\Ago\TimeAgo;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
+use Serhii\Ago\TimeAgo;
 
 use function SandFox\Debug\call_private_method;
 
@@ -16,8 +16,11 @@ class OptionsTest extends TestCase
     /**
      * @dataProvider Provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
      * @test
+     *
      * @param int $seconds
      * @param string $lang
+     *
+     * @throws \Exception
      */
     public function returns_online_within_60_seconds_if_ONLINE_options_is_set(int $seconds, string $lang): void
     {
@@ -67,9 +70,12 @@ class OptionsTest extends TestCase
     /**
      * @test
      * @dataProvider Provider_for_returns_time_without_suffix_if_flag_is_passes
+     *
      * @param $lang
      * @param $time
      * @param $expect
+     *
+     * @throws \Exception
      */
     public function returns_time_without_suffix_if_option_is_passes($lang, $time, $expect): void
     {
@@ -94,9 +100,12 @@ class OptionsTest extends TestCase
     /**
      * @test
      * @dataProvider Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
+     *
      * @param $lang
      * @param $time
      * @param $expect
+     *
+     * @throws \Exception
      */
     public function returns_time_without_suffix_and_with_online_if_2_options_is_passes($lang, $time, $expect): void
     {
@@ -125,9 +134,12 @@ class OptionsTest extends TestCase
     /**
      * @dataProvider Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
      * @test
+     *
      * @param string $date
      * @param string $lang
      * @param string $result
+     *
+     * @throws \Exception
      */
     public function returns_times_left_for_a_date_in_future_with_UPCOMING_option(string $date, string $lang, string $result): void
     {

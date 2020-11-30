@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
 
     'ago' => 'назад',
-    'online' => 'В мережі',
+    'online' => 'в мережі',
     // Seconds
     'second' => 'секунда',
     'seconds' => 'секунди',

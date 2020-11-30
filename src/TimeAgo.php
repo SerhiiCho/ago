@@ -68,7 +68,8 @@ class TimeAgo
 
         switch (true) {
             case $this->optionIsSet('online') && $seconds < 60:
-                return Lang::trans('online');
+                $online = Lang::trans('online');
+                return  mb_strtoupper(mb_substr($online, 0, 1)).mb_substr($online, 1);
             case $seconds < 60:
                 return $this->getWords('seconds', $seconds);
             case $minutes < 60:
