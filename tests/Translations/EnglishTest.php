@@ -16,9 +16,12 @@ class EnglishTest extends TestCase
     /**
      * @dataProvider Provider_for_returns_correct_time
      * @test
+     *
      * @param string $method
      * @param int $time
      * @param string $output_expected
+     *
+     * @throws \Exception
      */
     public function returns_correct_time(string $method, int $time, string $output_expected): void
     {
@@ -62,8 +65,11 @@ class EnglishTest extends TestCase
     /**
      * @dataProvider Provider_for_returns_correct_date_in_seconds_in_english
      * @test
+     *
      * @param int $seconds
      * @param array $expect
+     *
+     * @throws \Exception
      */
     public function returns_correct_date_in_seconds(int $seconds, array $expect): void
     {
