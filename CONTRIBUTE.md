@@ -52,8 +52,8 @@ Each form has a boolean rule or array of boolean rules. In Russian example we sa
 
 #### 3 Step. Adding tests
 
-here
+Tests for all translations are live in `tests/Translations` directory. Just copy one of the existing tests and change it whatever you want to match your language. Just make sure you have enough cases to cover specifics of your language. If you don't know about [PHPUnit Data Providers](https://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html) you might want to read about it.
 
 #### 4 Step. Add 1 line to README.md file
 
-here
+After all tests are passing, you need to do last step and add language support to README.md file to **Supported languages** section.
