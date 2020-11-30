@@ -31,7 +31,7 @@ Rules live in `resources/rules` directory. Here is the example of the rule file 
 ```php
 return function (int $number, int $last_digit): array {
     return [
-        'single' => $last_digit === 1,
+        'single' => $last_digit === 1 || $number === 0,
         'plural' => $last_digit >= 2 && $last_digit < 5,
         'special' => [
             $number >= 5 && $number <= 20,
@@ -48,7 +48,7 @@ Every rule file should return a callback function with 2 parameters. The callbac
 - `plural` form for words in a plural form, like minutes, days, years, etc.
 - `special` *(optional)* form for special cases, for example in Russian, and Ukrainian we have special forms for words: **недель**, **месяцев**, etc. They are different from single and plural form. So we need to have separate rules for them.
 
-Each form has a boolean rule or array of boolean rules. In Russian example we say that we want to use `single` form when last digit of the number is equal to 1. Now when we see date `1 day ago` in Russian the output will be `1 день назад`, which is the correct translation that we got from `resources/lang/ru.php` file where we have line `'day' => 'день'`. We can give either boolean to each rule or array of booleans when we have many cases for the form. In our example we have 3 cases for `special` form. If one of them will be true, special form will be applied.
+Each form has a boolean rule or array of boolean rules. In Russian example we say that we want to use `single` form when last digit of the number is equal to 1 or number is 0. Now when we see date `1 day ago` in Russian the output will be `1 день назад`, which is the correct translation that we got from `resources/lang/ru.php` file where we have line `'day' => 'день'`. We can give either boolean to each rule or array of booleans when we have many cases for the form. In our example we have 3 cases for `special` form. If one of them will be true, special form will be applied.
 
 ### 3 Step. Adding tests
 
