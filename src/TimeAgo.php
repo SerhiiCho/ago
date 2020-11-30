@@ -9,9 +9,7 @@ use Exception;
 class TimeAgo
 {
     /**
-     * @var array $options This property will contain all options that
-     * will be passed in trans() method as the second argument. It
-     * allows to know what option was passed in any part of this class
+     * @var int[] $options
      */
     private $options = [];
 
@@ -31,19 +29,19 @@ class TimeAgo
      * Takes date string and returns converted date
      *
      * @param string $date
-     * @param array|null $options
+     * @param int[]|int|null $options
      *
      * @return string
      * @throws \Exception
      */
-    public static function trans(string $date, ?array $options = []): string
+    public static function trans(string $date, $options = []): string
     {
         return self::singleton()->handle($date, $options);
     }
 
     /**
      * @param string $date
-     * @param array|null $options
+     * @param int[]|null $options
      *
      * @return string
      * @throws \Exception
@@ -55,7 +53,7 @@ class TimeAgo
         Lang::includeTranslations();
         Lang::includeRules();
 
-        $seconds = $this->optionIsSet('upcoming')
+        $seconds = $this->optionIsSet(Option::UPCOMING)
             ? strtotime($date) - strtotime('now')
             : strtotime('now') - strtotime($date);
 
@@ -67,7 +65,7 @@ class TimeAgo
         $years = (int) round($seconds / 31553280);
 
         switch (true) {
-            case $this->optionIsSet('online') && $seconds < 60:
+            case $this->optionIsSet(Option::ONLINE) && $seconds < 60:
                 $online = Lang::trans('online');
                 return  mb_strtoupper(mb_substr($online, 0, 1)).mb_substr($online, 1);
             case $seconds < 60:
@@ -87,7 +85,7 @@ class TimeAgo
         return $this->getWords('years', $years);
     }
 
-    private function optionIsSet(string $option): bool
+    private function optionIsSet(int $option): bool
     {
         return in_array($option, $this->options);
     }
@@ -105,7 +103,7 @@ class TimeAgo
 
         $time = Lang::getTimeTranslations();
 
-        if ($this->optionIsSet('no-suffix') || $this->optionIsSet('upcoming')) {
+        if ($this->optionIsSet(Option::NO_SUFFIX) || $this->optionIsSet(Option::UPCOMING)) {
             return "$number {$time[$type][$form]}";
         }
 
