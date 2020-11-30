@@ -22,6 +22,9 @@ class TimeAgo
 
     public static function singleton(): self
     {
+        Lang::includeTranslations();
+        Lang::includeRules();
+
         return static::$instance ?? (static::$instance = new static());
     }
 
@@ -58,9 +61,6 @@ class TimeAgo
     private function handle(string $date, ?array $options = []): string
     {
         $this->options = $options;
-
-        Lang::includeTranslations();
-        Lang::includeRules();
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
             ? strtotime($date) - strtotime('now')
