@@ -29,27 +29,34 @@ Serhii\Ago\Lang::set('ru');
 
 [Example usage on repl.it](https://repl.it/@SerhiiCho/Usage-of-ago-package)
 
-For outputting post publishing date or something else you can just pass the date to method `ago()`. It will count the interval between now and given date and returns needed format. Internally given date will be parsed by `strtotime()` PHP's function.
+For outputting post publishing date or something else you can just pass the date to method `trans()`. It will count the interval between now and given date and returns needed format. Internally given date will be parsed by `strtotime()` PHP's internal function.
 
 ```php
-Serhii\Ago\TimeAgo::trans('now - 10 seconds'); // output: 10 seconds ago
+use Serhii\Ago\TimeAgo;
+
+TimeAgo::trans('now - 10 seconds'); // output: 10 seconds ago
 ```
 
 ## Options
 
-As the seconds argument `ago` method excepts array of options. Here is an example of passed options.
+As the seconds argument `trans` method excepts array of options or option. Here is an example of passed options.
 
 ```php
-Serhii\Ago\TimeAgo::trans('yesterday', ['no-suffix']); // output: 1 day
+use Serhii\Ago\Option;
+use Serhii\Ago\TimeAgo;
+
+TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
 ```
 
 ## Available options
 
-| Option        |  Description              |
-| :------------ |:--------------------------|
-| online        | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
-| no-suffix     | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| upcoming      | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. Suffix will be also removed.|
+All options are available in `Serhii\Ago\Option::class` as constants.
+
+| Option            |  Description              |
+| :---------------- |:--------------------------|
+| `Option::ONLINE`   | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
+| `Option::NO_SUFFIX` | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
+| `Option::UPCOMING`  | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. Suffix will be also removed.|
 
 ## Contributing
 
