@@ -7,6 +7,7 @@ namespace Serhii\Tests;
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
+use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
 
 use function SandFox\Debug\call_private_method;
@@ -27,7 +28,7 @@ class OptionsTest extends TestCase
         Lang::set($lang);
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $time = TimeAgo::trans($date, ['online']);
+        $time = TimeAgo::trans($date, Option::ONLINE);
 
         $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time);
     }
@@ -52,18 +53,15 @@ class OptionsTest extends TestCase
     public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_trans_method(): void
     {
         TimeAgo::trans(CarbonImmutable::now()->toDateTimeString());
-
-        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', 'online');
-
+        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
         $this->assertFalse($result);
     }
 
     /** @test */
     public function optionIsSet_returns_true_if_provided_options_was_passed_to_trans_method(): void
     {
-        TimeAgo::trans(CarbonImmutable::now()->toDateTimeString(), ['online']);
-        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', 'online');
-
+        TimeAgo::trans(CarbonImmutable::now()->toDateTimeString(), Option::ONLINE);
+        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
         $this->assertTrue($result);
     }
 
@@ -80,7 +78,7 @@ class OptionsTest extends TestCase
     public function returns_time_without_suffix_if_option_is_passes($lang, $time, $expect): void
     {
         Lang::set($lang);
-        $this->assertSame($expect, TimeAgo::trans($time, ['no-suffix']));
+        $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
     }
 
     public function Provider_for_returns_time_without_suffix_if_flag_is_passes(): array
@@ -110,7 +108,7 @@ class OptionsTest extends TestCase
     public function returns_time_without_suffix_and_with_online_if_2_options_is_passes($lang, $time, $expect): void
     {
         Lang::set($lang);
-        $this->assertSame($expect, TimeAgo::trans($time, ['no-suffix', 'online']));
+        $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
     }
 
     public function Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
@@ -144,7 +142,7 @@ class OptionsTest extends TestCase
     public function returns_times_left_for_a_date_in_future_with_UPCOMING_option(string $date, string $lang, string $result): void
     {
         Lang::set($lang);
-        $this->assertSame($result, TimeAgo::trans($date, ['upcoming']));
+        $this->assertSame($result, TimeAgo::trans($date, Option::UPCOMING));
     }
 
     public function Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array

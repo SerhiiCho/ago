@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 return function (int $number, int $last_digit): array {
     return [
-        'single' => $number === 1,
+        'single' => $number === 0 || $number === 1,
         'plural' => $number > 1,
     ];
 };
