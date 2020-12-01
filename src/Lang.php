@@ -65,6 +65,10 @@ class Lang
     {
         $paths = \glob(__DIR__ . '/../resources/lang/*.php');
 
+        if ($paths === false) {
+            return [];
+        }
+
         return \array_map(function ($path) {
             $chunks = \explode('/', $path);
             $file = \end($chunks);
