@@ -6,7 +6,7 @@ namespace Serhii\Ago;
 
 use Exception;
 
-class TimeAgo
+final class TimeAgo
 {
     /**
      * @var int[] $options
@@ -18,7 +18,10 @@ class TimeAgo
      */
     private static $instance;
 
-    private function __construct() {}
+    final private function __construct()
+    {
+        //
+    }
 
     public static function singleton(): self
     {
@@ -39,11 +42,6 @@ class TimeAgo
      */
     public static function trans(string $date, $options = []): string
     {
-        if (!\is_int($options) && !\is_array($options) && !\is_null($options)) {
-            $type = \gettype($options);
-            throw new Exception("Second argument of trans() method has to be int|array|null. Type $type is given.");
-        }
-
         if (\is_int($options)) {
             $options = [$options];
         }
@@ -60,7 +58,7 @@ class TimeAgo
      */
     private function handle(string $date, ?array $options = []): string
     {
-        $this->options = $options;
+        $this->options = $options ?? [];
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
             ? \strtotime($date) - \strtotime('now')
@@ -129,6 +127,10 @@ class TimeAgo
         $last_digit = (int) \substr((string) $number, -1);
         $form = null;
 
+        /**
+         * @var string $form_name
+         * @var bool|bool[] $rules
+         */
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
             if (\is_bool($rules)) {
                 if ($rules) {
