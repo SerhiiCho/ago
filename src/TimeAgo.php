@@ -18,7 +18,7 @@ final class TimeAgo
      */
     private static $instance;
 
-    final private function __construct()
+    private function __construct()
     {
         //
     }
