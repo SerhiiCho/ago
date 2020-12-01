@@ -8,7 +8,10 @@
 
 Date/time converter into "n time ago" format that supports multiple languages. You can easily contribute any language that you wish.
 
-## Example
+- [Contributing](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
+- [Usage example](https://repl.it/@SerhiiCho/Usage-of-ago-package)
+
+## Languages
 
 Default language is English. Optionally you can set the language in your application by calling `set()` method and passing a flag `ru` for Russian or `en` for English language. You can see supported languages in the next section.
 
@@ -16,7 +19,7 @@ Default language is English. Optionally you can set the language in your applica
 Serhii\Ago\Lang::set('ru');
 ```
 
-## Supported languages
+#### Supported languages
 
 | Language      |  Short representation |
 | :------------ |:----------------------|
@@ -25,8 +28,6 @@ Serhii\Ago\Lang::set('ru');
 | Ukrainian     | uk                    |
 
 ## Usage
-
-[Example usage on repl.it](https://repl.it/@SerhiiCho/Usage-of-ago-package)
 
 For outputting post publishing date or something else you can just pass the date to method `trans()`. It will count the interval between now and given date and returns needed format. Internally given date will be parsed by `strtotime()` PHP's internal function.
 
@@ -58,10 +59,6 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | `Option::ONLINE`   | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
 | `Option::NO_SUFFIX` | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
 | `Option::UPCOMING`  | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. |
-
-## Contributing
-
-For any contribution information you can read [CONTRIBUTE.md](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
 
 ## Quick Start
 
