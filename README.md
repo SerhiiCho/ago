@@ -22,7 +22,6 @@ Serhii\Ago\Lang::set('ru');
 | :------------ |:----------------------|
 | English       | en                    |
 | Russian       | ru                    |
-| Ukrainian     | uk                    |
 
 ## Usage
 
