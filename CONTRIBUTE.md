@@ -1,6 +1,6 @@
 # Contribute another language
 
-If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/f67e1182b13f60888871bcc83faddfa816b6faea) for supporting Ukrainian language that shows changes that I did. You need to add 3 files for supporting another language. Here are 4 steps that you need to follow.
+If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/618d5b05055c197b6d2fa69a99aaf5521d15d948) for supporting Ukrainian language that shows changes that I did. You need to add 3 files for supporting another language. Here are 4 steps that you need to follow.
 
 ### 1 Step. Adding translation
 
@@ -9,7 +9,7 @@ Translation files live in `resources/trans` directory. Here is the example of th
 ```php
 return [
     'ago' => 'назад',
-    'online' => 'в сети',
+    'online' => 'В сети',
     // Seconds
     'second' => 'секунда',
     'seconds' => 'секунды',
