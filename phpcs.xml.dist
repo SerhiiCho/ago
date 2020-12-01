@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <ruleset>
-    <file>src</file>
-     <rule ref="PSR12">
-        <exclude name="PSR12.Files.FileHeader" />
-        <exclude name="PSR12.Files.OpenTag" />
-      </rule>
+    <rule ref="PSR12">
+       <exclude name="PSR12.Files.FileHeader" />
+       <exclude name="PSR12.Files.OpenTag" />
+    </rule>
 </ruleset>
