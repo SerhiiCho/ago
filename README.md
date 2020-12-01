@@ -1,7 +1,6 @@
 <h2 align="center">Ago</h2>
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FSerhiiCho%2Fago%2Fbadge&style=flat)](https://actions-badge.atrox.dev/SerhiiCho/ago/goto)
-[![Build Status](https://travis-ci.com/SerhiiCho/ago.svg?branch=master)](https://travis-ci.com/SerhiiCho/ago)
 [![Latest Stable Version](https://poser.pugx.org/serhii/ago/v/stable)](https://packagist.org/packages/serhii/ago)
 [![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
 [![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
