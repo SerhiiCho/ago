@@ -39,12 +39,12 @@ class TimeAgo
      */
     public static function trans(string $date, $options = []): string
     {
-        if (!is_int($options) && !is_array($options) && !is_null($options)) {
-            $type = gettype($options);
+        if (!\is_int($options) && !\is_array($options) && !\is_null($options)) {
+            $type = \gettype($options);
             throw new Exception("Second argument of trans() method has to be int|array|null. Type $type is given.");
         }
 
-        if (is_int($options)) {
+        if (\is_int($options)) {
             $options = [$options];
         }
 
@@ -63,20 +63,20 @@ class TimeAgo
         $this->options = $options;
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? strtotime($date) - strtotime('now')
-            : strtotime('now') - strtotime($date);
+            ? \strtotime($date) - \strtotime('now')
+            : \strtotime('now') - \strtotime($date);
 
-        $minutes = (int) round($seconds / 60);
-        $hours = (int) round($seconds / 3600);
-        $days = (int) round($seconds / 86400);
-        $weeks = (int) round($seconds / 604800);
-        $months = (int) round($seconds / 2629440);
-        $years = (int) round($seconds / 31553280);
+        $minutes = (int) \round($seconds / 60);
+        $hours = (int) \round($seconds / 3600);
+        $days = (int) \round($seconds / 86400);
+        $weeks = (int) \round($seconds / 604800);
+        $months = (int) \round($seconds / 2629440);
+        $years = (int) \round($seconds / 31553280);
 
         switch (true) {
             case $this->optionIsSet(Option::ONLINE) && $seconds < 60:
                 $online = Lang::trans('online');
-                return  mb_strtoupper(mb_substr($online, 0, 1)).mb_substr($online, 1);
+                return  \mb_strtoupper(\mb_substr($online, 0, 1)).\mb_substr($online, 1);
             case $seconds < 60:
                 return $this->getWords('seconds', $seconds);
             case $minutes < 60:
@@ -96,7 +96,7 @@ class TimeAgo
 
     private function optionIsSet(int $option): bool
     {
-        return in_array($option, $this->options);
+        return \in_array($option, $this->options);
     }
 
     /**
@@ -127,11 +127,11 @@ class TimeAgo
      */
     private function getLanguageForm(int $number): string
     {
-        $last_digit = (int) substr((string) $number, -1);
+        $last_digit = (int) \substr((string) $number, -1);
         $form = null;
 
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
-            if (is_bool($rules)) {
+            if (\is_bool($rules)) {
                 if ($rules) {
                     $form = $form_name;
                 }
@@ -146,7 +146,7 @@ class TimeAgo
             }
         }
 
-        if (is_null($form)) {
+        if (\is_null($form)) {
             throw new Exception("Provided rules don't much any language form for number $number");
         }
 
