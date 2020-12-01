@@ -44,4 +44,11 @@ class TimeAgoTest extends TestCase
             [3, 'plural', 'en'],
         ];
     }
+
+    /** @test */
+    public function getLanguageForm_throws_exception_if_form_has_not_been_found(): void
+    {
+        $this->expectExceptionMessage("Provided rules don't much any language form for number -1");
+        call_private_method(TimeAgo::singleton(), 'getLanguageForm', -1);
+    }
 }
