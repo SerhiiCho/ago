@@ -34,7 +34,7 @@ class Lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = in_array($lang, self::getLanguagesSlugs()) ? $lang : 'en';
+        self::$lang = \in_array($lang, self::getLanguagesSlugs()) ? $lang : 'en';
     }
 
     /**
@@ -55,7 +55,7 @@ class Lang
      */
     public static function getRules(int $number, int $last_digit): array
     {
-        return call_user_func(self::$rules, $number, $last_digit);
+        return \call_user_func(self::$rules, $number, $last_digit);
     }
 
     /**
@@ -63,12 +63,12 @@ class Lang
      */
     private static function getLanguagesSlugs(): array
     {
-        $paths = glob(__DIR__ . '/../resources/lang/*.php');
+        $paths = \glob(__DIR__ . '/../resources/lang/*.php');
 
-        return array_map(function ($path) {
-            $chunks = explode('/', $path);
-            $file = end($chunks);
-            return str_replace('.php', '', $file);
+        return \array_map(function ($path) {
+            $chunks = \explode('/', $path);
+            $file = \end($chunks);
+            return \str_replace('.php', '', $file);
         }, $paths);
     }
 
