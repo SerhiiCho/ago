@@ -25,5 +25,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run test suite
-      run: ./vendor/bin/phpunit
+    - name: Run phpunit tests
+      run: make phpunit
+
+    - name: Run cs fixer checks
+      run: make cs
+
+    - name: Run phpstan checks
+      run: make stan
