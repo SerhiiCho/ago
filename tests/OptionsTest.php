@@ -1,27 +1,34 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
-use ReflectionMethod;
-use Serhii\Ago\Time;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
+use Serhii\Ago\Option;
+use Serhii\Ago\TimeAgo;
+
+use function SandFox\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
     /**
      * @dataProvider Provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
      * @test
+     *
      * @param int $seconds
      * @param string $lang
+     *
+     * @throws \Exception
      */
     public function returns_online_within_60_seconds_if_ONLINE_options_is_set(int $seconds, string $lang): void
     {
         Lang::set($lang);
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $time = Time::ago($date, ['online']);
+        $time = TimeAgo::trans($date, Option::ONLINE);
 
         $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time);
     }
@@ -43,38 +50,35 @@ class OptionsTest extends TestCase
     }
 
     /** @test */
-    public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_ago_method(): void
+    public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_trans_method(): void
     {
-        Time::ago(CarbonImmutable::now()->toDateTimeString());
-
-        $reflect = new ReflectionMethod(Time::class, 'optionIsSet');
-        $reflect->setAccessible(true);
-
-        $this->assertFalse($reflect->invoke(new Time, 'online'));
+        TimeAgo::trans(CarbonImmutable::now()->toDateTimeString());
+        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
+        $this->assertFalse($result);
     }
 
     /** @test */
-    public function optionIsSet_returns_true_if_provided_options_was_passed_to_ago_method(): void
+    public function optionIsSet_returns_true_if_provided_options_was_passed_to_trans_method(): void
     {
-        Time::ago(CarbonImmutable::now()->toDateTimeString(), ['online']);
-
-        $reflect = new ReflectionMethod(Time::class, 'optionIsSet');
-        $reflect->setAccessible(true);
-
-        $this->assertTrue($reflect->invoke(new Time, 'online'));
+        TimeAgo::trans(CarbonImmutable::now()->toDateTimeString(), Option::ONLINE);
+        $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
+        $this->assertTrue($result);
     }
 
     /**
      * @test
      * @dataProvider Provider_for_returns_time_without_suffix_if_flag_is_passes
+     *
      * @param $lang
      * @param $time
      * @param $expect
+     *
+     * @throws \Exception
      */
     public function returns_time_without_suffix_if_option_is_passes($lang, $time, $expect): void
     {
         Lang::set($lang);
-        $this->assertSame($expect, Time::ago($time, ['no-suffix']));
+        $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
     }
 
     public function Provider_for_returns_time_without_suffix_if_flag_is_passes(): array
@@ -94,14 +98,17 @@ class OptionsTest extends TestCase
     /**
      * @test
      * @dataProvider Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
+     *
      * @param $lang
      * @param $time
      * @param $expect
+     *
+     * @throws \Exception
      */
     public function returns_time_without_suffix_and_with_online_if_2_options_is_passes($lang, $time, $expect): void
     {
         Lang::set($lang);
-        $this->assertSame($expect, Time::ago($time, ['no-suffix', 'online']));
+        $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
     }
 
     public function Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
@@ -125,14 +132,17 @@ class OptionsTest extends TestCase
     /**
      * @dataProvider Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
      * @test
+     *
      * @param string $date
      * @param string $lang
      * @param string $result
+     *
+     * @throws \Exception
      */
     public function returns_times_left_for_a_date_in_future_with_UPCOMING_option(string $date, string $lang, string $result): void
     {
         Lang::set($lang);
-        $this->assertSame($result, Time::ago($date, ['upcoming']));
+        $this->assertSame($result, TimeAgo::trans($date, Option::UPCOMING));
     }
 
     public function Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array

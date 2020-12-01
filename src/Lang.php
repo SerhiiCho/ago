@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Serhii\Ago;
 
@@ -10,24 +12,29 @@ class Lang
     public static $lang = 'en';
 
     /**
-     * @var null|array
+     * @var string[]|null
      */
     private static $translations;
 
     /**
-     * Set the language by passing 'ru' or 'en' argument.
+     * @var callable|null
+     */
+    private static $rules;
+
+    /**
+     * Set the language by passing short representation of a language
+     * like 'ru' for russian or 'en' for english.
      * If given language is not supported by this package,
      * the language will be set to English as default.
      *
      * If you don't call this method, the default
      * language will be set to English.
      *
-     * @param string $lang Can be `ru` for Russian language
-     * and `en` for English.
+     * @param string $lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = in_array($lang, ['en', 'ru']) ? $lang : 'en';
+        self::$lang = in_array($lang, self::getLanguagesSlugs()) ? $lang : 'en';
     }
 
     /**
@@ -41,12 +48,46 @@ class Lang
     }
 
     /**
+     * @param int $number
+     * @param int $last_digit
+     *
+     * @return bool[]|array[]
+     */
+    public static function getRules(int $number, int $last_digit): array
+    {
+        return call_user_func(self::$rules, $number, $last_digit);
+    }
+
+    /**
+     * @return string[]
+     */
+    private static function getLanguagesSlugs(): array
+    {
+        $paths = glob(__DIR__ . '/../resources/lang/*.php');
+
+        return array_map(function ($path) {
+            $chunks = explode('/', $path);
+            $file = end($chunks);
+            return str_replace('.php', '', $file);
+        }, $paths);
+    }
+
+    /**
      * Includes array of translations from lang directory
      * into the $translations variable.
      */
     public static function includeTranslations(): void
     {
-        self::$translations = require __DIR__ . '/lang/' . self::$lang . '.php';
+        self::$translations = require __DIR__ . '/../resources/lang/' . self::$lang . '.php';
+    }
+
+    /**
+     * Includes array of rules from rules directory
+     * into the $rules variable.
+     */
+    public static function includeRules(): void
+    {
+        self::$rules = require __DIR__ . '/../resources/rules/' . self::$lang . '.php';
     }
 
     /**
@@ -55,18 +96,46 @@ class Lang
      * but `2 seconds` requires `s`. So this method keeps
      * all possible options for the translated word.
      *
-     * @return array
+     * @return array[]
      */
     public static function getTimeTranslations(): array
     {
         return [
-            'seconds' => [self::trans('second'), self::trans('seconds'), self::trans('seconds2')],
-            'minutes' => [self::trans('minute'), self::trans('minutes'), self::trans('minutes2')],
-            'hours' => [self::trans('hour'), self::trans('hours'), self::trans('hours2')],
-            'days' => [self::trans('day'), self::trans('days'), self::trans('days2')],
-            'weeks' => [self::trans('week'), self::trans('weeks'), self::trans('weeks2')],
-            'months' => [self::trans('month'), self::trans('months'), self::trans('months2')],
-            'years' => [self::trans('year'), self::trans('years'), self::trans('years2')],
+            'seconds' => [
+                'single' => self::trans('second'),
+                'plural' => self::trans('seconds'),
+                'special' => self::trans('seconds-special'),
+            ],
+            'minutes' => [
+                'single' => self::trans('minute'),
+                'plural' => self::trans('minutes'),
+                'special' => self::trans('minutes-special'),
+            ],
+            'hours' => [
+                'single' => self::trans('hour'),
+                'plural' => self::trans('hours'),
+                'special' => self::trans('hours-special'),
+            ],
+            'days' => [
+                'single' => self::trans('day'),
+                'plural' => self::trans('days'),
+                'special' => self::trans('days-special'),
+            ],
+            'weeks' => [
+                'single' => self::trans('week'),
+                'plural' => self::trans('weeks'),
+                'special' => self::trans('weeks-special'),
+            ],
+            'months' => [
+                'single' => self::trans('month'),
+                'plural' => self::trans('months'),
+                'special' => self::trans('months-special'),
+            ],
+            'years' => [
+                'single' => self::trans('year'),
+                'plural' => self::trans('years'),
+                'special' => self::trans('years-special'),
+            ],
         ];
     }
 }

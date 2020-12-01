@@ -1,36 +1,31 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 return [
 
     'ago' => 'ago',
-    'online' => 'Online',
+    'online' => 'online',
     // Seconds
     'second' => 'second',
     'seconds' => 'seconds',
-    'seconds2' => 'seconds',
     // Minutes
     'minute' => 'minute',
     'minutes' => 'minutes',
-    'minutes2' => 'minutes',
     // Hours
     'hour' => 'hour',
     'hours' => 'hours',
-    'hours2' => 'hours',
     // Days
     'day' => 'day',
     'days' => 'days',
-    'days2' => 'days',
     // Weeks
     'week' => 'week',
     'weeks' => 'weeks',
-    'weeks2' => 'weeks',
     // Months
     'month' => 'month',
     'months' => 'months',
-    'months2' => 'months',
     // Years
     'year' => 'year',
     'years' => 'years',
-    'years2' => 'years',
 
 ];

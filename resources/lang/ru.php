@@ -1,36 +1,38 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 return [
 
     'ago' => 'назад',
-    'online' => 'В сети',
+    'online' => 'в сети',
     // Seconds
     'second' => 'секунда',
     'seconds' => 'секунды',
-    'seconds2' => 'секунд',
+    'seconds-special' => 'секунд',
     // Minutes
     'minute' => 'минута',
     'minutes' => 'минуты',
-    'minutes2' => 'минут',
+    'minutes-special' => 'минут',
     // Hours
     'hour' => 'час',
     'hours' => 'часа',
-    'hours2' => 'часов',
+    'hours-special' => 'часов',
     // Days
     'day' => 'день',
     'days' => 'дня',
-    'days2' => 'дней',
+    'days-special' => 'дней',
     // Weeks
     'week' => 'неделя',
     'weeks' => 'недели',
-    'weeks2' => 'недель',
+    'weeks-special' => 'недель',
     // Months
     'month' => 'месяц',
     'months' => 'месяца',
-    'months2' => 'месяцев',
+    'months-special' => 'месяцев',
     // Years
     'year' => 'год',
     'years' => 'года',
-    'years2' => 'лет',
+    'years-special' => 'лет',
 
 ];
