@@ -90,8 +90,11 @@ class RussianTest extends TestCase
     /**
      * @dataProvider Provider_for_returns_correct_date_in_seconds_in_english
      * @test
+     *
      * @param int $seconds
      * @param array $expect
+     *
+     * @throws \Exception
      */
     public function returns_correct_date_in_seconds(int $seconds, array $expect): void
     {

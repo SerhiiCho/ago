@@ -9,7 +9,7 @@ Translation files live in `resources/trans` directory. Here is the example of th
 ```php
 return [
     'ago' => 'назад',
-    'online' => 'в сети',
+    'online' => 'В сети',
     // Seconds
     'second' => 'секунда',
     'seconds' => 'секунды',
