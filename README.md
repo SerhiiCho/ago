@@ -44,10 +44,12 @@ As the seconds argument `trans` method excepts array of options or option. Here 
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
 
+TimeAgo::trans('yesterday'); // output: 1 day ago
 TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
+TimeAgo::trans('now', Option::ONLINE); // output: online
 ```
 
-## Available options
+#### Available options
 
 All options are available in `Serhii\Ago\Option::class` as constants.
 
