@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Serhii\Ago;
 
-use Exception;
+use Serhii\Ago\Exceptions\MissingRuleException;
 
 final class TimeAgo
 {
@@ -38,7 +38,7 @@ final class TimeAgo
      * @param int[]|int|null $options
      *
      * @return string
-     * @throws \Exception
+     * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
     public static function trans(string $date, $options = []): string
     {
@@ -54,7 +54,7 @@ final class TimeAgo
      * @param int[]|null $options
      *
      * @return string
-     * @throws \Exception
+     * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
     private function handle(string $date, ?array $options = []): string
     {
@@ -101,7 +101,7 @@ final class TimeAgo
      * @param int $number
      *
      * @return string
-     * @throws \Exception
+     * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
     private function getWords(string $type, int $number): string
     {
@@ -120,7 +120,7 @@ final class TimeAgo
      * @param int $number
      *
      * @return string
-     * @throws \Exception
+     * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
     private function getLanguageForm(int $number): string
     {
@@ -148,7 +148,7 @@ final class TimeAgo
         }
 
         if (\is_null($form)) {
-            throw new Exception("Provided rules don't much any language form for number $number");
+            throw new MissingRuleException("Provided rules don't apply to a number $number");
         }
 
         return $form;
