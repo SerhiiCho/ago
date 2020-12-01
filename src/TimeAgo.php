@@ -55,7 +55,7 @@ final class TimeAgo
      */
     private function handle(string $date, ?array $options = []): string
     {
-        $this->options = $options;
+        $this->options = $options ?? [];
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
             ? \strtotime($date) - \strtotime('now')

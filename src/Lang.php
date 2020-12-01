@@ -39,12 +39,12 @@ class Lang
 
     /**
      * @param string $index The key name of the translation
-     * @return string|null Needed translation for current language,
-     * if translation not found returns null
+     * @return string Needed translation for current language,
+     * if translation not found returns empty string.
      */
-    public static function trans(string $index): ?string
+    public static function trans(string $index): string
     {
-        return self::$translations[$index] ?? null;
+        return self::$translations[$index] ?? '';
     }
 
     /**
@@ -55,6 +55,10 @@ class Lang
      */
     public static function getRules(int $number, int $last_digit): array
     {
+        if (!self::$rules) {
+            return [];
+        }
+
         return \call_user_func(self::$rules, $number, $last_digit);
     }
 
