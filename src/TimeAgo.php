@@ -61,8 +61,8 @@ final class TimeAgo
         $this->options = $options ?? [];
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? \strtotime($date) - \strtotime('now')
-            : \strtotime('now') - \strtotime($date);
+            ? \strtotime($date) - \time()
+            : \time() - \strtotime($date);
 
         $minutes = (int) \round($seconds / 60);
         $hours = (int) \round($seconds / 3600);
