@@ -73,7 +73,7 @@ class Lang
             return [];
         }
 
-        return \array_map(function ($path) {
+        return \array_map(static function ($path) {
             $chunks = \explode('/', $path);
             $file = \end($chunks);
             return \str_replace('.php', '', $file);
