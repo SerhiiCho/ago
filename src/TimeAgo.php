@@ -73,7 +73,9 @@ final class TimeAgo
 
         switch (true) {
             case $this->optionIsSet(Option::ONLINE) && $seconds < 60:
-                return Lang::trans('online');
+                return $this->optionIsSet(Option::UPPER)
+                    ? \mb_strtoupper(Lang::trans('online'))
+                    : Lang::trans('online');
             case $seconds < 60:
                 return $this->getWords('seconds', $seconds);
             case $minutes < 60:
@@ -113,8 +115,8 @@ final class TimeAgo
         $ago = Lang::trans('ago');
 
         if ($this->optionIsSet(Option::UPPER)) {
-            $translation = mb_strtoupper($translation);
-            $ago = mb_strtoupper($ago);
+            $translation = \mb_strtoupper($translation);
+            $ago = \mb_strtoupper($ago);
         }
 
         if ($this->optionIsSet(Option::NO_SUFFIX) || $this->optionIsSet(Option::UPCOMING)) {

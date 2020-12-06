@@ -193,4 +193,39 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД НАЗАД'],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider provider_for_returns_time_converter_with_3_options
+     *
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
+     *
+     * @throws \Exception
+     */
+    public function returns_time_converter_with_3_options(string $lang, string $time, string $expect): void
+    {
+        Lang::set($lang);
+        $result = TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE, Option::UPPER]);
+        $this->assertSame($expect, $result);
+    }
+
+    public function provider_for_returns_time_converter_with_3_options(): array
+    {
+        return [
+            ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subSeconds(30)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subSeconds(50)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 MINUTES'],
+            ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 MONTH'],
+            ['en', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 YEAR'],
+            ['ru', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subSeconds(21)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subSeconds(41)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 МИНУТ'],
+            ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 МЕСЯЦ'],
+            ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД'],
+        ];
+    }
 }
