@@ -15,6 +15,9 @@ class LangTest extends TestCase
     public function getLanguageSlugs_returns_list_of_all_languages(): void
     {
         $res = call_private_method(Lang::class, 'getLanguagesSlugs');
-        $this->assertTrue(in_array('ru', $res, true) && in_array('en', $res, true) && in_array('uk', $res, true));
+
+        $this->assertContains('ru', $res);
+        $this->assertContains('en', $res);
+        $this->assertContains('uk', $res);
     }
 }
