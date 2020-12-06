@@ -13,7 +13,7 @@ use function SandFox\Debug\call_private_method;
 class TimeAgoTest extends TestCase
 {
     /**
-     * @dataProvider Provider_for_getLanguageForm_returns_correct_form
+     * @dataProvider provider_for_getLanguageForm_returns_correct_form
      * @test
      *
      * @param int $number
@@ -27,7 +27,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($expect, $result, "Number $number has to be $expect, $result given");
     }
 
-    public function Provider_for_getLanguageForm_returns_correct_form(): array
+    public function provider_for_getLanguageForm_returns_correct_form(): array
     {
         return [
             [0, 'special', 'ru'],

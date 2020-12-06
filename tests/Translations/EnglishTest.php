@@ -14,7 +14,7 @@ class EnglishTest extends TestCase
     private $language = 'en';
 
     /**
-     * @dataProvider Provider_for_returns_correct_time
+     * @dataProvider provider_for_returns_correct_time
      * @test
      *
      * @param string $method
@@ -30,7 +30,7 @@ class EnglishTest extends TestCase
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function Provider_for_returns_correct_time(): array
+    public function provider_for_returns_correct_time(): array
     {
         return [
             ['subSeconds', 60, '1 minute ago'],
@@ -63,7 +63,7 @@ class EnglishTest extends TestCase
     }
 
     /**
-     * @dataProvider Provider_for_returns_correct_date_in_seconds_in_english
+     * @dataProvider provider_for_returns_correct_date_in_seconds_in_english
      * @test
      *
      * @param int $seconds
@@ -77,10 +77,10 @@ class EnglishTest extends TestCase
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
         $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = TimeAgo::trans($date));
-        $this->assertTrue(in_array($res, $expect), $message);
+        $this->assertContains($res, $expect, $message);
     }
 
-    public function Provider_for_returns_correct_date_in_seconds_in_english(): array
+    public function provider_for_returns_correct_date_in_seconds_in_english(): array
     {
         return [
             [1, ['1 second ago', '2 seconds ago']],
