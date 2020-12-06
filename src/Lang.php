@@ -34,7 +34,7 @@ class Lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = \in_array($lang, self::getLanguagesSlugs()) ? $lang : 'en';
+        self::$lang = \in_array($lang, self::getLanguagesSlugs(), true) ? $lang : 'en';
     }
 
     /**

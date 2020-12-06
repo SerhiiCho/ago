@@ -14,11 +14,14 @@ class RussianTest extends TestCase
     private $language = 'ru';
 
     /**
-     * @dataProvider Provider_for_returns_correct_time
+     * @dataProvider provider_for_returns_correct_time
      * @test
+     *
      * @param string $method
      * @param int $time
      * @param string $output_expected
+     *
+     * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
     public function returns_correct_time(string $method, int $time, string $output_expected): void
     {
@@ -27,7 +30,7 @@ class RussianTest extends TestCase
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function Provider_for_returns_correct_time(): array
+    public function provider_for_returns_correct_time(): array
     {
         return [
             ['subSeconds', 60, '1 минута назад'],
@@ -88,7 +91,7 @@ class RussianTest extends TestCase
     }
 
     /**
-     * @dataProvider Provider_for_returns_correct_date_in_seconds_in_english
+     * @dataProvider provider_for_returns_correct_date_in_seconds_in_english
      * @test
      *
      * @param int $seconds
@@ -102,10 +105,10 @@ class RussianTest extends TestCase
 
         $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
         $message = sprintf("Expected '%s' or '%s' but got '%s'", $expect[0], $expect[1], $res = TimeAgo::trans($date));
-        $this->assertTrue(in_array($res, $expect), $message);
+        $this->assertContains($res, $expect, $message);
     }
 
-    public function Provider_for_returns_correct_date_in_seconds_in_english(): array
+    public function provider_for_returns_correct_date_in_seconds_in_english(): array
     {
         return [
             [1, ['1 секунда назад', '2 секунды назад']],

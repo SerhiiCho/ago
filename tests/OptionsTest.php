@@ -15,7 +15,7 @@ use function SandFox\Debug\call_private_method;
 class OptionsTest extends TestCase
 {
     /**
-     * @dataProvider Provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
+     * @dataProvider provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
      * @test
      *
      * @param int $seconds
@@ -33,7 +33,7 @@ class OptionsTest extends TestCase
         $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time);
     }
 
-    public function Provider_returns_online_within_60_seconds_and_if_second_arg_is_passes(): array
+    public function provider_returns_online_within_60_seconds_and_if_second_arg_is_passes(): array
     {
         return [
             [1, 'en'],
@@ -67,21 +67,21 @@ class OptionsTest extends TestCase
 
     /**
      * @test
-     * @dataProvider Provider_for_returns_time_without_suffix_if_flag_is_passes
+     * @dataProvider provider_for_returns_time_without_suffix_if_flag_is_passes
      *
-     * @param $lang
-     * @param $time
-     * @param $expect
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
      *
      * @throws \Exception
      */
-    public function returns_time_without_suffix_if_option_is_passes($lang, $time, $expect): void
+    public function returns_time_without_suffix_if_option_is_passes(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
     }
 
-    public function Provider_for_returns_time_without_suffix_if_flag_is_passes(): array
+    public function provider_for_returns_time_without_suffix_if_flag_is_passes(): array
     {
         return [
             ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 minute'],
@@ -97,21 +97,21 @@ class OptionsTest extends TestCase
 
     /**
      * @test
-     * @dataProvider Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
+     * @dataProvider provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
      *
-     * @param $lang
-     * @param $time
-     * @param $expect
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
      *
      * @throws \Exception
      */
-    public function returns_time_without_suffix_and_with_online_if_2_options_is_passes($lang, $time, $expect): void
+    public function returns_time_without_suffix_and_with_online_if_2_options_is_passes(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
     }
 
-    public function Provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
+    public function provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
     {
         return [
             ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],
@@ -130,7 +130,7 @@ class OptionsTest extends TestCase
     }
 
     /**
-     * @dataProvider Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
+     * @dataProvider provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
      * @test
      *
      * @param string $date
@@ -145,7 +145,7 @@ class OptionsTest extends TestCase
         $this->assertSame($result, TimeAgo::trans($date, Option::UPCOMING));
     }
 
-    public function Provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array
+    public function provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array
     {
         return [
             [CarbonImmutable::now()->addMinutes(2)->toDateTimeString(), 'en', '2 minutes'],
@@ -161,6 +161,71 @@ class OptionsTest extends TestCase
             [CarbonImmutable::now()->addMonths(10)->toDateTimeString(), 'ru', '10 месяцев'],
             [CarbonImmutable::now()->addYears(10)->toDateTimeString(), 'ru', '10 лет'],
             [CarbonImmutable::now()->addYear()->toDateTimeString(), 'ru', '1 год'],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider provider_for_returns_time_in_uppercase
+     *
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
+     *
+     * @throws \Exception
+     */
+    public function returns_time_in_uppercase(string $lang, string $time, string $expect): void
+    {
+        Lang::set($lang);
+        $this->assertSame($expect, TimeAgo::trans($time, Option::UPPER));
+    }
+
+    public function provider_for_returns_time_in_uppercase(): array
+    {
+        return [
+            ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 MINUTE AGO'],
+            ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 MINUTES AGO'],
+            ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 MONTH AGO'],
+            ['en', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 YEAR AGO'],
+            ['ru', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 МИНУТА НАЗАД'],
+            ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 МИНУТ НАЗАД'],
+            ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 МЕСЯЦ НАЗАД'],
+            ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД НАЗАД'],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider provider_for_returns_time_converter_with_3_options
+     *
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
+     *
+     * @throws \Exception
+     */
+    public function returns_time_converter_with_3_options(string $lang, string $time, string $expect): void
+    {
+        Lang::set($lang);
+        $result = TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE, Option::UPPER]);
+        $this->assertSame($expect, $result);
+    }
+
+    public function provider_for_returns_time_converter_with_3_options(): array
+    {
+        return [
+            ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subSeconds(30)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subSeconds(50)->toDateTimeString(), 'ONLINE'],
+            ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 MINUTES'],
+            ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 MONTH'],
+            ['en', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 YEAR'],
+            ['ru', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subSeconds(21)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subSeconds(41)->toDateTimeString(), 'В СЕТИ'],
+            ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 МИНУТ'],
+            ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 МЕСЯЦ'],
+            ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД'],
         ];
     }
 }
