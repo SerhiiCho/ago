@@ -93,7 +93,7 @@ final class TimeAgo
 
     private function optionIsSet(int $option): bool
     {
-        return \in_array($option, $this->options);
+        return \in_array($option, $this->options, true);
     }
 
     /**
