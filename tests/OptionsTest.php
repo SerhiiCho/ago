@@ -69,13 +69,13 @@ class OptionsTest extends TestCase
      * @test
      * @dataProvider provider_for_returns_time_without_suffix_if_flag_is_passes
      *
-     * @param $lang
-     * @param $time
-     * @param $expect
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
      *
      * @throws \Exception
      */
-    public function returns_time_without_suffix_if_option_is_passes($lang, $time, $expect): void
+    public function returns_time_without_suffix_if_option_is_passes(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
@@ -99,13 +99,13 @@ class OptionsTest extends TestCase
      * @test
      * @dataProvider provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
      *
-     * @param $lang
-     * @param $time
-     * @param $expect
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
      *
      * @throws \Exception
      */
-    public function returns_time_without_suffix_and_with_online_if_2_options_is_passes($lang, $time, $expect): void
+    public function returns_time_without_suffix_and_with_online_if_2_options_is_passes(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
