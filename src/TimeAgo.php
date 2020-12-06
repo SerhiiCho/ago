@@ -109,11 +109,19 @@ final class TimeAgo
 
         $time = Lang::getTimeTranslations();
 
-        if ($this->optionIsSet(Option::NO_SUFFIX) || $this->optionIsSet(Option::UPCOMING)) {
-            return "$number {$time[$type][$form]}";
+        $translation = $time[$type][$form];
+        $ago = Lang::trans('ago');
+
+        if ($this->optionIsSet(Option::UPPER)) {
+            $translation = mb_strtoupper($translation);
+            $ago = mb_strtoupper($ago);
         }
 
-        return "$number {$time[$type][$form]} " . Lang::trans('ago');
+        if ($this->optionIsSet(Option::NO_SUFFIX) || $this->optionIsSet(Option::UPCOMING)) {
+            return "$number $translation";
+        }
+
+        return "$number $translation $ago";
     }
 
     /**

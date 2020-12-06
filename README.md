@@ -8,8 +8,7 @@
 
 Date/time converter into "n time ago" format that supports multiple languages. You can easily contribute any language that you wish.
 
-- [Contributing](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
-- [Usage example](https://repl.it/@SerhiiCho/Usage-of-ago-package)
+- #### [Contributing](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
 
 ## Languages
 
@@ -39,7 +38,7 @@ TimeAgo::trans('now - 10 seconds'); // output: 10 seconds ago
 
 ## Options
 
-As the seconds argument `trans` method excepts array of options or option. Here is an example of passed options.
+As the seconds argument `trans` method excepts array of options or single option. Here is an example of passed options.
 
 ```php
 use Serhii\Ago\Option;
@@ -48,6 +47,7 @@ use Serhii\Ago\TimeAgo;
 TimeAgo::trans('yesterday'); // output: 1 day ago
 TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
 TimeAgo::trans('now', Option::ONLINE); // output: online
+TimeAgo::trans('now', [Option::ONLINE, Option::UPPER]); // output: ONLINE
 ```
 
 #### Available options
@@ -59,6 +59,7 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | `Option::ONLINE`   | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
 | `Option::NO_SUFFIX` | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
 | `Option::UPCOMING`  | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. |
+| `Option::UPPER`   | Set output to uppercase. |
 
 ## Quick Start
 

@@ -163,4 +163,34 @@ class OptionsTest extends TestCase
             [CarbonImmutable::now()->addYear()->toDateTimeString(), 'ru', '1 год'],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider provider_for_returns_time_in_uppercase
+     *
+     * @param string $lang
+     * @param string $time
+     * @param string $expect
+     *
+     * @throws \Exception
+     */
+    public function returns_time_in_uppercase(string $lang, string $time, string $expect): void
+    {
+        Lang::set($lang);
+        $this->assertSame($expect, TimeAgo::trans($time, Option::UPPER));
+    }
+
+    public function provider_for_returns_time_in_uppercase(): array
+    {
+        return [
+            ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 MINUTE AGO'],
+            ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 MINUTES AGO'],
+            ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 MONTH AGO'],
+            ['en', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 YEAR AGO'],
+            ['ru', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 МИНУТА НАЗАД'],
+            ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 МИНУТ НАЗАД'],
+            ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 МЕСЯЦ НАЗАД'],
+            ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД НАЗАД'],
+        ];
+    }
 }
