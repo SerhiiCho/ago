@@ -18,11 +18,28 @@ Serhii\Ago\Lang::set('ru');
 
 #### Supported languages
 
-| Language      |  Short representation |
-| :------------ |:----------------------|
-| English       | en                    |
-| Russian       | ru                    |
-| Ukrainian     | uk                    |
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Short representation</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+      <td>English</td>
+      <td>en</td>
+    </tr>
+    <tr>
+      <td>Russian</td>
+      <td>ru</td>
+    </tr>
+    <tr>
+      <td>Ukrainian</td>
+      <td>uk</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Usage
 
@@ -52,12 +69,32 @@ TimeAgo::trans('now', [Option::ONLINE, Option::UPPER]); // output: ONLINE
 
 All options are available in `Serhii\Ago\Option::class` as constants.
 
-| Option            |  Description              |
-| :---------------- |:--------------------------|
-| `Option::ONLINE`   | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
-| `Option::NO_SUFFIX` | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| `Option::UPCOMING`  | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. |
-| `Option::UPPER`   | Set output to uppercase. |
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+      <td>`Option::ONLINE`</td>
+      <td>Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format.</td>
+    </tr>
+    <tr>
+      <td>`Option::NO_SUFFIX`</td>
+      <td>Remove suffix from date and have "5 minutes" instead of "5 minutes ago".</td>
+    </tr>
+    <tr>
+      <td>`Option::UPCOMING`</td>
+      <td>Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future.</td>
+    </tr>
+    <tr>
+      <td>`Option::UPPER`</td>
+      <td>Set output to uppercase.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Quick Start
 
