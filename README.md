@@ -6,7 +6,7 @@
 
 Date/time converter into "n time ago" format that supports multiple languages. You can easily contribute any language that you wish.
 
-[Contributing](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
+[Contributing a language](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
 
 ## Languages
 
