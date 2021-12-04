@@ -44,7 +44,7 @@ return function (int $number, int $last_digit): array {
 
 Every rule file should return a callback function with 2 parameters. The callback returns array of associative array. The array contains rules for 3 forms.
 
-- `signle` form for words in a single form, like minute, day, year, etc.
+- `single` form for words in a single form, like minute, day, year, etc.
 - `plural` form for words in a plural form, like minutes, days, years, etc.
 - `special` *(optional)* form for special cases, for example in Russian, and Ukrainian we have special forms for words: **недель**, **месяцев**, etc. They are different from single and plural form. So we need to have separate rules for them.
 
