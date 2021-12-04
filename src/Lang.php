@@ -51,7 +51,7 @@ class Lang
      * @param int $number
      * @param int $last_digit
      *
-     * @return bool[]|array[]
+     * @return array<string, bool>|array<string, array<int, bool>>
      */
     public static function getRules(int $number, int $last_digit): array
     {
@@ -104,7 +104,7 @@ class Lang
      * but `2 seconds` requires `s`. So this method keeps
      * all possible options for the translated word.
      *
-     * @return array[]
+     * @return array<string, array<string, string>>
      */
     public static function getTimeTranslations(): array
     {
