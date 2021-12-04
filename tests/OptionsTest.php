@@ -84,6 +84,7 @@ class OptionsTest extends TestCase
     public function provider_for_returns_time_without_suffix_if_flag_is_passes(): array
     {
         return [
+            ['en', CarbonImmutable::now()->toDateTimeString(), '0 seconds'],
             ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 minute'],
             ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 minutes'],
             ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 month'],
@@ -114,6 +115,7 @@ class OptionsTest extends TestCase
     public function provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
     {
         return [
+            ['en', CarbonImmutable::now()->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(30)->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(50)->toDateTimeString(), 'Online'],
@@ -148,6 +150,7 @@ class OptionsTest extends TestCase
     public function provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array
     {
         return [
+            [CarbonImmutable::now()->toDateTimeString(), 'en', '0 seconds'],
             [CarbonImmutable::now()->addMinutes(2)->toDateTimeString(), 'en', '2 minutes'],
             [CarbonImmutable::now()->addMinutes(10)->toDateTimeString(), 'en', '10 minutes'],
             [CarbonImmutable::now()->addHours(13)->toDateTimeString(), 'en', '13 hours'],
@@ -183,6 +186,7 @@ class OptionsTest extends TestCase
     public function provider_for_returns_time_in_uppercase(): array
     {
         return [
+            ['en', CarbonImmutable::now()->toDateTimeString(), '0 SECONDS AGO'],
             ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 MINUTE AGO'],
             ['en', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 MINUTES AGO'],
             ['en', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 MONTH AGO'],
@@ -191,6 +195,7 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 МИНУТ НАЗАД'],
             ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 МЕСЯЦ НАЗАД'],
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 ГОД НАЗАД'],
+            ['ru', CarbonImmutable::now()->toDateTimeString(), '0 СЕКУНД НАЗАД'],
         ];
     }
 
