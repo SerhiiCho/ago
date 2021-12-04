@@ -3,6 +3,7 @@
 ## v2.0.8 (2021-12-04)
 
 - Added more types for phpstan static analyzer.
+- Added CHANGELOG.md file to the root of the project.
 
 ----
 
