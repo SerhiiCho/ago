@@ -38,7 +38,7 @@ class TimeAgoTest extends TestCase
             [5, 'special', 'ru'],
             [20, 'special', 'ru'],
             [21, 'single', 'ru'],
-            [0, 'single', 'en'],
+            [0, 'plural', 'en'],
             [1, 'single', 'en'],
             [2, 'plural', 'en'],
             [3, 'plural', 'en'],
