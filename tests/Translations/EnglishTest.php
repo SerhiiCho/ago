@@ -14,7 +14,7 @@ class EnglishTest extends TestCase
     private $language = 'en';
 
     /**
-     * @dataProvider provider_for_returns_correct_time
+     * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
      * @test
      *
      * @param string $method
@@ -23,14 +23,14 @@ class EnglishTest extends TestCase
      *
      * @throws \Exception
      */
-    public function returns_correct_time(string $method, int $time, string $output_expected): void
+    public function returns_correct_time_from_one_minute_and_above(string $method, int $time, string $output_expected): void
     {
         Lang::set($this->language);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function provider_for_returns_correct_time(): array
+    public function provider_for_returns_correct_time_from_one_minute_and_above(): array
     {
         return [
             ['subSeconds', 60, '1 minute ago'],
@@ -63,7 +63,7 @@ class EnglishTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_returns_correct_date_in_seconds_in_english
+     * @dataProvider provider_for_provider_for_returns_correct_date_from_0_seconds_to_59_seconds
      * @test
      *
      * @param int $seconds
@@ -71,7 +71,7 @@ class EnglishTest extends TestCase
      *
      * @throws \Exception
      */
-    public function returns_correct_date_in_seconds(int $seconds, array $expect): void
+    public function provider_for_returns_correct_date_from_0_seconds_to_59_seconds(int $seconds, array $expect): void
     {
         Lang::set($this->language);
 
@@ -80,9 +80,10 @@ class EnglishTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function provider_for_returns_correct_date_in_seconds_in_english(): array
+    public function provider_for_provider_for_returns_correct_date_from_0_seconds_to_59_seconds(): array
     {
         return [
+            [0, ['0 seconds ago', '1 second ago']],
             [1, ['1 second ago', '2 seconds ago']],
             [2, ['2 seconds ago', '3 seconds ago']],
             [30, ['30 seconds ago', '31 seconds ago']],

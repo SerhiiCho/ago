@@ -135,32 +135,25 @@ final class TimeAgo
     private function getLanguageForm(int $number): string
     {
         $last_digit = (int) \substr((string) $number, -1);
-        $form = null;
 
         /**
          * @var string $form_name
          * @var bool|bool[] $rules
          */
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
-            if (\is_bool($rules)) {
-                if ($rules) {
-                    $form = $form_name;
-                }
-                continue;
+            if (\is_bool($rules) && $rules) {
+                return $form_name;
             }
 
-            foreach ($rules as $rule_is_passing) {
-                if ($rule_is_passing) {
-                    $form = $form_name;
-                    break 1;
+            if (\is_array($rules)) {
+                foreach ($rules as $rule_is_passing) {
+                    if ($rule_is_passing) {
+                        return $form_name;
+                    }
                 }
             }
         }
 
-        if (\is_null($form)) {
-            throw new MissingRuleException("Provided rules don't apply to a number $number");
-        }
-
-        return $form;
+        throw new MissingRuleException("Provided rules don't apply to a number $number");
     }
 }

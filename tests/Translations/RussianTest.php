@@ -14,7 +14,7 @@ class RussianTest extends TestCase
     private $language = 'ru';
 
     /**
-     * @dataProvider provider_for_returns_correct_time
+     * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
      * @test
      *
      * @param string $method
@@ -23,14 +23,14 @@ class RussianTest extends TestCase
      *
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    public function returns_correct_time(string $method, int $time, string $output_expected): void
+    public function returns_correct_time_from_one_minute_and_above(string $method, int $time, string $output_expected): void
     {
         Lang::set($this->language);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function provider_for_returns_correct_time(): array
+    public function provider_for_returns_correct_time_from_one_minute_and_above(): array
     {
         return [
             ['subSeconds', 60, '1 минута назад'],
@@ -91,7 +91,7 @@ class RussianTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_returns_correct_date_in_seconds_in_english
+     * @dataProvider provider_for_returns_correct_date_from_0_seconds_to_59_seconds
      * @test
      *
      * @param int $seconds
@@ -99,7 +99,7 @@ class RussianTest extends TestCase
      *
      * @throws \Exception
      */
-    public function returns_correct_date_in_seconds(int $seconds, array $expect): void
+    public function returns_correct_date_from_0_seconds_to_59_seconds(int $seconds, array $expect): void
     {
         Lang::set($this->language);
 
@@ -108,9 +108,10 @@ class RussianTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function provider_for_returns_correct_date_in_seconds_in_english(): array
+    public function provider_for_returns_correct_date_from_0_seconds_to_59_seconds(): array
     {
         return [
+            [0, ['0 секунд назад', '1 секунда назад']],
             [1, ['1 секунда назад', '2 секунды назад']],
             [2, ['2 секунды назад', '3 секунды назад']],
             [5, ['5 секунд назад', '6 секунд назад']],

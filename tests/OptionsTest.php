@@ -114,6 +114,7 @@ class OptionsTest extends TestCase
     public function provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
     {
         return [
+            ['en', CarbonImmutable::now()->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(30)->toDateTimeString(), 'Online'],
             ['en', CarbonImmutable::now()->subSeconds(50)->toDateTimeString(), 'Online'],

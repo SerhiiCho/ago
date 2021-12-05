@@ -14,7 +14,7 @@ class UkrainianTest extends TestCase
     private $language = 'uk';
 
     /**
-     * @dataProvider provider_for_returns_correct_time
+     * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
      * @test
      *
      * @param string $method
@@ -23,14 +23,14 @@ class UkrainianTest extends TestCase
      *
      * @throws \Exception
      */
-    public function returns_correct_time(string $method, int $time, string $output_expected): void
+    public function returns_correct_time_from_one_minute_and_above(string $method, int $time, string $output_expected): void
     {
         Lang::set($this->language);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function provider_for_returns_correct_time(): array
+    public function provider_for_returns_correct_time_from_one_minute_and_above(): array
     {
         return [
             ['subSeconds', 60, '1 хвилина назад'],
@@ -92,7 +92,7 @@ class UkrainianTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_returns_correct_date_in_seconds_in_english
+     * @dataProvider provider_for_returns_correct_date_from_0_seconds_to_59_seconds
      * @test
      *
      * @param int $seconds
@@ -100,7 +100,7 @@ class UkrainianTest extends TestCase
      *
      * @throws \Exception
      */
-    public function returns_correct_date_in_seconds(int $seconds, array $expect): void
+    public function returns_correct_date_from_0_seconds_to_59_seconds(int $seconds, array $expect): void
     {
         Lang::set($this->language);
 
@@ -109,13 +109,34 @@ class UkrainianTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function provider_for_returns_correct_date_in_seconds_in_english(): array
+    public function provider_for_returns_correct_date_from_0_seconds_to_59_seconds(): array
     {
         return [
+            [0, ['0 секунд назад', '1 секунда назад']],
             [1, ['1 секунда назад', '2 секунди назад']],
             [2, ['2 секунди назад', '3 секунди назад']],
+            [3, ['3 секунди назад', '4 секунди назад']],
+            [4, ['4 секунди назад', '5 секунд назад']],
             [5, ['5 секунд назад', '6 секунд назад']],
+            [6, ['6 секунд назад', '7 секунд назад']],
+            [7, ['7 секунд назад', '8 секунд назад']],
+            [8, ['8 секунд назад', '9 секунд назад']],
+            [9, ['9 секунд назад', '10 секунд назад']],
+            [10, ['10 секунд назад', '11 секунд назад']],
+            [11, ['11 секунд назад', '12 секунд назад']],
+            [12, ['12 секунд назад', '13 секунд назад']],
+            [13, ['13 секунд назад', '14 секунд назад']],
+            [14, ['14 секунд назад', '15 секунд назад']],
+            [15, ['15 секунд назад', '16 секунд назад']],
+            [16, ['16 секунд назад', '17 секунд назад']],
+            [17, ['17 секунд назад', '18 секунд назад']],
+            [18, ['18 секунд назад', '19 секунд назад']],
+            [19, ['19 секунд назад', '20 секунд назад']],
+            [20, ['20 секунд назад', '21 секунда назад']],
             [21, ['21 секунда назад', '22 секунди назад']],
+            [41, ['41 секунда назад', '42 секунди назад']],
+            [54, ['54 секунди назад', '55 секунд назад']],
+            [58, ['58 секунд назад', '59 секунд назад']],
         ];
     }
 }

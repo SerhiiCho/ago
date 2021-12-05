@@ -1,5 +1,18 @@
 # Release Notes
 
+## v2.1.0 (2021-12-04)
+
+- Other bug fixes with language rules.
+- Code refactoring
+- Bug fix with English language 0 seconds ago.
+
+```diff
+- 0 second ago
++ 0 seconds ago
+```
+
+----
+
 ## v2.0.8 (2021-12-04)
 
 - Added more types for phpstan static analyzer.

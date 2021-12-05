@@ -1,6 +1,6 @@
 # Contribute another language
 
-If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/cdd2ad09dacbb57e0c76b1aae39824d76ec1b928) for supporting Ukrainian language that shows changes that I did. You need to add 3 files for supporting another language. Here are 4 steps that you need to follow.
+If you want to contribute support for a language that is not currently supported, all you need to do is to copy/paste 3 files and change them to match the language that you want to add. Then add 1 line to README.md file. Here is my [commit](https://github.com/SerhiiCho/ago/commit/5a7d58569d6cd0af1d7981f3256f59ce19a6ad0e) for supporting Ukrainian language that shows changes that I did. You need to add 3 files for supporting another language. Here are 4 steps that you need to follow.
 
 ### 1 Step. Adding translation
 
@@ -29,10 +29,16 @@ Every translation file return array of translations. Note that `'second-special'
 Rules live in `resources/rules` directory. Here is the example of the rule file for Russian language.
 
 ```php
-return function (int $number, int $last_digit): array {
+return static function (int $number, int $last_digit): array {
     return [
-        'single' => $last_digit === 1 || $number === 0,
-        'plural' => $last_digit >= 2 && $last_digit < 5,
+        'single' => [
+            $number === 1,
+            $last_digit === 1 && $number >= 21,
+        ],
+        'plural' => [
+            $number >= 2 && $number < 5,
+            $number >= 22 && $last_digit >= 2 && $last_digit < 5,
+        ],
         'special' => [
             $number >= 5 && $number <= 20,
             $last_digit === 0,
