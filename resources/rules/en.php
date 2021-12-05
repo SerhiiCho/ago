@@ -8,7 +8,7 @@ declare(strict_types=1);
  *
  * @return bool[]|array[]
  */
-return function (int $number, int $last_digit): array {
+return static function (int $number, int $last_digit): array {
     return [
         'single' => $number === 1,
         'plural' => $number > 1 || $number === 0,

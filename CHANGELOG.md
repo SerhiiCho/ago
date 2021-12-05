@@ -2,6 +2,7 @@
 
 ## v2.1.0 (2021-12-04)
 
+- Other bug fixes with language rules.
 - Bug fix with English language 0 seconds ago.
 
 ```diff
