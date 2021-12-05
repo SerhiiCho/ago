@@ -111,6 +111,7 @@ class RussianTest extends TestCase
     public function provider_for_returns_correct_date_in_seconds_in_english(): array
     {
         return [
+            [0, ['0 секунд назад', '1 секунда назад']],
             [1, ['1 секунда назад', '2 секунды назад']],
             [2, ['2 секунды назад', '3 секунды назад']],
             [5, ['5 секунд назад', '6 секунд назад']],

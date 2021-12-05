@@ -112,6 +112,7 @@ class UkrainianTest extends TestCase
     public function provider_for_returns_correct_date_in_seconds_in_english(): array
     {
         return [
+            [0, ['0 секунд назад', '1 секунда назад']],
             [1, ['1 секунда назад', '2 секунди назад']],
             [2, ['2 секунди назад', '3 секунди назад']],
             [5, ['5 секунд назад', '6 секунд назад']],

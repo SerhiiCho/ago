@@ -83,6 +83,7 @@ class EnglishTest extends TestCase
     public function provider_for_returns_correct_date_in_seconds_in_english(): array
     {
         return [
+            [0, ['0 seconds ago', '1 second ago']],
             [1, ['1 second ago', '2 seconds ago']],
             [2, ['2 seconds ago', '3 seconds ago']],
             [30, ['30 seconds ago', '31 seconds ago']],
