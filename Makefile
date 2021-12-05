@@ -5,12 +5,12 @@ cs:
 	./vendor/bin/phpcs src resources --colors -p
 
 test:
-	./vendor/bin/phpunit --colors
+	./vendor/bin/phpunit --colors tests
 
 check:
 	make cs
 	make stan
-	make phpunit
+	make test
 
 push:
 	make check
