@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.0.8 (2021-12-05)
+
+- Added support for PHP 8.1
+
+----
+
 ## v2.1.0 (2021-12-04)
 
 - Other bug fixes with language rules.

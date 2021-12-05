@@ -21,6 +21,7 @@ Date/time converter into "n time ago" format that supports multiple languages. Y
 - :heavy_check_mark: 7.3
 - :heavy_check_mark: 7.4
 - :heavy_check_mark: 8.0
+- :heavy_check_mark: 8.1
 
 ## Languages
 
