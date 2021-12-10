@@ -16,12 +16,12 @@ Date/time converter into "n time ago" format that supports multiple languages. Y
 
 ## Supported PHP versions
 
-- :heavy_check_mark: 7.1
-- :heavy_check_mark: 7.2
-- :heavy_check_mark: 7.3
-- :heavy_check_mark: 7.4
-- :heavy_check_mark: 8.0
-- :heavy_check_mark: 8.1
+- ✅ 7.1
+- ✅ 7.2
+- ✅ 7.3
+- ✅ 7.4
+- ✅ 8.0
+- ✅ 8.1
 
 ## Languages
 
