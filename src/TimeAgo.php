@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Serhii\Ago;
 
+use Carbon\CarbonImmutable;
+use Carbon\Exceptions\InvalidFormatException;
+use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Exceptions\MissingRuleException;
 
 final class TimeAgo
@@ -20,7 +23,6 @@ final class TimeAgo
 
     private function __construct()
     {
-        //
     }
 
     public static function singleton(): self
@@ -34,35 +36,46 @@ final class TimeAgo
     /**
      * Takes date string and returns converted date
      *
-     * @param string $date
+     * @param int|string|\DateTimeInterface|null $date
      * @param int[]|int|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
+     * @throws \Serhii\Ago\Exceptions\InvalidDateFormatException
      */
-    public static function trans(string $date, $options = []): string
+    public static function trans($date, $options = []): string
     {
         if (\is_int($options)) {
             $options = [$options];
         }
 
-        return self::singleton()->handle($date, $options);
+        try {
+            /**
+             * @phpstan-ignore-next-line
+             * @var int $timestamp
+             */
+            $timestamp = CarbonImmutable::parse($date)->timestamp;
+        } catch (InvalidFormatException $e) {
+            throw new InvalidDateFormatException($e->getMessage());
+        }
+
+        return self::singleton()->handle($timestamp, $options);
     }
 
     /**
-     * @param string $date
+     * @param int $date_timestamp The timestamp
      * @param int[]|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    private function handle(string $date, ?array $options = []): string
+    private function handle(int $date_timestamp, ?array $options = []): string
     {
         $this->options = $options ?? [];
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? \strtotime($date) - \time()
-            : \time() - \strtotime($date);
+            ? $date_timestamp - \time()
+            : \time() - $date_timestamp;
 
         $minutes = (int) \round($seconds / 60);
         $hours = (int) \round($seconds / 3600);

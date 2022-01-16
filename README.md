@@ -70,13 +70,22 @@ Lang::set('en', [
 
 ## Usage
 
-For outputting post publishing date or something else you can just pass the date to method `trans()`. It will count the interval between now and given date and returns needed format. Internally given date will be parsed by `strtotime()` PHP's internal function.
+For outputting post publishing date or something else you can just pass the date to method `trans()`. It will count the interval between now and given date and returns needed format. The methods excepts a timestamp, date string, Carbon instance or DateTime.
 
 ```php
 use Serhii\Ago\TimeAgo;
 
 TimeAgo::trans('now - 10 seconds'); // output: 10 seconds ago
+TimeAgo::trans(time() - 86400); // output: 1 day ago
+TimeAgo::trans(\Carbon\Carbon::now()->subDay()); // output: 1 day ago
+TimeAgo::trans(\Carbon\CarbonImmutable::now()->subDay()); // output: 1 day ago
+TimeAgo::trans((new \DateTime('now - 5 minutes'))); // output: 5 minutes ago
+TimeAgo::trans((new \DateTimeImmutable('now - 5 minutes'))); // output: 5 minutes ago
 ```
+
+It's very convenient, because you can pass almost any date format and it will give you the correct output.
+
+> If you use version `< 2.2.0` then `TimeAgo::trans()` method except only type string.
 
 ## Options
 
@@ -88,8 +97,8 @@ use Serhii\Ago\TimeAgo;
 
 TimeAgo::trans('yesterday'); // output: 1 day ago
 TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
-TimeAgo::trans('now', Option::ONLINE); // output: online
-TimeAgo::trans('now', [Option::ONLINE, Option::UPPER]); // output: ONLINE
+TimeAgo::trans(time(), Option::ONLINE); // output: online
+TimeAgo::trans(time(), [Option::ONLINE, Option::UPPER]); // output: ONLINE
 ```
 
 #### Available options

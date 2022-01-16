@@ -2,6 +2,15 @@
 
 ----
 
+## v2.2.0 (2022-01-16)
+
+- Added support for timestamps to `TimeAgo::trans()` method and not just strings.
+- Added support for DateTime and DateTimeImmutable to `TimeAgo::trans()` method.
+- Added support for Carbon and CarbonImmutable to `TimeAgo::trans()` method.
+- Added more tests to make sure that new features are working correctly.
+
+----
+
 ## v2.1.3 (2022-01-16)
 
 - Added more info to README.md file about using second argument in Lang::set() method.
