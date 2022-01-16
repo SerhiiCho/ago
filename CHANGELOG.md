@@ -5,7 +5,8 @@
 ## v2.1.2 (2022-01-15)
 
 - Added flags to supported languages table in README.md file.
-- Added ability to overwrite translations. Closes issue [#20](https://github.com/SerhiiCho/ago/issues/20)
+- Added ability to overwrite translations. Closes issue [#20](https://github.com/SerhiiCho/ago/issues/20).
+- Added more info to README.md file.
 
 ----
 

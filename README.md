@@ -4,15 +4,25 @@
 [![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
 <a href="https://php.net/" rel="nofollow"><img src="https://camo.githubusercontent.com/2b1ed18c21257b0a1e6b8568010e6e8f3636e6d5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7068702d253345253344253230372e312d3838393242462e7376673f7374796c653d666c61742d737175617265" alt="Minimum PHP Version" data-canonical-src="https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg" style="max-width:100%;"></a>
 
-Date/time converter into "n time ago" format that supports multiple languages. You can easily contribute any language that you wish very easily by creating a pull request. I'm gladly merge it in if you follow the simple steps. See the links below for more information.
+- [✏️ Description](#description)
+- [🐘 Supported PHP versions](#supported-php-versions)
+- [⚙️ Configurations](#configurations)
+- [👏 Usage](#usage)
+- [🚩 Supported languases](#supported-languages)
+- [🤲 Options](#options)
+- [🚀 Quick start](#quick-start)
+- [🗒 Release Notes](https://github.com/SerhiiCho/ago/blob/master/CHANGELOG.md)
+- [🎁 Contributing a language in 4 steps](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
+  - [1️⃣ Step. Adding translation](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#1-step-adding-translation)
+  - [2️⃣ Step. Adding rules](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#2-step-adding-rules)
+  - [3️⃣ Step. Adding tests](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#3-step-adding-tests)
+  - [4️⃣ Step. Add 1 line to README.md file](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#4-step-add-1-line-to-readmemd-file)
 
+## Description
 
-- [Release Notes](https://github.com/SerhiiCho/ago/blob/master/CHANGELOG.md)
-- [Contributing a language in 4 steps](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md)
-  - [1 Step. Adding translation](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#1-step-adding-translation)
-  - [2 Step. Adding rules](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#2-step-adding-rules)
-  - [3 Step. Adding tests](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#3-step-adding-tests)
-  - [4 Step. Add 1 line to README.md file](https://github.com/SerhiiCho/ago/blob/master/CONTRIBUTE.md#4-step-add-1-line-to-readmemd-file)
+Date/time converter into "n time ago" format that supports multiple languages. You can contribute any language that you wish easily by creating a pull request. I would gladly merge it in if you follow the simple steps.
+
+This package is well tested and already used in many production apps and has shown itself very well. If you find any issues or bugs 🐞, please create an [issue](https://github.com/SerhiiCho/ago/issues/new), and I'll fix it as soon as I can.
 
 ## Supported PHP versions
 
@@ -23,7 +33,7 @@ Date/time converter into "n time ago" format that supports multiple languages. Y
 - ✅ 8.0
 - ✅ 8.1
 
-## Languages
+## Configurations
 
 Default language is English. Optionally you can set the language in your application by calling `set()` method and passing a flag `ru` for Russian or `en` for English language. You can see supported languages in the next section.
 
@@ -33,32 +43,11 @@ Serhii\Ago\Lang::set('ru');
 
 #### Supported languages
 
-<table>
-  <thead>
-    <tr>
-      <th>Flag</th>
-      <th>Language</th>
-      <th>Short representation</th>
-    </tr>
-  </thead>
-  <tbody>
-     <tr>
-      <td>🇬🇧</td>
-      <td>English</td>
-      <td>en</td>
-    </tr>
-    <tr>
-      <td>🇷🇺</td>
-      <td>Russian</td>
-      <td>ru</td>
-    </tr>
-    <tr>
-      <td>🇺🇦</td>
-      <td>Ukrainian</td>
-      <td>uk</td>
-    </tr>
-  </tbody>
-</table>
+| Flag | Language | Short representation |
+|------|----------|----------------------|
+| 🇬🇧 | English | en |
+| 🇷🇺 | Russian | ru |
+| 🇺🇦 | Ukrainian | uk |
 
 ## Usage
 
