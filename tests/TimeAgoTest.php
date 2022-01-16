@@ -68,6 +68,7 @@ class TimeAgoTest extends TestCase
     public function provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found(): array
     {
         return [
+            [time() - 86400, '1 day ago'],
             [CarbonImmutable::now()->subDay()->timestamp, '1 day ago'],
             [CarbonImmutable::now()->subWeek()->timestamp, '1 week ago'],
             [CarbonImmutable::now()->subMonths(5)->timestamp, '5 months ago'],
@@ -91,11 +92,11 @@ class TimeAgoTest extends TestCase
     public function provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object(): array
     {
         return [
-            [CarbonImmutable::now()->subDays(3)->toDateTime(), '3 days ago'],
-            [CarbonImmutable::now()->subWeeks(2)->toDateTimeImmutable(), '2 weeks ago'],
-            [CarbonImmutable::now()->subMonths(4)->toDateTime(), '4 months ago'],
-            [CarbonImmutable::now()->subYears(20)->toDateTimeImmutable(), '20 years ago'],
-            [CarbonImmutable::now()->subMinutes(5)->toDateTime(), '5 minutes ago'],
+            [(new \DateTimeImmutable('now - 3 days')), '3 days ago'],
+            [(new \DateTimeImmutable('now - 2 weeks')), '2 weeks ago'],
+            [(new \DateTime('now - 4 months')), '4 months ago'],
+            [(new \DateTime('now - 20 years')), '20 years ago'],
+            [(new \DateTimeImmutable('now - 5 minutes')), '5 minutes ago'],
         ];
     }
 
