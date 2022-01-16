@@ -27,6 +27,11 @@ class Lang
     private static $rules;
 
     /**
+     * @var array<string, array<string, string>>
+     */
+    private static $included_files_cache = [];
+
+    /**
      * Set the language by passing short representation of a language
      * like 'ru' for russian or 'en' for english.
      * If given language is not supported by this package,
@@ -94,7 +99,12 @@ class Lang
      */
     public static function includeTranslations(): void
     {
-        $translations = require __DIR__ . '/../resources/lang/' . self::$lang . '.php';
+        $path = __DIR__ . '/../resources/lang/' . self::$lang . '.php';
+        $cached_translations = self::$included_files_cache[$path] ?? [];
+
+        $translations = \count($cached_translations) > 0 ? $cached_translations : require $path;
+
+        self::$included_files_cache[$path] = $translations;
 
         if (\count(self::$overwrites) > 0) {
             $translations = \array_merge($translations, self::$overwrites);

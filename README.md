@@ -7,6 +7,8 @@
 - [✏️ Description](#description)
 - [🐘 Supported PHP versions](#supported-php-versions)
 - [⚙️ Configurations](#configurations)
+  - [Set language](#set-language)
+  - [Overwrite translations](#overwrite-translations)
 - [👏 Usage](#usage)
 - [🚩 Supported languases](#supported-languages)
 - [🤲 Options](#options)
@@ -22,7 +24,7 @@
 
 Date/time converter into "n time ago" format that supports multiple languages. You can contribute any language that you wish easily by creating a pull request. I would gladly merge it in if you follow the simple steps.
 
-This package is well tested and already used in many production apps and has shown itself very well. If you find any issues or bugs 🐞, please create an [issue](https://github.com/SerhiiCho/ago/issues/new), and I'll fix it as soon as I can.
+This package is well tested, optimized and already used in many production apps. It has shown itself pretty well. If you find any issues or bugs 🐞, please create an [issue](https://github.com/SerhiiCho/ago/issues/new), and I'll fix it as soon as I can.
 
 ## Supported PHP versions
 
@@ -34,6 +36,8 @@ This package is well tested and already used in many production apps and has sho
 - ✅ 8.1
 
 ## Configurations
+
+### Set language
 
 Default language is English. Optionally you can set the language in your application by calling `set()` method and passing a flag `ru` for Russian or `en` for English language. You can see supported languages in the next section.
 
@@ -48,6 +52,21 @@ Serhii\Ago\Lang::set('ru');
 | 🇬🇧 | English | en |
 | 🇷🇺 | Russian | ru |
 | 🇺🇦 | Ukrainian | uk |
+
+### Overwrite translations
+There are cases when you want to replace certain words with specific ones. You can do it with “Overwrites”. All you need to do is just to pass `array<string, string>` of values that you want to overwrite.
+
+For example, instead of `1 minute ago` you want to have the output `1 minute before`. To achieve that, create `['ago' => 'before']` array and pass it as the second argument to method `set()` in `Serhii\Ago\Lang` class.
+
+```php
+Lang::set('en', [
+    'ago' => 'before',
+    'day' => 'Day',
+    'days' => 'Days',
+]);
+```
+
+> The list of all default key values you can find in [resources/lang](https://github.com/SerhiiCho/ago/tree/master/resources/lang) directory.
 
 ## Usage
 
