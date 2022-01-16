@@ -78,7 +78,10 @@ class TimeAgoTest extends TestCase
      * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object
      * @test
      */
-    public function trans_method_returns_correct_result_after_passing_a_DateTime_object(DateTimeInterface $timestamp, string $expect): void
+    public function trans_method_returns_correct_result_after_passing_a_DateTime_object(
+        DateTimeInterface $timestamp,
+        string $expect
+    ): void
     {
         $this->assertSame($expect, TimeAgo::trans($timestamp));
     }
