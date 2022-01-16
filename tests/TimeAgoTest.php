@@ -66,8 +66,10 @@ class TimeAgoTest extends TestCase
     {
         return [
             [CarbonImmutable::now()->subDay()->timestamp, '1 day ago'],
+            [CarbonImmutable::now()->subWeek()->timestamp, '1 week ago'],
             [CarbonImmutable::now()->subMonths(5)->timestamp, '5 months ago'],
             [CarbonImmutable::now()->subYears(30)->timestamp, '30 years ago'],
+            [CarbonImmutable::now()->subMinutes(3)->timestamp, '3 minutes ago'],
         ];
     }
 }
