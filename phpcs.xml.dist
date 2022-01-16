@@ -3,5 +3,6 @@
     <rule ref="PSR12">
        <exclude name="PSR12.Files.FileHeader" />
        <exclude name="PSR12.Files.OpenTag" />
+       <exclude-pattern>./tests/*</exclude-pattern>
     </rule>
 </ruleset>

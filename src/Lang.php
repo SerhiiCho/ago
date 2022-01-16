@@ -12,6 +12,11 @@ class Lang
     public static $lang = 'en';
 
     /**
+     * @var array<string, string>
+     */
+    private static $overwrites = [];
+
+    /**
      * @var string[]|null
      */
     private static $translations;
@@ -31,10 +36,13 @@ class Lang
      * language will be set to English.
      *
      * @param string $lang
+     * @param array<string, string>|null $overwrites Overwrite any translation values by passing key and value
+     * into this array. For example, you can pass ['day' => 'single day'] to overwrite the default value.
      */
-    public static function set(string $lang): void
+    public static function set(string $lang, ?array $overwrites = []): void
     {
         self::$lang = \in_array($lang, self::getLanguagesSlugs(), true) ? $lang : 'en';
+        self::$overwrites = $overwrites ?? [];
     }
 
     /**
@@ -86,7 +94,13 @@ class Lang
      */
     public static function includeTranslations(): void
     {
-        self::$translations = require __DIR__ . '/../resources/lang/' . self::$lang . '.php';
+        $translations = require __DIR__ . '/../resources/lang/' . self::$lang . '.php';
+
+        if (\count(self::$overwrites) > 0) {
+            $translations = \array_merge($translations, self::$overwrites);
+        }
+
+        self::$translations = $translations;
     }
 
     /**
