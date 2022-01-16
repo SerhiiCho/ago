@@ -36,20 +36,24 @@ Serhii\Ago\Lang::set('ru');
 <table>
   <thead>
     <tr>
+      <th>Flag</th>
       <th>Language</th>
       <th>Short representation</th>
     </tr>
   </thead>
   <tbody>
      <tr>
+      <td>🇬🇧</td>
       <td>English</td>
       <td>en</td>
     </tr>
     <tr>
+      <td>🇷🇺</td>
       <td>Russian</td>
       <td>ru</td>
     </tr>
     <tr>
+      <td>🇺🇦</td>
       <td>Ukrainian</td>
       <td>uk</td>
     </tr>

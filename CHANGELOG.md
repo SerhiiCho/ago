@@ -1,6 +1,14 @@
 # Release Notes
 
-## v2.0.8 (2021-12-05)
+----
+
+## v2.1.2 (2022-01-15)
+
+- Added flags to supported languages table in README.md file.
+
+----
+
+## v2.1.1 (2021-12-05)
 
 - Added support for PHP 8.1
 
