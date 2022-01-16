@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Serhii\Ago;
 
+use Carbon\CarbonImmutable;
 use Serhii\Ago\Exceptions\MissingRuleException;
 
 final class TimeAgo
@@ -20,7 +21,6 @@ final class TimeAgo
 
     private function __construct()
     {
-        //
     }
 
     public static function singleton(): self
@@ -47,19 +47,21 @@ final class TimeAgo
             $options = [$options];
         }
 
-        return self::singleton()->handle(DateConverter::convertDateIntoTimestamp($date), $options);
+        return self::singleton()->handle(CarbonImmutable::parse($date), $options);
     }
 
     /**
-     * @param int $date The timestamp
+     * @param \Carbon\CarbonImmutable $date The timestamp
      * @param int[]|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    private function handle(int $date, ?array $options = []): string
+    private function handle(CarbonImmutable $date, ?array $options = []): string
     {
         $this->options = $options ?? [];
+
+        $date = $date->timestamp;
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
             ? $date - \time()

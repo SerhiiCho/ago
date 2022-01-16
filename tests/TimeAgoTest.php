@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use DateTimeInterface;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
@@ -94,6 +95,29 @@ class TimeAgoTest extends TestCase
             [CarbonImmutable::now()->subMonths(4)->toDateTime(), '4 months ago'],
             [CarbonImmutable::now()->subYears(20)->toDateTimeImmutable(), '20 years ago'],
             [CarbonImmutable::now()->subMinutes(5)->toDateTime(), '5 minutes ago'],
+        ];
+    }
+
+    /**
+     * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_Carbon_object
+     * @test
+     */
+    public function trans_method_returns_correct_result_after_passing_a_Carbon_object(
+        CarbonInterface $timestamp,
+        string $expect
+    ): void
+    {
+        $this->assertSame($expect, TimeAgo::trans($timestamp));
+    }
+
+    public function provider_for_trans_method_returns_correct_result_after_passing_a_Carbon_object(): array
+    {
+        return [
+            [CarbonImmutable::now()->subDays(4), '4 days ago'],
+            [CarbonImmutable::now()->subMonths(3), '3 months ago'],
+            [CarbonImmutable::now()->subMonths(5), '5 months ago'],
+            [CarbonImmutable::now()->subYears(21), '21 years ago'],
+            [CarbonImmutable::now()->subMinutes(6), '6 minutes ago'],
         ];
     }
 }
