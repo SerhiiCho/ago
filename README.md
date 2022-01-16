@@ -100,8 +100,8 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | --- | --- |
 | Option::ONLINE | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
 | Option::NO_SUFFIX | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| Option::UPCOMING | Without this option passed time will be subtracted from current time, but with this option it will take given time and subtract current time. It is useful if you need to display a counter for some date in future. |
-| Option::UPPER | Set output to uppercase. |
+| Option::UPCOMING | This option reverts the output and calculates period not from the past date but to future date. It is useful when you need to display a counter for some date in the future. If you pass a date that is 2 months in the future, the output will be `2 months`. |
+| Option::UPPER | Set the output to uppercase. |
 
 ## Quick Start
 
