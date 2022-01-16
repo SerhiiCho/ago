@@ -125,10 +125,23 @@ class TimeAgoTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function trans_method_throws_exception_if_input_has_incorrect_string(): void
+    /**
+     * @dataProvider provider_for_trans_method_throws_exception_if_input_has_incorrect_string
+     * @test
+     */
+    public function trans_method_throws_exception_if_input_has_incorrect_string(string $input): void
     {
         $this->expectException(InvalidDateFormatException::class);
-        TimeAgo::trans('sfdafsd');
+        TimeAgo::trans($input);
+    }
+
+    public function provider_for_trans_method_throws_exception_if_input_has_incorrect_string(): array
+    {
+        return [
+            ['sfdafsd'],
+            ['safjldkfj'],
+            ['afjdsalkfjdsklfj'],
+            ['__'],
+        ];
     }
 }
