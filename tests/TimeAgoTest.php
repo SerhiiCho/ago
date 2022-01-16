@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Serhii\Tests;
 
+use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
 use Serhii\Ago\TimeAgo;
@@ -50,5 +51,23 @@ class TimeAgoTest extends TestCase
     {
         $this->expectExceptionMessage("Provided rules don't apply to a number -1");
         call_private_method(TimeAgo::singleton(), 'getLanguageForm', -1);
+    }
+
+    /**
+     * @dataProvider provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found
+     * @test
+     */
+    public function trans_method_returns_correct_result_after_passing_a_timestamp(int $timestamp, string $expect): void
+    {
+        $this->assertSame($expect, TimeAgo::trans($timestamp));
+    }
+
+    public function provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found(): array
+    {
+        return [
+            [CarbonImmutable::now()->subDay()->timestamp, '1 day ago'],
+            [CarbonImmutable::now()->subMonths(5)->timestamp, '5 months ago'],
+            [CarbonImmutable::now()->subYears(30)->timestamp, '30 years ago'],
+        ];
     }
 }

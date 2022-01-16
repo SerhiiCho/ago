@@ -34,35 +34,44 @@ final class TimeAgo
     /**
      * Takes date string and returns converted date
      *
-     * @param string $date
+     * @param string|int $date
      * @param int[]|int|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    public static function trans(string $date, $options = []): string
+    public static function trans($date, $options = []): string
     {
         if (\is_int($options)) {
             $options = [$options];
         }
 
-        return self::singleton()->handle($date, $options);
+        /** @var int|null $input */
+        $input = null;
+
+        if (is_string($date)) {
+            $input = \strtotime($date);
+        } else {
+            $input = $date;
+        }
+
+        return self::singleton()->handle($input, $options);
     }
 
     /**
-     * @param string $date
+     * @param int $date The timestamp
      * @param int[]|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    private function handle(string $date, ?array $options = []): string
+    private function handle(int $date, ?array $options = []): string
     {
         $this->options = $options ?? [];
 
         $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? \strtotime($date) - \time()
-            : \time() - \strtotime($date);
+            ? $date - \time()
+            : \time() - $date;
 
         $minutes = (int) \round($seconds / 60);
         $hours = (int) \round($seconds / 3600);
