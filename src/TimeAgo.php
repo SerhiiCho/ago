@@ -6,6 +6,7 @@ namespace Serhii\Ago;
 
 use Carbon\CarbonImmutable;
 use Serhii\Ago\Exceptions\MissingRuleException;
+use Serhii\Ago\Exceptions\WrongDateFormatException;
 
 final class TimeAgo
 {
@@ -34,7 +35,7 @@ final class TimeAgo
     /**
      * Takes date string and returns converted date
      *
-     * @param string|int|\DateTime|\DateTimeImmutable $date
+     * @param int|string|\DateTimeInterface|null $date
      * @param int[]|int|null $options
      *
      * @return string
@@ -47,25 +48,30 @@ final class TimeAgo
             $options = [$options];
         }
 
-        return self::singleton()->handle(CarbonImmutable::parse($date), $options);
+        /** @phpstan-ignore-next-line */
+        $timestamp = CarbonImmutable::parse($date)->timestamp;
+
+        if (!\is_int($timestamp)) {
+            throw new WrongDateFormatException("Cannot convert date to a timestamp");
+        }
+
+        return self::singleton()->handle($timestamp, $options);
     }
 
     /**
-     * @param \Carbon\CarbonImmutable $date The timestamp
+     * @param int $date_timestamp The timestamp
      * @param int[]|null $options
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      */
-    private function handle(CarbonImmutable $date, ?array $options = []): string
+    private function handle(int $date_timestamp, ?array $options = []): string
     {
         $this->options = $options ?? [];
 
-        $date = $date->timestamp;
-
         $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? $date - \time()
-            : \time() - $date;
+            ? $date_timestamp - \time()
+            : \time() - $date_timestamp;
 
         $minutes = (int) \round($seconds / 60);
         $hours = (int) \round($seconds / 3600);
