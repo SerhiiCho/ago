@@ -2,6 +2,12 @@
 
 ----
 
+## v2.2.1 (2022-01-16)
+
+- Fixed mistake in composer.json file with carbon library being as a dev dependency.
+
+----
+
 ## v2.2.0 (2022-01-16)
 
 - Added support for timestamps to `TimeAgo::trans()` method and not just strings.
