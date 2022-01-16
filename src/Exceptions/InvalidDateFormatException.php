@@ -6,7 +6,7 @@ namespace Serhii\Ago\Exceptions;
 
 use Exception;
 
-class WrongDateFormatException extends Exception
+class InvalidDateFormatException extends Exception
 {
     //
 }

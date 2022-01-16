@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Serhii\Ago;
 
 use Carbon\CarbonImmutable;
+use Carbon\Exceptions\InvalidFormatException;
+use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Exceptions\MissingRuleException;
-use Serhii\Ago\Exceptions\WrongDateFormatException;
 
 final class TimeAgo
 {
@@ -40,7 +41,7 @@ final class TimeAgo
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
-     * @throws \Serhii\Ago\Exceptions\WrongDateFormatException
+     * @throws \Serhii\Ago\Exceptions\InvalidDateFormatException
      */
     public static function trans($date, $options = []): string
     {
@@ -48,11 +49,14 @@ final class TimeAgo
             $options = [$options];
         }
 
-        /** @phpstan-ignore-next-line */
-        $timestamp = CarbonImmutable::parse($date)->timestamp;
-
-        if (!\is_int($timestamp)) {
-            throw new WrongDateFormatException("Cannot convert date to a timestamp");
+        try {
+            /**
+             * @phpstan-ignore-next-line
+             * @var int $timestamp
+             */
+            $timestamp = CarbonImmutable::parse($date)->timestamp;
+        } catch (InvalidFormatException $e) {
+            throw new InvalidDateFormatException($e->getMessage());
         }
 
         return self::singleton()->handle($timestamp, $options);

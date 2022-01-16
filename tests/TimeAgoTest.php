@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use DateTimeInterface;
 use PHPUnit\Framework\TestCase;
+use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\TimeAgo;
 
@@ -122,5 +123,12 @@ class TimeAgoTest extends TestCase
             [Carbon::now()->subMinutes(6), '6 minutes ago'],
             [Carbon::now()->subMonths(8), '8 months ago'],
         ];
+    }
+
+    /** @test */
+    public function trans_method_throws_exception_if_input_has_incorrect_string(): void
+    {
+        $this->expectException(InvalidDateFormatException::class);
+        TimeAgo::trans('sfdafsd');
     }
 }
