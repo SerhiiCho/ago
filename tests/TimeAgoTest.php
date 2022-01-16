@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Serhii\Tests;
 
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use DateTimeInterface;
@@ -115,9 +116,10 @@ class TimeAgoTest extends TestCase
         return [
             [CarbonImmutable::now()->subDays(4), '4 days ago'],
             [CarbonImmutable::now()->subMonths(3), '3 months ago'],
-            [CarbonImmutable::now()->subMonths(5), '5 months ago'],
+            [Carbon::now()->subMonths(5), '5 months ago'],
             [CarbonImmutable::now()->subYears(21), '21 years ago'],
-            [CarbonImmutable::now()->subMinutes(6), '6 minutes ago'],
+            [Carbon::now()->subMinutes(6), '6 minutes ago'],
+            [Carbon::now()->subMonths(8), '8 months ago'],
         ];
     }
 }
