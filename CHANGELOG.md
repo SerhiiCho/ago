@@ -5,6 +5,7 @@
 ## v2.1.3 (2022-01-16)
 
 - Added more info to README.md file about using second argument in Lang::set() method.
+- Improved performance of the program by caching included translations and reusing them.
 
 ----
 
