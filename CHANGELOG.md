@@ -6,6 +6,7 @@
 
 - Added support for timestamps to `TimeAgo::trans()` method and not just strings.
 - Added support for DateTime and DateTimeImmutable to `TimeAgo::trans()` method.
+- Added support for Carbon and CarbonImmutable to `TimeAgo::trans()` method.
 
 ----
 
