@@ -2,7 +2,13 @@
 
 ----
 
-## v2.1.2 (2022-01-15)
+## v2.1.3 (2022-01-16)
+
+- Added more info to README.md file about using second argument in Lang::set() method.
+
+----
+
+## v2.1.2 (2022-01-16)
 
 - Added flags to supported languages table in README.md file.
 - Added ability to overwrite translations. Closes issue [#20](https://github.com/SerhiiCho/ago/issues/20).
