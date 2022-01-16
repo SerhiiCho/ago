@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Serhii\Ago;
 
 use Serhii\Ago\Exceptions\MissingRuleException;
-use Serhii\Ago\Exceptions\WrongDateFormatException;
 
 final class TimeAgo
 {
@@ -35,7 +34,7 @@ final class TimeAgo
     /**
      * Takes date string and returns converted date
      *
-     * @param string|int $date
+     * @param string|int|\DateTime|\DateTimeImmutable $date
      * @param int[]|int|null $options
      *
      * @return string
@@ -48,28 +47,7 @@ final class TimeAgo
             $options = [$options];
         }
 
-        return self::singleton()->handle(self::convertDateIntoTimestamp($date), $options);
-    }
-
-    /**
-     * @param string|int $date
-     *
-     * @return int
-     * @throws \Serhii\Ago\Exceptions\WrongDateFormatException
-     */
-    private static function convertDateIntoTimestamp($date): int
-    {
-        if (\is_string($date)) {
-            $result = \strtotime($date);
-
-            if ($result === false) {
-                throw new WrongDateFormatException("Cannot convert string $date to a timestamp");
-            }
-
-            return $result;
-        }
-
-        return $date;
+        return self::singleton()->handle(DateConverter::convertDateIntoTimestamp($date), $options);
     }
 
     /**
