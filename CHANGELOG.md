@@ -4,9 +4,10 @@
 
 ----
 
-## v2.3.2 (2022-01-28)
+## v3.0.0 (2022-01-27)
 
 - Added banner image to a `README.md` file;
+- Removed option UPPER that convert number to uppercase. Because I don't want this package to depend on mb string extension;
 
 ----
 
