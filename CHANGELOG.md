@@ -4,6 +4,12 @@
 
 ----
 
+## v2.3.2 (2022-01-28)
+
+- Added banner image to a `README.md` file;
+
+----
+
 ## v2.3.1 (2022-01-27)
 
 - Added more information to `CONTRIBUTE.md` file;
