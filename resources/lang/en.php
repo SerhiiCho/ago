@@ -6,25 +6,18 @@ return [
 
     'ago' => 'ago',
     'online' => 'Online', // Uppercase first letter
-    // Seconds
     'second' => 'second',
     'seconds' => 'seconds',
-    // Minutes
     'minute' => 'minute',
     'minutes' => 'minutes',
-    // Hours
     'hour' => 'hour',
     'hours' => 'hours',
-    // Days
     'day' => 'day',
     'days' => 'days',
-    // Weeks
     'week' => 'week',
     'weeks' => 'weeks',
-    // Months
     'month' => 'month',
     'months' => 'months',
-    // Years
     'year' => 'year',
     'years' => 'years',
 
