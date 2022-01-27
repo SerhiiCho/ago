@@ -75,14 +75,17 @@ final class TimeAgo
 
         if ($this->optionIsSet(Option::UPCOMING)) {
             trigger_error(
-                'Option::UPCOMING is deprecated and will be removed in the next major version v3.0.0',
+                'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34',
                 E_USER_DEPRECATED
             );
         }
 
-        $seconds = $this->optionIsSet(Option::UPCOMING)
-            ? $date_timestamp - \time()
-            : \time() - $date_timestamp;
+        $seconds = \time() - $date_timestamp;
+
+        if ($seconds < 0) {
+            $seconds = $date_timestamp - \time();
+            $this->options[] = Option::UPCOMING;
+        }
 
         $minutes = (int) \round($seconds / 60);
         $hours = (int) \round($seconds / 3600);

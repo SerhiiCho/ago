@@ -2,6 +2,12 @@
 
 ----
 
+## v2.3.0 (2022-01-27)
+
+- Added deprecation notice when you try to use `TimeAgo::UPCOMING` option;
+
+----
+
 ## v2.2.1 (2022-01-16)
 
 - Fixed mistake in composer.json file with carbon library being as a dev dependency.

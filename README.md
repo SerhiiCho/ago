@@ -83,7 +83,13 @@ TimeAgo::trans((new \DateTime('now - 5 minutes'))); // output: 5 minutes ago
 TimeAgo::trans((new \DateTimeImmutable('now - 5 minutes'))); // output: 5 minutes ago
 ```
 
-It's very convenient, because you can pass almost any date format and it will give you the correct output.
+When you pass the date in the future, it will output the interval to this date. It's very convenient, because you can pass almost any date format and it will give you the correct output.
+
+```php
+TimeAgo::trans(time() + 86400); // output: 1 day
+TimeAgo::trans('now + 10 minutes'); // output: 10 minutes
+```
+
 
 > If you use version `< 2.2.0` then `TimeAgo::trans()` method except only type string.
 
@@ -109,7 +115,6 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | --- | --- |
 | Option::ONLINE | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
 | Option::NO_SUFFIX | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| Option::UPCOMING | This option reverts the output and calculates period not from the past date but to future date. It is useful when you need to display a counter for some date in the future. If you pass a date that is 2 months in the future, the output will be `2 months`. |
 | Option::UPPER | Set the output to uppercase. |
 
 ## Quick Start
