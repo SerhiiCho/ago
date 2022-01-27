@@ -73,6 +73,13 @@ final class TimeAgo
     {
         $this->options = $options ?? [];
 
+        if ($this->optionIsSet(Option::UPCOMING)) {
+            trigger_error(
+                'Option::UPCOMING is deprecated and will be removed in the next major version v3.0.0',
+                E_USER_DEPRECATED
+            );
+        }
+
         $seconds = $this->optionIsSet(Option::UPCOMING)
             ? $date_timestamp - \time()
             : \time() - $date_timestamp;
