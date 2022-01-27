@@ -1,3 +1,5 @@
+![Ago package](https://serhii.io/storage/other/ago.png)
+
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FSerhiiCho%2Fago%2Fbadge&style=flat)](https://actions-badge.atrox.dev/SerhiiCho/ago/goto)
 [![Latest Stable Version](https://poser.pugx.org/serhii/ago/v/stable)](https://packagist.org/packages/serhii/ago)
 [![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
@@ -105,7 +107,6 @@ use Serhii\Ago\TimeAgo;
 TimeAgo::trans('yesterday'); // output: 1 day ago
 TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
 TimeAgo::trans(time(), Option::ONLINE); // output: online
-TimeAgo::trans(time(), [Option::ONLINE, Option::UPPER]); // output: ONLINE
 ```
 
 #### Available options
@@ -116,7 +117,6 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | --- | --- |
 | Option::ONLINE | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. |
 | Option::NO_SUFFIX | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| Option::UPPER | Set the output to uppercase. |
 
 ## Quick Start
 
