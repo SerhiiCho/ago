@@ -4,7 +4,8 @@
 
 ## v2.3.0 (2022-01-27)
 
-- Added deprecation notice when you try to use `TimeAgo::UPCOMING` option;
+- Added deprecation notice when you try to use `Option::UPCOMING` option;
+- Closed [issue #34](vhttps://github.com/SerhiiCho/ago/issues/34). Changed `trans` method to except future dates and return correct result.
 
 ----
 
