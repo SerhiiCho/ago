@@ -1,4 +1,13 @@
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)
+
 # Release Notes
+
+----
+
+## v2.3.1 (2022-01-27)
+
+- Added more information to `CONTRIBUTE.md` file;
+- Added support for Dutch language;
 
 ----
 
@@ -83,3 +92,5 @@
 - Refactored the code.
 
 ----
+
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)

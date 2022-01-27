@@ -49,11 +49,12 @@ Serhii\Ago\Lang::set('ru');
 
 #### Supported languages
 
-| Flag | Language | Short representation |
+| Flag | Language | Code (ISO 639-1) |
 | --- | --- | --- |
 | 🇬🇧 | English | en |
 | 🇷🇺 | Russian | ru |
 | 🇺🇦 | Ukrainian | uk |
+| 🇳🇱 | Dutch | nl |
 
 ### Overwrite translations
 There are cases when you want to replace certain words with specific ones. You can do it with “Overwrites”. All you need to do is just to pass `array<string, string>` of values that you want to overwrite.
