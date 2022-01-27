@@ -2,6 +2,12 @@
 
 ----
 
+## v2.3.1 (2022-01-27)
+
+- Added more information to `CONTRIBUTE.md` file;
+
+----
+
 ## v2.3.0 (2022-01-27)
 
 - Added deprecation notice when you try to use `Option::UPCOMING` option;
