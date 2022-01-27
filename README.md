@@ -47,7 +47,7 @@ Serhii\Ago\Lang::set('ru');
 
 #### Supported languages
 
-| Flag | Language | Short representation |
+| Flag | Language | Code (ISO 639-1) |
 | --- | --- | --- |
 | 🇬🇧 | English | en |
 | 🇷🇺 | Russian | ru |
