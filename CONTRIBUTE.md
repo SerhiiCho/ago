@@ -1,3 +1,5 @@
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)
+
 # Contribute another language
 
 - [How to make a PR](#how-to-make-a-pr)
@@ -75,3 +77,5 @@ Tests for all translations are live in `tests/Translations` directory. Just copy
 ### 4 Step. Add 1 line to README.md file
 
 After all tests are passing, you need to do last step and add language support to README.md file to **Supported languages** section.
+
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)

@@ -1,3 +1,5 @@
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)
+
 # Release Notes
 
 ----
@@ -89,3 +91,5 @@
 - Refactored the code.
 
 ----
+
+[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)
