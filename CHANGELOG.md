@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.2 (2022-01-28)
+
+- Removed comment in code examples in `CONTRIBUTE.md` file;
+
+----
+
 ## v3.0.1 (2022-01-28)
 
 - Removed budge from `README.md` file that shows stable release;
