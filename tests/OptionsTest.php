@@ -14,39 +14,15 @@ use function SandFox\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
-    /**
-     * @dataProvider provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
-     * @test
-     *
-     * @param int $seconds
-     * @param string $lang
-     *
-     * @throws \Exception
-     */
-    public function returns_online_within_60_seconds_if_ONLINE_options_is_set(int $seconds, string $lang): void
+    /** @test */
+    public function returns_online_within_60_seconds_if_ONLINE_options_is_set(): void
     {
-        Lang::set($lang);
+        Lang::set('ru');
 
-        $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $time = TimeAgo::trans($date, Option::ONLINE);
-
-        $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time);
-    }
-
-    public function provider_returns_online_within_60_seconds_and_if_second_arg_is_passes(): array
-    {
-        return [
-            [1, 'en'],
-            [2, 'en'],
-            [30, 'en'],
-            [20, 'en'],
-            [58, 'en'],
-            [1, 'ru'],
-            [2, 'ru'],
-            [20, 'ru'],
-            [30, 'ru'],
-            [58, 'ru'],
-        ];
+        for ($i = 0; $i < 60; $i++) {
+            $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
+            $this->assertSame('В сети', TimeAgo::trans($date, Option::ONLINE));
+        }
     }
 
     /** @test */
