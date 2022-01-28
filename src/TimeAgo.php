@@ -97,6 +97,8 @@ final class TimeAgo
         switch (true) {
             case $this->optionIsSet(Option::ONLINE) && $seconds < 60:
                 return Lang::trans('online');
+            case $this->optionIsSet(Option::JUST_NOW) && $seconds < 60:
+                return Lang::trans('just_now');
             case $seconds < 60:
                 return $this->getWords('seconds', $seconds);
             case $minutes < 60:

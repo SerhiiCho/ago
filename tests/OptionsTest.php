@@ -21,7 +21,11 @@ class OptionsTest extends TestCase
 
         for ($i = 0; $i < 60; $i++) {
             $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
-            $this->assertSame('В сети', TimeAgo::trans($date, Option::ONLINE));
+
+            $res = TimeAgo::trans($date, Option::ONLINE);
+            $msg = "Expected 'В сети' but result is '$res' with input $date";
+
+            $this->assertSame('В сети', $res, $msg);
         }
     }
 
@@ -139,5 +143,20 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 месяц'],
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 год'],
         ];
+    }
+
+    /** @test */
+    public function returns_just_now_within_60_seconds_if_JUST_NOW_options_is_set(): void
+    {
+        Lang::set('en');
+
+        for ($i = 0; $i < 60; $i++) {
+            $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
+
+            $res = TimeAgo::trans($date, Option::JUST_NOW);
+            $msg = "Expected 'Just now' but result is '$res' with input $date";
+
+            $this->assertSame('Just now', $res, $msg);
+        }
     }
 }
