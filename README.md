@@ -103,9 +103,10 @@ As the seconds argument `trans` method excepts array of options or single option
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
 
-TimeAgo::trans('yesterday'); // output: 1 day ago
-TimeAgo::trans('yesterday', Option::NO_SUFFIX); // output: 1 day
-TimeAgo::trans(time(), Option::ONLINE); // output: online
+TimeAgo::trans('yesterday'); // 1 day ago
+TimeAgo::trans('yesterday', Option::NO_SUFFIX); // 1 day
+TimeAgo::trans(time(), Option::ONLINE); // Online
+TimeAgo::trans(time(), Option::JUST_NOW); // Just now
 ```
 
 #### Available options
