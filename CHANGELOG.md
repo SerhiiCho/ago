@@ -4,7 +4,7 @@
 
 ----
 
-## v3.0.1 (2022-01-27)
+## v3.0.1 (2022-01-28)
 
 - Removed budge from `README.md` file that shows stable release;
 
