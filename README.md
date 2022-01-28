@@ -116,7 +116,7 @@ All options are available in `Serhii\Ago\Option::class` as constants.
 | --- | --- |
 | ONLINE | Display "Online" if date interval within 60 seconds. After 60 seconds output will be the same as usually "x time ago" format. Incompatible with option `JUST_NOW` |
 | NO_SUFFIX | Remove suffix from date and have "5 minutes" instead of "5 minutes ago". |
-| JUST_NOW | Prints `Just now` when time is within 1 minutes. For example instead of `34 seconds ago` it will print `Just know`. Incompatible with option `ONLINE`. |
+| JUST_NOW | Prints `Just now` when time is within 1 minutes. For example instead of `34 seconds ago` it will print `Just now`. Incompatible with option `ONLINE`. |
 
 ## Quick Start
 

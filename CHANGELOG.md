@@ -7,6 +7,7 @@
 ## v3.0.2 (2022-01-28)
 
 - Removed comment in code examples in `CONTRIBUTE.md` file;
+- Typo in `README.md` file;
 
 ----
 
