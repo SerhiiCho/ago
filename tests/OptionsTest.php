@@ -6,6 +6,7 @@ namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
+use Serhii\Ago\Exceptions\InvalidOptionsException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
@@ -14,39 +15,19 @@ use function SandFox\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
-    /**
-     * @dataProvider provider_returns_online_within_60_seconds_and_if_second_arg_is_passes
-     * @test
-     *
-     * @param int $seconds
-     * @param string $lang
-     *
-     * @throws \Exception
-     */
-    public function returns_online_within_60_seconds_if_ONLINE_options_is_set(int $seconds, string $lang): void
+    /** @test */
+    public function returns_online_within_60_seconds_if_ONLINE_options_is_set(): void
     {
-        Lang::set($lang);
+        Lang::set('ru');
 
-        $date = CarbonImmutable::now()->subSeconds($seconds)->toDateTimeString();
-        $time = TimeAgo::trans($date, Option::ONLINE);
+        for ($i = 0; $i < 60; $i++) {
+            $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
 
-        $this->assertSame($lang === 'ru' ? 'В сети' : 'Online', $time);
-    }
+            $res = TimeAgo::trans($date, Option::ONLINE);
+            $msg = "Expected 'В сети' but result is '$res' with input $date";
 
-    public function provider_returns_online_within_60_seconds_and_if_second_arg_is_passes(): array
-    {
-        return [
-            [1, 'en'],
-            [2, 'en'],
-            [30, 'en'],
-            [20, 'en'],
-            [58, 'en'],
-            [1, 'ru'],
-            [2, 'ru'],
-            [20, 'ru'],
-            [30, 'ru'],
-            [58, 'ru'],
-        ];
+            $this->assertSame('В сети', $res, $msg);
+        }
     }
 
     /** @test */
@@ -163,5 +144,29 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 месяц'],
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 год'],
         ];
+    }
+
+    /** @test */
+    public function returns_just_now_within_60_seconds_if_JUST_NOW_options_is_set(): void
+    {
+        Lang::set('en');
+
+        for ($i = 0; $i < 60; $i++) {
+            $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
+
+            $res = TimeAgo::trans($date, Option::JUST_NOW);
+            $msg = "Expected 'Just now' but result is '$res' with input $date";
+
+            $this->assertSame('Just now', $res, $msg);
+        }
+    }
+
+    /** @test */
+    public function exception_is_thrown_if_option_online_and_option_just_now_are_passed_at_the_same_time(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        $date = strtotime('now - 10 minutes');
+        TimeAgo::trans($date, [Option::ONLINE, Option::JUST_NOW]);
     }
 }

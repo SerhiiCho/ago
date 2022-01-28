@@ -5,7 +5,8 @@ declare(strict_types=1);
 return [
 
     'ago' => 'назад',
-    'online' => 'В сети', // Uppercase first letter
+    'just_now' => 'Только что',
+    'online' => 'В сети',
     'second' => 'секунда',
     'seconds' => 'секунды',
     'seconds-special' => 'секунд',

@@ -4,6 +4,14 @@
 
 ----
 
+## v3.0.1 (2022-01-28)
+
+- Removed budge from `README.md` file that shows stable release;
+- Added `Option::JUST_NOW` option that print `Just now` if time is within 1 minute;
+- Added throwing `InvalidOptionsException` when you pass `JUST_NOW` and `ONLINE` options at the same time;
+
+----
+
 ## v3.0.0 (2022-01-27)
 
 - Added banner image to a `README.md` file;

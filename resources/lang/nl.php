@@ -5,7 +5,8 @@ declare(strict_types=1);
 return [
 
     'ago' => 'geleden',
-    'online' => 'Online', // Uppercase first letter
+    'just_now' => 'Net nu',
+    'online' => 'Online',
     'second' => 'seconde',
     'seconds' => 'seconden',
     'minute' => 'minuut',
