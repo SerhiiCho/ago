@@ -6,6 +6,7 @@ namespace Serhii\Tests;
 
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
+use Serhii\Ago\Exceptions\InvalidOptionsException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
@@ -158,5 +159,14 @@ class OptionsTest extends TestCase
 
             $this->assertSame('Just now', $res, $msg);
         }
+    }
+
+    /** @test */
+    public function exception_is_thrown_if_option_online_and_option_just_now_are_passed_at_the_same_time(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        $date = strtotime('now - 10 minutes');
+        TimeAgo::trans($date, [Option::ONLINE, Option::JUST_NOW]);
     }
 }

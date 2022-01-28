@@ -8,6 +8,7 @@
 
 - Removed budge from `README.md` file that shows stable release;
 - Added `Option::JUST_NOW` option that print `Just now` if time is within 1 minute;
+- Added throwing `InvalidOptionsException` when you pass `JUST_NOW` and `ONLINE` options at the same time;
 
 ----
 

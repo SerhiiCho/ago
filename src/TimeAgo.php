@@ -7,6 +7,7 @@ namespace Serhii\Ago;
 use Carbon\CarbonImmutable;
 use Carbon\Exceptions\InvalidFormatException;
 use Serhii\Ago\Exceptions\InvalidDateFormatException;
+use Serhii\Ago\Exceptions\InvalidOptionsException;
 use Serhii\Ago\Exceptions\MissingRuleException;
 
 final class TimeAgo
@@ -42,6 +43,7 @@ final class TimeAgo
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
      * @throws \Serhii\Ago\Exceptions\InvalidDateFormatException
+     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
      */
     public static function trans($date, $options = []): string
     {
@@ -50,11 +52,8 @@ final class TimeAgo
         }
 
         try {
-            /**
-             * @phpstan-ignore-next-line
-             * @var int $timestamp
-             */
-            $timestamp = CarbonImmutable::parse($date)->timestamp;
+            /** @phpstan-ignore-next-line */
+            $timestamp = (int) CarbonImmutable::parse($date)->timestamp;
         } catch (InvalidFormatException $e) {
             throw new InvalidDateFormatException($e->getMessage());
         }
@@ -68,17 +67,13 @@ final class TimeAgo
      *
      * @return string
      * @throws \Serhii\Ago\Exceptions\MissingRuleException
+     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
      */
     private function handle(int $date_timestamp, ?array $options = []): string
     {
         $this->options = $options ?? [];
 
-        if ($this->optionIsSet(Option::UPCOMING)) {
-            trigger_error(
-                'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34',
-                E_USER_DEPRECATED
-            );
-        }
+        $this->validateOptions();
 
         $seconds = \time() - $date_timestamp;
 
@@ -173,5 +168,22 @@ final class TimeAgo
         }
 
         throw new MissingRuleException("Provided rules don't apply to a number $number");
+    }
+
+    /**
+     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
+     */
+    private function validateOptions(): void
+    {
+        if ($this->optionIsSet(Option::UPCOMING)) {
+            \trigger_error(
+                'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34',
+                E_USER_DEPRECATED
+            );
+        }
+
+        if ($this->optionIsSet(Option::JUST_NOW) && $this->optionIsSet(Option::ONLINE)) {
+            throw new InvalidOptionsException('Option JUST_NOW and ONLINE are incompatible. Use only one of them');
+        }
     }
 }
