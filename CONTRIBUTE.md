@@ -23,12 +23,11 @@ Translation files live in `resources/trans` directory. Here is the example of th
 ```php
 return [
     'ago' => 'назад',
+    'just_now' => 'Только что',
     'online' => 'В сети',
-    // Seconds
     'second' => 'секунда',
     'seconds' => 'секунды',
     'seconds-special' => 'секунд',
-    // Minutes
     'minute' => 'минута',
     'minutes' => 'минуты',
     'minutes-special' => 'минут',
