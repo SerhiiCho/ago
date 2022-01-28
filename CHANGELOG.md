@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.1 (2022-01-27)
+
+- Removed budge from `README.md` file that shows stable release;
+
+----
+
 ## v3.0.0 (2022-01-27)
 
 - Added banner image to a `README.md` file;
