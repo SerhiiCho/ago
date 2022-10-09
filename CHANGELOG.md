@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.3 (2022-10-09)
+
+- Code refactoring. Making everything look nicer;
+
+----
+
 ## v3.0.2 (2022-01-28)
 
 - Removed comment in code examples in `CONTRIBUTE.md` file;

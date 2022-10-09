@@ -6,6 +6,7 @@ namespace Serhii\Ago;
 
 use Carbon\CarbonImmutable;
 use Carbon\Exceptions\InvalidFormatException;
+use DateTimeInterface;
 use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Exceptions\InvalidOptionsException;
 use Serhii\Ago\Exceptions\MissingRuleException;
@@ -37,13 +38,13 @@ final class TimeAgo
     /**
      * Takes date string and returns converted date
      *
-     * @param int|string|\DateTimeInterface|null $date
+     * @param int|string|DateTimeInterface|null $date
      * @param int[]|int|null $options
      *
      * @return string
-     * @throws \Serhii\Ago\Exceptions\MissingRuleException
-     * @throws \Serhii\Ago\Exceptions\InvalidDateFormatException
-     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
+     * @throws MissingRuleException
+     * @throws InvalidDateFormatException
+     * @throws InvalidOptionsException
      */
     public static function trans($date, $options = []): string
     {
@@ -66,8 +67,8 @@ final class TimeAgo
      * @param int[]|null $options
      *
      * @return string
-     * @throws \Serhii\Ago\Exceptions\MissingRuleException
-     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
+     * @throws MissingRuleException
+     * @throws InvalidOptionsException
      */
     private function handle(int $date_timestamp, ?array $options = []): string
     {
@@ -121,7 +122,7 @@ final class TimeAgo
      * @param int $number
      *
      * @return string
-     * @throws \Serhii\Ago\Exceptions\MissingRuleException
+     * @throws MissingRuleException
      */
     private function getWords(string $type, int $number): string
     {
@@ -143,7 +144,7 @@ final class TimeAgo
      * @param int $number
      *
      * @return string
-     * @throws \Serhii\Ago\Exceptions\MissingRuleException
+     * @throws MissingRuleException
      */
     private function getLanguageForm(int $number): string
     {
@@ -171,7 +172,7 @@ final class TimeAgo
     }
 
     /**
-     * @throws \Serhii\Ago\Exceptions\InvalidOptionsException
+     * @throws InvalidOptionsException
      */
     private function validateOptions(): void
     {
