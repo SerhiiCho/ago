@@ -159,12 +159,8 @@ final class TimeAgo
                 return $form_name;
             }
 
-            if (\is_array($rules)) {
-                foreach ($rules as $rule_is_passing) {
-                    if ($rule_is_passing) {
-                        return $form_name;
-                    }
-                }
+            if (\is_array($rules) && in_array(true, $rules, true)) {
+                return $form_name;
             }
         }
 
