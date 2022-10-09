@@ -32,7 +32,7 @@ final class TimeAgo
         Lang::includeTranslations();
         Lang::includeRules();
 
-        return static::$instance ?? (static::$instance = new static());
+        return self::$instance ?? (self::$instance = new self());
     }
 
     /**
@@ -190,7 +190,7 @@ final class TimeAgo
      */
     private function ruleIsArrayWithTrueItem($rules): bool
     {
-        return \is_array($rules) && in_array(true, $rules, true);
+        return \is_array($rules) && \in_array(true, $rules, true);
     }
 
     /**
@@ -199,10 +199,8 @@ final class TimeAgo
     private function validateOptions(): void
     {
         if ($this->optionIsSet(Option::UPCOMING)) {
-            \trigger_error(
-                'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34',
-                E_USER_DEPRECATED
-            );
+            $msg = 'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34';
+            \trigger_error($msg, E_USER_DEPRECATED);
         }
 
         if ($this->optionIsSet(Option::JUST_NOW) && $this->optionIsSet(Option::ONLINE)) {
