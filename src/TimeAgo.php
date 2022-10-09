@@ -155,16 +155,42 @@ final class TimeAgo
          * @var bool|bool[] $rules
          */
         foreach (Lang::getRules($number, $last_digit) as $form_name => $rules) {
-            if (\is_bool($rules) && $rules) {
-                return $form_name;
-            }
-
-            if (\is_array($rules) && in_array(true, $rules, true)) {
+            if ($this->ruleIsTrue($rules)) {
                 return $form_name;
             }
         }
 
         throw new MissingRuleException("Provided rules don't apply to a number $number");
+    }
+
+    /**
+     * @param bool[]|bool $rules
+     *
+     * @return bool
+     */
+    private function ruleIsTrue($rules): bool
+    {
+        return $this->ruleIsBooleanTrue($rules) || $this->ruleIsArrayWithTrueItem($rules);
+    }
+
+    /**
+     * @param bool[]|bool $rules
+     *
+     * @return bool
+     */
+    private function ruleIsBooleanTrue($rules): bool
+    {
+        return \is_bool($rules) && $rules;
+    }
+
+    /**
+     * @param bool[]|bool $rules
+     *
+     * @return bool
+     */
+    private function ruleIsArrayWithTrueItem($rules): bool
+    {
+        return \is_array($rules) && in_array(true, $rules, true);
     }
 
     /**
