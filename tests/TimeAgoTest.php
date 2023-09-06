@@ -13,23 +13,27 @@ use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\TimeAgo;
 
+use DateTime;
+use DateTimeImmutable;
+use Exception;
+
 use function SandFox\Debug\call_private_method;
 
 class TimeAgoTest extends TestCase
 {
     /**
      * @dataProvider provider_for_getLanguageForm_returns_correct_form
-     * @test
+     *
      *
      * @param int $number
      * @param string $expect
      * @param string $lang
      */
-    public function getLanguageForm_returns_correct_form(int $number, string $expect, string $lang): void
+    public function testGetLanguageFormReturnsCorrectForm(int $number, string $expect, string $lang): void
     {
         Lang::set($lang);
         $result = call_private_method(TimeAgo::singleton(), 'getLanguageForm', $number);
-        $this->assertSame($expect, $result, "Number $number has to be $expect, $result given");
+        $this->assertSame($expect, $result, "Number {$number} has to be {$expect}, {$result} given");
     }
 
     public function provider_for_getLanguageForm_returns_correct_form(): array
@@ -50,8 +54,8 @@ class TimeAgoTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function getLanguageForm_throws_exception_if_form_has_not_been_found(): void
+
+    public function testGetLanguageFormThrowsExceptionIfFormHasNotBeenFound(): void
     {
         $this->expectExceptionMessage("Provided rules don't apply to a number -1");
         call_private_method(TimeAgo::singleton(), 'getLanguageForm', -1);
@@ -59,9 +63,9 @@ class TimeAgoTest extends TestCase
 
     /**
      * @dataProvider provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found
-     * @test
+     *
      */
-    public function trans_method_returns_correct_result_after_passing_a_timestamp(int $timestamp, string $expect): void
+    public function testTransMethodReturnsCorrectResultAfterPassingATimestamp(int $timestamp, string $expect): void
     {
         $this->assertSame($expect, TimeAgo::trans($timestamp));
     }
@@ -80,9 +84,9 @@ class TimeAgoTest extends TestCase
 
     /**
      * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object
-     * @test
+     *
      */
-    public function trans_method_returns_correct_result_after_passing_a_DateTime_object(
+    public function testTransMethodReturnsCorrectResultAfterPassingADateTimeObject(
         DateTimeInterface $timestamp,
         string $expect
     ): void {
@@ -92,19 +96,19 @@ class TimeAgoTest extends TestCase
     public function provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object(): array
     {
         return [
-            [(new \DateTimeImmutable('now - 3 days')), '3 days ago'],
-            [(new \DateTimeImmutable('now - 2 weeks')), '2 weeks ago'],
-            [(new \DateTime('now - 4 months')), '4 months ago'],
-            [(new \DateTime('now - 20 years')), '20 years ago'],
-            [(new \DateTimeImmutable('now - 5 minutes')), '5 minutes ago'],
+            [(new DateTimeImmutable('now - 3 days')), '3 days ago'],
+            [(new DateTimeImmutable('now - 2 weeks')), '2 weeks ago'],
+            [(new DateTime('now - 4 months')), '4 months ago'],
+            [(new DateTime('now - 20 years')), '20 years ago'],
+            [(new DateTimeImmutable('now - 5 minutes')), '5 minutes ago'],
         ];
     }
 
     /**
      * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_Carbon_object
-     * @test
+     *
      */
-    public function trans_method_returns_correct_result_after_passing_a_Carbon_object(
+    public function testTransMethodReturnsCorrectResultAfterPassingACarbonObject(
         CarbonInterface $timestamp,
         string $expect
     ): void {
@@ -125,9 +129,9 @@ class TimeAgoTest extends TestCase
 
     /**
      * @dataProvider provider_for_trans_method_throws_exception_if_input_has_incorrect_string
-     * @test
+     *
      */
-    public function trans_method_throws_exception_if_input_has_incorrect_string(string $input): void
+    public function testTransMethodThrowsExceptionIfInputHasIncorrectString(string $input): void
     {
         $this->expectException(InvalidDateFormatException::class);
         TimeAgo::trans($input);
@@ -145,15 +149,15 @@ class TimeAgoTest extends TestCase
 
     /**
      * @dataProvider provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
-     * @test
+     *
      *
      * @param string $date
      * @param string $lang
      * @param string $result
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function trans_method_returns_times_left_for_a_date_in_future(
+    public function testTransMethodReturnsTimesLeftForADateInFuture(
         string $date,
         string $lang,
         string $result

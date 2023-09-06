@@ -8,6 +8,7 @@ use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Lang;
 use Serhii\Ago\TimeAgo;
+use Exception;
 
 class UkrainianTest extends TestCase
 {
@@ -15,15 +16,15 @@ class UkrainianTest extends TestCase
 
     /**
      * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
-     * @test
+     *
      *
      * @param string $method
      * @param int $time
      * @param string $output_expected
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function returns_correct_time_from_one_minute_and_above(string $method, int $time, string $output_expected): void
+    public function testReturnsCorrectTimeFromOneMinuteAndAbove(string $method, int $time, string $output_expected): void
     {
         Lang::set($this->language);
         $date = CarbonImmutable::now()->{$method}($time)->toDateTimeString();
@@ -93,14 +94,14 @@ class UkrainianTest extends TestCase
 
     /**
      * @dataProvider provider_for_returns_correct_date_from_0_seconds_to_59_seconds
-     * @test
+     *
      *
      * @param int $seconds
      * @param array $expect
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function returns_correct_date_from_0_seconds_to_59_seconds(int $seconds, array $expect): void
+    public function testReturnsCorrectDateFrom0SecondsTo59Seconds(int $seconds, array $expect): void
     {
         Lang::set($this->language);
 

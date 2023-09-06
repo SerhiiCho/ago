@@ -14,8 +14,7 @@ use function SandFox\Debug\call_private_method;
 
 class LangTest extends TestCase
 {
-    /** @test */
-    public function getLanguageSlugs_returns_list_of_all_languages(): void
+    public function testGetLanguageSlugsReturnsListOfAllLanguages(): void
     {
         $res = call_private_method(Lang::class, 'getLanguagesSlugs');
 
@@ -24,15 +23,15 @@ class LangTest extends TestCase
         $this->assertContains('uk', $res);
     }
 
-    /** @test */
-    public function set_method_is_not_overwriting_when_empty_array_is_passed(): void
+
+    public function testSetMethodIsNotOverwritingWhenEmptyArrayIsPassed(): void
     {
         Lang::set('en', []);
         $this->assertSame('Online', TimeAgo::trans('now', [Option::ONLINE]));
     }
 
-    /** @test */
-    public function set_method_can_overwrite_one_translation_field(): void
+
+    public function testSetMethodCanOverwriteOneTranslationField(): void
     {
         $expect_str = 'I am here';
 
@@ -41,8 +40,8 @@ class LangTest extends TestCase
         $this->assertSame($expect_str, TimeAgo::trans('now', [Option::ONLINE]));
     }
 
-    /** @test */
-    public function set_method_can_overwrite_four_translation_field(): void
+
+    public function testSetMethodCanOverwriteFourTranslationField(): void
     {
         Lang::set('en', [
             'minutes' => 'MiNuTeS',
@@ -58,8 +57,8 @@ class LangTest extends TestCase
         $this->assertSame('1 YeaR AgO', TimeAgo::trans($now->subYear()->toDateTimeString()));
     }
 
-    /** @test */
-    public function set_method_can_overwrite_multiple_languages(): void
+
+    public function testSetMethodCanOverwriteMultipleLanguages(): void
     {
         $now = CarbonImmutable::now();
 
