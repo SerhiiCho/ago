@@ -11,12 +11,13 @@ use Serhii\Ago\Lang;
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
 
+use Exception;
+
 use function SandFox\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
-    /** @test */
-    public function returns_online_within_60_seconds_if_ONLINE_options_is_set(): void
+    public function testReturnsOnlineWithin60SecondsIfONLINEOptionsIsSet(): void
     {
         Lang::set('ru');
 
@@ -24,22 +25,22 @@ class OptionsTest extends TestCase
             $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
 
             $res = TimeAgo::trans($date, Option::ONLINE);
-            $msg = "Expected 'В сети' but result is '$res' with input $date";
+            $msg = "Expected 'В сети' but result is '{$res}' with input {$date}";
 
             $this->assertSame('В сети', $res, $msg);
         }
     }
 
-    /** @test */
-    public function optionIsSet_returns_false_if_provided_options_was_not_passed_to_trans_method(): void
+
+    public function testOptionIsSetReturnsFalseIfProvidedOptionsWasNotPassedToTransMethod(): void
     {
         TimeAgo::trans(CarbonImmutable::now()->toDateTimeString());
         $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
         $this->assertFalse($result);
     }
 
-    /** @test */
-    public function optionIsSet_returns_true_if_provided_options_was_passed_to_trans_method(): void
+
+    public function testOptionIsSetReturnsTrueIfProvidedOptionsWasPassedToTransMethod(): void
     {
         TimeAgo::trans(CarbonImmutable::now()->toDateTimeString(), Option::ONLINE);
         $result = call_private_method(TimeAgo::singleton(), 'optionIsSet', Option::ONLINE);
@@ -47,16 +48,16 @@ class OptionsTest extends TestCase
     }
 
     /**
-     * @test
+     *
      * @dataProvider provider_for_returns_time_without_suffix_if_flag_is_passes
      *
      * @param string $lang
      * @param string $time
      * @param string $expect
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function returns_time_without_suffix_if_option_is_passes(string $lang, string $time, string $expect): void
+    public function testReturnsTimeWithoutSuffixIfOptionIsPasses(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
@@ -77,16 +78,16 @@ class OptionsTest extends TestCase
     }
 
     /**
-     * @test
+     *
      * @dataProvider provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
      *
      * @param string $lang
      * @param string $time
      * @param string $expect
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function returns_time_without_suffix_and_with_online_if_2_options_is_passes(string $lang, string $time, string $expect): void
+    public function testReturnsTimeWithoutSuffixAndWithOnlineIf2OptionsIsPasses(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
@@ -112,16 +113,16 @@ class OptionsTest extends TestCase
     }
 
     /**
-     * @test
+     *
      * @dataProvider provider_for_returns_time_converter_with_2_options
      *
      * @param string $lang
      * @param string $time
      * @param string $expect
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    public function returns_time_converter_with_2_options(string $lang, string $time, string $expect): void
+    public function testReturnsTimeConverterWith2Options(string $lang, string $time, string $expect): void
     {
         Lang::set($lang);
         $result = TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]);
@@ -146,8 +147,8 @@ class OptionsTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function returns_just_now_within_60_seconds_if_JUST_NOW_options_is_set(): void
+
+    public function testReturnsJustNowWithin60SecondsIfJUSTNOWOptionsIsSet(): void
     {
         Lang::set('en');
 
@@ -155,14 +156,14 @@ class OptionsTest extends TestCase
             $date = CarbonImmutable::now()->subSeconds($i)->toDateTimeString();
 
             $res = TimeAgo::trans($date, Option::JUST_NOW);
-            $msg = "Expected 'Just now' but result is '$res' with input $date";
+            $msg = "Expected 'Just now' but result is '{$res}' with input {$date}";
 
             $this->assertSame('Just now', $res, $msg);
         }
     }
 
-    /** @test */
-    public function exception_is_thrown_if_option_online_and_option_just_now_are_passed_at_the_same_time(): void
+
+    public function testExceptionIsThrownIfOptionOnlineAndOptionJustNowArePassedAtTheSameTime(): void
     {
         $this->expectException(InvalidOptionsException::class);
 

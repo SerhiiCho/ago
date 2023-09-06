@@ -4,6 +4,13 @@
 
 ----
 
+## v3.0.4 (2023-09-06)
+
+- Added support for PHP 8.2
+- Connected Pint package to the project
+
+----
+
 ## v3.0.3 (2022-10-09)
 
 - Code refactoring. Making everything look nicer;
