@@ -134,10 +134,10 @@ final class TimeAgo
         $ago = Lang::trans('ago');
 
         if ($this->optionIsSet(Option::NO_SUFFIX) || $this->optionIsSet(Option::UPCOMING)) {
-            return "$number $translation";
+            return "{$number} {$translation}";
         }
 
-        return "$number $translation $ago";
+        return "{$number} {$translation} {$ago}";
     }
 
     /**
@@ -160,7 +160,7 @@ final class TimeAgo
             }
         }
 
-        throw new MissingRuleException("Provided rules don't apply to a number $number");
+        throw new MissingRuleException("Provided rules don't apply to a number {$number}");
     }
 
     /**
