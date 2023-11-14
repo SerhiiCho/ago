@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.5 (2023-11-14)
+
+- Added support for PHP 8.3
+
+----
+
 ## v3.0.4 (2023-09-06)
 
 - Added support for PHP 8.2
