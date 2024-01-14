@@ -2,6 +2,10 @@
 
 # Release Notes
 
+## v3.0.6 (2024-01-14)
+
+- Removed badge from readme.md file
+
 ----
 
 ## v3.0.5 (2023-11-14)
