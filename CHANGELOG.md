@@ -2,6 +2,11 @@
 
 # Release Notes
 
+## v3.0.6 (2024-01-22)
+
+- Removed badge from readme.md file
+- Add description to each case in `Option` enum
+
 ----
 
 ## v3.0.5 (2023-11-14)
