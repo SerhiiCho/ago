@@ -26,13 +26,13 @@
     },
     "require": {
         "php": "^7.1|^8.0",
-        "nesbot/carbon": "^2.2"
+        "nesbot/carbon": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
         "symfony/var-dumper": "^4.2",
-        "sandfoxme/private-access": "dev-master",
-        "phpstan/phpstan": "0.12.x-dev",
+        "arokettu/private-access": "^3.0.0",
+        "phpstan/phpstan": "^1.10.57",
         "squizlabs/php_codesniffer": "^4.0",
         "laravel/pint": "dev-main"
     }
