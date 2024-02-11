@@ -53,7 +53,6 @@ final class TimeAgo
         }
 
         try {
-            /** @phpstan-ignore-next-line */
             $timestamp = (int) CarbonImmutable::parse($date)->timestamp;
         } catch (InvalidFormatException $e) {
             throw new InvalidDateFormatException($e->getMessage());

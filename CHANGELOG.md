@@ -1,6 +1,12 @@
-[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)
-
 # Release Notes
+
+## v3.1.0 (2024-02-11)
+
+- Updated `nestbot/carbon` package from `^2.2` to `^3.0`
+- Updated `phpstan/phpstan` package from `0.12.x-dev` to `^1.10.57`
+- Change `sandfoxme/private-access` to `arokettu/private-access` package because of the deprecation of the first one
+
+----
 
 ## v3.0.6 (2024-01-22)
 
@@ -136,7 +142,3 @@
 
 - Added new option UPPER that convert number to uppercase.
 - Refactored the code.
-
-----
-
-[<< Go back to home](https://github.com/SerhiiCho/ago/blob/master/README.md)

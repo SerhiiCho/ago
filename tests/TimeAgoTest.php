@@ -12,12 +12,11 @@ use PHPUnit\Framework\TestCase;
 use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\TimeAgo;
-
 use DateTime;
 use DateTimeImmutable;
 use Exception;
 
-use function SandFox\Debug\call_private_method;
+use function Arokettu\Debug\call_private_method;
 
 class TimeAgoTest extends TestCase
 {
