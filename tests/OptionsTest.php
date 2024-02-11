@@ -10,10 +10,9 @@ use Serhii\Ago\Exceptions\InvalidOptionsException;
 use Serhii\Ago\Lang;
 use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
-
 use Exception;
 
-use function SandFox\Debug\call_private_method;
+use function Arokettu\Debug\call_private_method;
 
 class OptionsTest extends TestCase
 {
