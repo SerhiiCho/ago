@@ -1,5 +1,11 @@
 # Release Notes
 
+## v3.2.0 (2024-02-15)
+
+- Add support for the German language
+
+----
+
 ## v3.1.0 (2024-02-11)
 
 - Updated `nestbot/carbon` package from `^2.2` to `^3.0`
