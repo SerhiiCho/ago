@@ -136,6 +136,10 @@ final class TimeAgo
             return "{$number} {$translation}";
         }
 
+        if (Lang::$lang === 'de') {
+            return "{$ago} {$number} {$translation}";
+        }
+
         return "{$number} {$translation} {$ago}";
     }
 
