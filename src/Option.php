@@ -14,7 +14,7 @@ class Option
     public const ONLINE = 1;
 
     /**
-     * @deprecated since v2.3.0. This option has no effect anymore if you try to use it.
+     * This option has no effect anymore if you try to use it.
      * Behavior of this option is the same as default behavior, so there is no need to use
      * this option anymore.
      */
