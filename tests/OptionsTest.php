@@ -48,7 +48,7 @@ class OptionsTest extends TestCase
 
     /**
      *
-     * @dataProvider provider_for_returns_time_without_suffix_if_flag_is_passes
+     * @dataProvider providerForReturnsTimeWithoutSuffixIfOptionIsPasses
      *
      * @param string $lang
      * @param string $time
@@ -62,7 +62,7 @@ class OptionsTest extends TestCase
         $this->assertSame($expect, TimeAgo::trans($time, Option::NO_SUFFIX));
     }
 
-    public function provider_for_returns_time_without_suffix_if_flag_is_passes(): array
+    public function providerForReturnsTimeWithoutSuffixIfOptionIsPasses(): array
     {
         return [
             ['en', CarbonImmutable::now()->subMinute()->toDateTimeString(), '1 minute'],
@@ -82,7 +82,7 @@ class OptionsTest extends TestCase
 
     /**
      *
-     * @dataProvider provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes
+     * @dataProvider providerForReturnsTimeWithoutSuffixAndWithOnlineIf2OptionsIsPasses
      *
      * @param string $lang
      * @param string $time
@@ -96,7 +96,7 @@ class OptionsTest extends TestCase
         $this->assertSame($expect, TimeAgo::trans($time, [Option::NO_SUFFIX, Option::ONLINE]));
     }
 
-    public function provider_returns_time_without_suffix_and_with_online_if_2_options_is_passes(): array
+    public function providerForReturnsTimeWithoutSuffixAndWithOnlineIf2OptionsIsPasses(): array
     {
         return [
             ['en', CarbonImmutable::now()->toDateTimeString(), 'Online'],
@@ -117,7 +117,7 @@ class OptionsTest extends TestCase
 
     /**
      *
-     * @dataProvider provider_for_returns_time_converter_with_2_options
+     * @dataProvider providerForReturnsTimeConverterWith2Options
      *
      * @param string $lang
      * @param string $time
@@ -132,7 +132,7 @@ class OptionsTest extends TestCase
         $this->assertSame($expect, $result);
     }
 
-    public function provider_for_returns_time_converter_with_2_options(): array
+    public function providerForReturnsTimeConverterWith2Options(): array
     {
         return [
             ['en', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],

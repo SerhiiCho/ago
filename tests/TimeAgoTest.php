@@ -21,7 +21,7 @@ use function Arokettu\Debug\call_private_method;
 class TimeAgoTest extends TestCase
 {
     /**
-     * @dataProvider provider_for_getLanguageForm_returns_correct_form
+     * @dataProvider providerForGetLanguageFormReturnsCorrectForm
      *
      *
      * @param int $number
@@ -35,7 +35,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($expect, $result, "Number {$number} has to be {$expect}, {$result} given");
     }
 
-    public function provider_for_getLanguageForm_returns_correct_form(): array
+    public function providerForGetLanguageFormReturnsCorrectForm(): array
     {
         return [
             [0, 'special', 'ru'],
@@ -61,7 +61,7 @@ class TimeAgoTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found
+     * @dataProvider providerForTransMethodReturnsCorrectResultAfterPassingATimestamp
      *
      */
     public function testTransMethodReturnsCorrectResultAfterPassingATimestamp(int $timestamp, string $expect): void
@@ -69,7 +69,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($expect, TimeAgo::trans($timestamp));
     }
 
-    public function provider_for_getLanguageForm_throws_exception_if_form_has_not_been_found(): array
+    public function providerForTransMethodReturnsCorrectResultAfterPassingATimestamp(): array
     {
         return [
             [time() - 86400, '1 day ago'],
@@ -82,7 +82,7 @@ class TimeAgoTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object
+     * @dataProvider providerForTransMethodReturnsCorrectResultAfterPassingADateTimeObject
      *
      */
     public function testTransMethodReturnsCorrectResultAfterPassingADateTimeObject(
@@ -92,7 +92,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($expect, TimeAgo::trans($timestamp));
     }
 
-    public function provider_for_trans_method_returns_correct_result_after_passing_a_DateTime_object(): array
+    public function providerForTransMethodReturnsCorrectResultAfterPassingADateTimeObject(): array
     {
         return [
             [(new DateTimeImmutable('now - 3 days')), '3 days ago'],
@@ -104,7 +104,7 @@ class TimeAgoTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_trans_method_returns_correct_result_after_passing_a_Carbon_object
+     * @dataProvider providerForTransMethodReturnsCorrectResultAfterPassingACarbonObject
      *
      */
     public function testTransMethodReturnsCorrectResultAfterPassingACarbonObject(
@@ -114,7 +114,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($expect, TimeAgo::trans($timestamp));
     }
 
-    public function provider_for_trans_method_returns_correct_result_after_passing_a_Carbon_object(): array
+    public function providerForTransMethodReturnsCorrectResultAfterPassingACarbonObject(): array
     {
         return [
             [CarbonImmutable::now()->subDays(4), '4 days ago'],
@@ -127,7 +127,7 @@ class TimeAgoTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_trans_method_throws_exception_if_input_has_incorrect_string
+     * @dataProvider providerForTransMethodThrowsExceptionIfInputHasIncorrectString
      *
      */
     public function testTransMethodThrowsExceptionIfInputHasIncorrectString(string $input): void
@@ -136,7 +136,7 @@ class TimeAgoTest extends TestCase
         TimeAgo::trans($input);
     }
 
-    public function provider_for_trans_method_throws_exception_if_input_has_incorrect_string(): array
+    public function providerForTransMethodThrowsExceptionIfInputHasIncorrectString(): array
     {
         return [
             ['sfdafsd'],
@@ -147,7 +147,7 @@ class TimeAgoTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option
+     * @dataProvider providerForTransMethodReturnsTimesLeftForADateInFuture
      *
      *
      * @param string $date
@@ -165,7 +165,7 @@ class TimeAgoTest extends TestCase
         $this->assertSame($result, TimeAgo::trans($date));
     }
 
-    public function provider_returns_times_left_for_a_date_in_future_with_UPCOMING_option(): array
+    public function providerForTransMethodReturnsTimesLeftForADateInFuture(): array
     {
         return [
             [CarbonImmutable::now()->addMinutes(2)->toDateTimeString(), 'en', '2 minutes'],

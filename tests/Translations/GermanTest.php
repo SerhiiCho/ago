@@ -63,7 +63,7 @@ class GermanTest extends TestCase
     }
 
     /**
-     * @dataProvider providerFortestReturnsCorrectDateFrom0SecondsTo59Seconds
+     * @dataProvider providerForReturnsCorrectDateFrom0SecondsTo59Seconds
      *
      * @param int $seconds
      * @param array $expect
@@ -79,7 +79,7 @@ class GermanTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function providerFortestReturnsCorrectDateFrom0SecondsTo59Seconds(): array
+    public function providerForReturnsCorrectDateFrom0SecondsTo59Seconds(): array
     {
         return [
             [0, ['Vor 0 Sekunden', 'Vor 1 Sekunde']],
