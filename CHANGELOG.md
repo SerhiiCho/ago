@@ -1,8 +1,16 @@
 # Release Notes
 
+## v3.2.1 (2024-02-16)
+
+- Added a "License" section to `README.md` file
+- Added more tests
+- Refactored tests
+
+----
+
 ## v3.2.0 (2024-02-15)
 
-- Add support for the German language
+- Added support for the German language
 
 ----
 
@@ -10,14 +18,14 @@
 
 - Updated `nestbot/carbon` package from `^2.2` to `^3.0`
 - Updated `phpstan/phpstan` package from `0.12.x-dev` to `^1.10.57`
-- Change `sandfoxme/private-access` to `arokettu/private-access` package because of the deprecation of the first one
+- Changed `sandfoxme/private-access` to `arokettu/private-access` package because of the deprecation of the first one
 
 ----
 
 ## v3.0.6 (2024-01-22)
 
 - Removed badge from readme.md file
-- Add description to each case in `Option` enum
+- Added description to each case in `Option` enum
 
 ----
 

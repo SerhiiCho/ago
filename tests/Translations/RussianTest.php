@@ -15,7 +15,7 @@ class RussianTest extends TestCase
     private $language = 'ru';
 
     /**
-     * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
+     * @dataProvider providerForReturnsCorrectTimeFromOneMinuteAndAbove
      *
      *
      * @param string $method
@@ -31,7 +31,7 @@ class RussianTest extends TestCase
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function provider_for_returns_correct_time_from_one_minute_and_above(): array
+    public function providerForReturnsCorrectTimeFromOneMinuteAndAbove(): array
     {
         return [
             ['subSeconds', 60, '1 минута назад'],
@@ -104,7 +104,7 @@ class RussianTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_returns_correct_date_from_0_seconds_to_59_seconds
+     * @dataProvider providerForReturnsCorrectDateFrom0SecondsTo59Seconds
      *
      *
      * @param int $seconds
@@ -121,7 +121,7 @@ class RussianTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function provider_for_returns_correct_date_from_0_seconds_to_59_seconds(): array
+    public function providerForReturnsCorrectDateFrom0SecondsTo59Seconds(): array
     {
         return [
             [0, ['0 секунд назад', '1 секунда назад']],

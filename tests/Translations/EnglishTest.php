@@ -15,7 +15,7 @@ class EnglishTest extends TestCase
     private $language = 'en';
 
     /**
-     * @dataProvider provider_for_returns_correct_time_from_one_minute_and_above
+     * @dataProvider providerForReturnsCorrectTimeFromOneMinuteAndAbove
      *
      *
      * @param string $method
@@ -31,7 +31,7 @@ class EnglishTest extends TestCase
         $this->assertSame($output_expected, TimeAgo::trans($date));
     }
 
-    public function provider_for_returns_correct_time_from_one_minute_and_above(): array
+    public function providerForReturnsCorrectTimeFromOneMinuteAndAbove(): array
     {
         return [
             ['subSeconds', 60, '1 minute ago'],
@@ -64,7 +64,7 @@ class EnglishTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_provider_for_returns_correct_date_from_0_seconds_to_59_seconds
+     * @dataProvider providerForReturnsCorrectDateFrom0SecondsTo59Seconds
      *
      *
      * @param int $seconds
@@ -81,7 +81,7 @@ class EnglishTest extends TestCase
         $this->assertContains($res, $expect, $message);
     }
 
-    public function provider_for_provider_for_returns_correct_date_from_0_seconds_to_59_seconds(): array
+    public function providerForReturnsCorrectDateFrom0SecondsTo59Seconds(): array
     {
         return [
             [0, ['0 seconds ago', '1 second ago']],
