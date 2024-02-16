@@ -4,6 +4,7 @@
 
 - Added a "License" section to `README.md` file
 - Added more tests
+- Refactored tests
 
 ----
 
