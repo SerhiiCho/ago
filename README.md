@@ -15,3 +15,7 @@ This package is well tested, optimized and already used in many production apps.
 ```bash
 composer require serhii/ago
 ```
+
+## License
+
+The Textwire project is licensed under the [MIT License](https://github.com/SerhiiCho/ago/blob/main/LICENSE)
