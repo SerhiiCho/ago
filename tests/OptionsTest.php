@@ -112,6 +112,10 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 минут'],
             ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 месяц'],
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 год'],
+            ['de', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 Jahr'],
+            ['de', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 Monat'],
+            ['de', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 Minuten'],
+            ['de', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],
         ];
     }
 
@@ -147,6 +151,10 @@ class OptionsTest extends TestCase
             ['ru', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 минут'],
             ['ru', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 месяц'],
             ['ru', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 год'],
+            ['de', CarbonImmutable::now()->subYear()->toDateTimeString(), '1 Jahr'],
+            ['de', CarbonImmutable::now()->subMonth()->toDateTimeString(), '1 Monat'],
+            ['de', CarbonImmutable::now()->subMinutes(25)->toDateTimeString(), '25 Minuten'],
+            ['de', CarbonImmutable::now()->subSeconds(5)->toDateTimeString(), 'Online'],
         ];
     }
 
