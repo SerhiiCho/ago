@@ -3,6 +3,7 @@
 ## v3.2.2 (2024-03-09)
 
 - Formatted `CHANGELOG.md` file
+- Small code refactoring
 
 ## v3.2.1 (2024-02-16)
 

@@ -8,5 +8,4 @@ use Exception;
 
 class InvalidDateFormatException extends Exception
 {
-    //
 }
