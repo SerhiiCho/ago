@@ -2,6 +2,7 @@
 
 [![Ago](https://github.com/SerhiiCho/ago/actions/workflows/php.yml/badge.svg?branch=main)](https://github.com/SerhiiCho/ago/actions/workflows/php.yml)
 [![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
+[![PHP Version Require](http://poser.pugx.org/serhii/ago/require/php)](https://packagist.org/packages/serhii/ago)
 [![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
 
 Date/time converter into "n time ago" format that supports multiple languages. You can contribute any language that you wish easily by creating a pull request. I would gladly merge it in if you follow the simple steps.
