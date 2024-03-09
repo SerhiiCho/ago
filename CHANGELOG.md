@@ -6,6 +6,7 @@
 - Small code refactoring
 - Added a new badge to a `README.md` file
 - Moved scripts from `Makefile` to `composer.json`
+- Removed slashes before each PHP native function
 
 ## v3.2.1 (2024-02-16)
 

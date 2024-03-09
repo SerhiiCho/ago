@@ -46,7 +46,7 @@ class Lang
      */
     public static function set(string $lang, ?array $overwrites = []): void
     {
-        self::$lang = \in_array($lang, self::getLanguagesSlugs(), true) ? $lang : 'en';
+        self::$lang = in_array($lang, self::getLanguagesSlugs(), true) ? $lang : 'en';
         self::$overwrites = $overwrites ?? [];
     }
 
@@ -72,7 +72,7 @@ class Lang
             return [];
         }
 
-        return \call_user_func(self::$rules, $number, $last_digit);
+        return call_user_func(self::$rules, $number, $last_digit);
     }
 
     /**
@@ -80,16 +80,16 @@ class Lang
      */
     private static function getLanguagesSlugs(): array
     {
-        $paths = \glob(__DIR__ . '/../resources/lang/*.php');
+        $paths = glob(__DIR__ . '/../resources/lang/*.php');
 
         if ($paths === false) {
             return [];
         }
 
-        return \array_map(static function ($path) {
-            $chunks = \explode('/', $path);
-            $file = \end($chunks);
-            return \str_replace('.php', '', $file);
+        return array_map(static function ($path) {
+            $chunks = explode('/', $path);
+            $file = end($chunks);
+            return str_replace('.php', '', $file);
         }, $paths);
     }
 
@@ -102,12 +102,12 @@ class Lang
         $path = __DIR__ . '/../resources/lang/' . self::$lang . '.php';
         $cached_translations = self::$included_files_cache[$path] ?? [];
 
-        $translations = \count($cached_translations) > 0 ? $cached_translations : require $path;
+        $translations = count($cached_translations) > 0 ? $cached_translations : require $path;
 
         self::$included_files_cache[$path] = $translations;
 
-        if (\count(self::$overwrites) > 0) {
-            $translations = \array_merge($translations, self::$overwrites);
+        if (count(self::$overwrites) > 0) {
+            $translations = array_merge($translations, self::$overwrites);
         }
 
         self::$translations = $translations;

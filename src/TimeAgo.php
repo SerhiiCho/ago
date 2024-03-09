@@ -48,7 +48,7 @@ final class TimeAgo
      */
     public static function trans($date, $options = []): string
     {
-        if (\is_int($options)) {
+        if (is_int($options)) {
             $options = [$options];
         }
 
@@ -75,19 +75,19 @@ final class TimeAgo
 
         $this->validateOptions();
 
-        $seconds = \time() - $date_timestamp;
+        $seconds = time() - $date_timestamp;
 
         if ($seconds < 0) {
-            $seconds = $date_timestamp - \time();
+            $seconds = $date_timestamp - time();
             $this->options[] = Option::UPCOMING;
         }
 
-        $minutes = (int) \round($seconds / 60);
-        $hours = (int) \round($seconds / 3600);
-        $days = (int) \round($seconds / 86400);
-        $weeks = (int) \round($seconds / 604800);
-        $months = (int) \round($seconds / 2629440);
-        $years = (int) \round($seconds / 31553280);
+        $minutes = (int) round($seconds / 60);
+        $hours = (int) round($seconds / 3600);
+        $days = (int) round($seconds / 86400);
+        $weeks = (int) round($seconds / 604800);
+        $months = (int) round($seconds / 2629440);
+        $years = (int) round($seconds / 31553280);
 
         switch (true) {
             case $this->optionIsSet(Option::ONLINE) && $seconds < 60:
@@ -113,7 +113,7 @@ final class TimeAgo
 
     private function optionIsSet(int $option): bool
     {
-        return \in_array($option, $this->options, true);
+        return in_array($option, $this->options, true);
     }
 
     /**
@@ -151,7 +151,7 @@ final class TimeAgo
      */
     private function getLanguageForm(int $number): string
     {
-        $last_digit = (int) \substr((string) $number, -1);
+        $last_digit = (int) substr((string) $number, -1);
 
         /**
          * @var string $form_name
@@ -183,7 +183,7 @@ final class TimeAgo
      */
     private function ruleIsBooleanTrue($rules): bool
     {
-        return \is_bool($rules) && $rules;
+        return is_bool($rules) && $rules;
     }
 
     /**
@@ -193,7 +193,7 @@ final class TimeAgo
      */
     private function ruleIsArrayWithTrueItem($rules): bool
     {
-        return \is_array($rules) && \in_array(true, $rules, true);
+        return is_array($rules) && in_array(true, $rules, true);
     }
 
     /**
@@ -203,7 +203,7 @@ final class TimeAgo
     {
         if ($this->optionIsSet(Option::UPCOMING)) {
             $msg = 'Option::UPCOMING is deprecated. Read more: https://github.com/SerhiiCho/ago/issues/34';
-            \trigger_error($msg, E_USER_DEPRECATED);
+            trigger_error($msg, E_USER_DEPRECATED);
         }
 
         if ($this->optionIsSet(Option::JUST_NOW) && $this->optionIsSet(Option::ONLINE)) {
