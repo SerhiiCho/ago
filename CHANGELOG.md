@@ -5,6 +5,7 @@
 - Formatted `CHANGELOG.md` file
 - Small code refactoring
 - Added a new badge to a `README.md` file
+- Moved scripts from `Makefile` to `composer.json`
 
 ## v3.2.1 (2024-02-16)
 
