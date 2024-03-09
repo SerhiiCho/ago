@@ -35,5 +35,17 @@
         "phpstan/phpstan": "^1.10.57",
         "squizlabs/php_codesniffer": "^4.0",
         "laravel/pint": "dev-main"
+    },
+    "scripts": {
+        "stan": "phpstan analyse",
+        "cs": "phpcs src resources --colors -p",
+        "test": "phpunit --colors tests",
+        "pint": "pint --test",
+        "check": [
+            "@cs",
+            "@stan",
+            "@test",
+            "@pint"
+        ]
     }
 }

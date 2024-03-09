@@ -26,7 +26,7 @@ class Option
     public const NO_SUFFIX = 3;
 
     /**
-     * Prints Just now when time is within 1 minutes.
+     * Prints Just now when time is within 1 minute.
      * For example instead of 34 seconds ago it will print Just now.
      * Incompatible with option ONLINE.
      */
