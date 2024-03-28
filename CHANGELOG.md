@@ -3,6 +3,7 @@
 ## v3.2.3 (2024-03-28)
 
 - Added more information to `README.md` file
+- Update `nestbot/carbon` package from `^3.0` to `^3.2.1`
 
 ## v3.2.2 (2024-03-09)
 
