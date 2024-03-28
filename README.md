@@ -5,7 +5,7 @@
 [![PHP Version Require](http://poser.pugx.org/serhii/ago/require/php)](https://packagist.org/packages/serhii/ago)
 [![License](https://poser.pugx.org/serhii/ago/license)](https://packagist.org/packages/serhii/ago)
 
-Date/time converter into "n time ago" format that supports multiple languages. You can contribute any language that you wish easily by creating a pull request. I would gladly merge it in if you follow the simple steps.
+Date/time converter into "n time ago" format that supports multiple languages, such as 🇷🇺 🇬🇧 🇳🇱 🇺🇦 🇩🇪. You can contribute any language that you wish easily by creating a pull request. When new PHP version comes out, this package will be updated to support it as soon as possible.
 
 This package is well tested, optimized and already used in many production apps. It has shown itself pretty well. If you find any issues or bugs 🐞, please create an [issue](https://github.com/SerhiiCho/ago/issues/new), and I'll fix it as soon as I can.
 
@@ -19,4 +19,4 @@ composer require serhii/ago
 
 ## License
 
-The Textwire project is licensed under the [MIT License](https://github.com/SerhiiCho/ago/blob/main/LICENSE)
+The Ago project is licensed under the [MIT License](https://github.com/SerhiiCho/ago/blob/main/LICENSE)

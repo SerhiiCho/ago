@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.2.3 (2024-03-28)
+
+- Added more information to `README.md` file
+
 ## v3.2.2 (2024-03-09)
 
 - Formatted `CHANGELOG.md` file
