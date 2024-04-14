@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.2.4 (2024-04-14)
+
+- Modified `LICENSE` file
+
 ## v3.2.3 (2024-03-28)
 
 - Added more information to `README.md` file
