@@ -3,6 +3,7 @@
 ## v3.2.4 (2024-04-14)
 
 - Modified `LICENSE` file
+- Updated composer packages
 
 ## v3.2.3 (2024-03-28)
 
