@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.2.5 (2024-04-26)
+- Formatted code with Pint
+
 ## v3.2.4 (2024-04-14)
 
 - Modified `LICENSE` file

@@ -14,7 +14,7 @@ use Serhii\Ago\Exceptions\MissingRuleException;
 final class TimeAgo
 {
     /**
-     * @var int[] $options
+     * @var int[]
      */
     private $options = [];
 
