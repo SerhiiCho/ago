@@ -1,8 +1,12 @@
 {
     "name": "serhii/ago",
     "description": "Converts given date into a nice readable format. Supports russian and english. Example will be '1 hour ago', '2 days ago', '1 second ago', 'Online' and so.",
-    "homepage": "https://github.com/SerhiiCho/ago",
-    "keywords": ["time ago", "library", "html"],
+    "homepage": "https://serhiicho.github.io/ago-docs/",
+    "keywords": [
+        "time ago",
+        "library",
+        "html"
+    ],
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
@@ -47,5 +51,8 @@
             "@test",
             "@pint"
         ]
+    },
+    "support": {
+        "issues": "https://github.com/SerhiiCho/ago/issues"
     }
 }

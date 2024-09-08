@@ -40,7 +40,6 @@ class Lang
      * If you don't call this method, the default
      * language will be set to English.
      *
-     * @param string $lang
      * @param array<string, string>|null $overwrites Overwrite any translation values by passing key and value
      * into this array. For example, you can pass ['day' => 'single day'] to overwrite the default value.
      */
@@ -61,9 +60,6 @@ class Lang
     }
 
     /**
-     * @param int $number
-     * @param int $last_digit
-     *
      * @return array<string, bool>|array<string, array<int, bool>>
      */
     public static function getRules(int $number, int $last_digit): array
@@ -89,6 +85,7 @@ class Lang
         return array_map(static function ($path) {
             $chunks = explode('/', $path);
             $file = end($chunks);
+
             return str_replace('.php', '', $file);
         }, $paths);
     }
