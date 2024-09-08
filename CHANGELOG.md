@@ -1,7 +1,9 @@
 # Release Notes
 
-## v3.2.5 (2024-04-26)
+## v3.2.5 (2024-09-08)
 - Formatted code with Pint
+- Update `README.md` file
+- Update composer packages
 
 ## v3.2.4 (2024-04-14)
 - Modified `LICENSE` file
