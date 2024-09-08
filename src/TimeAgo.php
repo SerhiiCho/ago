@@ -207,7 +207,8 @@ final class TimeAgo
         }
 
         if ($this->optionIsSet(Option::JUST_NOW) && $this->optionIsSet(Option::ONLINE)) {
-            throw new InvalidOptionsException('Option JUST_NOW and ONLINE are incompatible. Use only one of them');
+            $msg = 'Option JUST_NOW and ONLINE are incompatible. Use only one of them';
+            throw new InvalidOptionsException($msg);
         }
     }
 }
