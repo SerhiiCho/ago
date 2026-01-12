@@ -1,4 +1,4 @@
-![Ago package](https://serhii.io/storage/other/ago.png)
+![Ago package](https://serhiicho.com/storage/other/ago.png)
 
 [![Ago](https://github.com/php-ago/ago/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/php-ago/ago/actions/workflows/php.yml)
 [![Total Downloads](https://poser.pugx.org/serhii/ago/downloads)](https://packagist.org/packages/serhii/ago)
