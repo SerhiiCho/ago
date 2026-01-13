@@ -2,9 +2,7 @@ name: php-ago
 
 services:
     app:
-        build:
-            context: .
-            dockerfile: Containerfile
+        build: .
         image: php-ago
         container_name: php-ago
         volumes:

@@ -30,23 +30,41 @@ The Ago project is licensed under the [MIT License](https://github.com/php-ago/a
 
 ## Contribute
 ### With Container Engine
-> [!NOTE]
-> If you use [🐳 Docker](https://app.docker.com/) instead of [🦦 Podman](https://podman.io/), just replace `podman-compose` with `docker compose`, and `podman` with `docker` in code examples below.
-
 #### Build an Image
-To build an image, navigate to the root of project and run this command:
+To build an image, navigate to the root of project and run this command.
+
+With Podman:
 ```bash
-podman-compose build app
+podman-compose build
+```
+
+With Docker:
+```bash
+docker compose build
 ```
 
 #### Run the Container
-To run the container, navigate to the root of and run this command:
+To run the container, navigate to the root of and run this command.
+
+With Podman:
 ```bash
 podman-compose run --rm app
 ```
 
+With Docker:
+```bash
+docker compose run --rm app
+```
+
 #### Cleanup
-After you are done working on a project, you can cleanup and run the command below to remove things like created networks for the current project run this:
+After you are done working on a project, you can cleanup and run the command below to remove things like created networks for the current project.
+
+With Podman:
 ```bash
 podman-compose down
+```
+
+With Docker:
+```bash
+docker compose down
 ```
