@@ -11,60 +11,90 @@ This package is well tested, optimized and already used in many production apps.
 ### Follow the [official documentation](https://php-ago.github.io/) for more information
 
 ## Supported Languages
-| Flag | Language              | ISO 639-1 |
-| ---- | --------------------- | --------- |
-| 🇬🇧   | English               | `en`      |
-| 🇷🇺   | Russian               | `ru`      |
-| 🇺🇦   | Ukrainian             | `uk`      |
-| 🇳🇱   | Dutch                 | `nl`      |
-| 🇩🇪   | German                | `de`      |
-| 🇨🇳   | Chinese Simplified    | `zh`      |
+
+| Flag | Language           | ISO 639-1 |
+| ---- | ------------------ | --------- |
+| 🇬🇧   | English            | `en`      |
+| 🇷🇺   | Russian            | `ru`      |
+| 🇺🇦   | Ukrainian          | `uk`      |
+| 🇳🇱   | Dutch              | `nl`      |
+| 🇩🇪   | German             | `de`      |
+| 🇨🇳   | Chinese Simplified | `zh`      |
 
 ## Quick Start
+
 ```bash
 composer require serhii/ago
 ```
 
 ## License
+
 The Ago project is licensed under the [MIT License](https://github.com/php-ago/ago/blob/master/LICENSE)
 
 ## Contribute
-### With Container Engine
-#### Build an Image
+
+### Build an Image
+
 To build an image, navigate to the root of project and run this command.
 
 With Podman:
+
 ```bash
 podman-compose build
 ```
 
 With Docker:
+
 ```bash
 docker compose build
 ```
 
-#### Run the Container
-To run the container, navigate to the root of and run this command.
+### Run the Container
+
+To run the container, navigate to the root of and run this command:
 
 With Podman:
+
 ```bash
-podman-compose run --rm app
+podman-compose up -d
 ```
 
 With Docker:
+
 ```bash
-docker compose run --rm app
+docker compose up -d
 ```
 
-#### Cleanup
+### Enter The Container
+
+With Podman:
+
+```bash
+podman-compose exec app bash
+```
+
+With Docker:
+
+```bash
+docker compose exec app bash
+```
+
+### Install Composer Dev Dependencies
+
+After you entered the container, run `composer install` to install all development dependencies like phpunit, phpstan, etc.
+
+### Cleanup
+
 After you are done working on a project, you can cleanup and run the command below to remove things like created networks for the current project.
 
 With Podman:
+
 ```bash
 podman-compose down
 ```
 
 With Docker:
+
 ```bash
 docker compose down
 ```
